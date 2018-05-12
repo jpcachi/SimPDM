@@ -14,24 +14,6 @@ namespace PDMv4.Instrucciones
             argumento = argumentos[0];
         }
 
-        public override int NumArgumentos
-        {
-            get
-            {
-                return 1;
-            }
-        }
-
-
-        /*public abstract void Ejecutar();
-        public abstract Argumento ObtenerArgumento(int indice);
-        public abstract string ConvertirEnLinea();
-        public abstract byte Codigo { get; }
-
-        public abstract int ObtenerNumRegistroLeido();
-        public abstract int ObtenerNumRegistroEscrito();
-        public abstract int ObtenerDirMemoria(out bool escritura);
-        public abstract int[] ObtenerFlags(out bool escritura);
-        public abstract bool Revertir();*/
+        public override int NumArgumentos => 1;
     }
 }

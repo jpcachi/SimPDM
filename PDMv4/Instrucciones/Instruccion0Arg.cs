@@ -13,12 +13,6 @@ namespace PDMv4.Instrucciones
         }
 
 
-        public override int NumArgumentos
-        {
-            get
-            {
-                return 0;
-            }
-        }
+        public override int NumArgumentos => 0;
     }
 }

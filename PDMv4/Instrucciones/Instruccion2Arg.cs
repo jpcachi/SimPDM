@@ -16,12 +16,6 @@ namespace PDMv4.Instrucciones
             argumento2 = argumentos[1];
         }
 
-        public override int NumArgumentos
-        {
-            get
-            {
-                return 2;
-            }
-        }
+        public override int NumArgumentos => 2;
     }
 }

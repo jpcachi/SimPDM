@@ -8,7 +8,7 @@ namespace PDMv4.Instrucciones
         public abstract byte Codigo { get; }
         public virtual int NumMicroinstrucciones { get => 4; }
         public abstract int NumArgumentos { get; }
-        public abstract Argumentos.Argumento ObtenerArgumento(int indice);
+        public abstract Argumento ObtenerArgumento(int indice);
         public abstract string ConvertirEnLinea();
         public abstract int ObtenerNumRegistroLeido();
         public abstract int ObtenerNumRegistroEscrito();
