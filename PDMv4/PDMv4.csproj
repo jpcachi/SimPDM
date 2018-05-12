@@ -223,7 +223,6 @@
     <EmbeddedResource Include="Controles\PanelMejorado.resx">
       <DependentUpon>PanelMejorado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -253,7 +252,6 @@
     <EmbeddedResource Include="Vistas\VerRegistro.resx">
       <DependentUpon>VerRegistro.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -300,35 +298,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Acerca de SimPDM.rtf" />
-    <None Include="Resources\app-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow_state_blue_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\backward-icon-16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Creditos.rtf" />
-    <None Include="Resources\files-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\forward-icon-16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Hide.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\open-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\PDM_Image_fix.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\play-icon-16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\S0.png" />
@@ -373,21 +354,6 @@
     <None Include="Resources\S27.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\save-as-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\skip-backwmard-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\skip-forward-icon-16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Terminal.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Tile.png" />
   </ItemGroup>
   <ItemGroup>
@@ -395,66 +361,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Tile3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controls_chapter_next_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controls_fast_forward_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controls_play_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controls_play_back_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controls_rewind_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\refresh_16_1d81c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-big-01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-big-02.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-small-09.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-small-10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\008-reload.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\011-arrows-2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\012-arrows-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\002-arrows-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\014-left-arrow.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\016-back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\004-arrows-6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\017-forward.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\002-arrows-8_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\002-arrows-8_2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close_Over.png" />
@@ -484,40 +390,10 @@
     <None Include="Resources\run-small.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\stop-small1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Settings.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\About.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Index_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Index_16x161.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\help-browser.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\document-properties.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\system-help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\help-contents.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\document-save-as.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save_16%28fixed%29.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save_16x16.png" />
@@ -529,34 +405,13 @@
     <None Include="Resources\Paste_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\copy_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Copy_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\17.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\16.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Help1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Actions-transform-scale-Icon-541953.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Actions-go-first-view-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\go-first-orange-button-tango-style.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Apps-help-browser-icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\open_16.png" />
@@ -572,7 +427,6 @@
     <None Include="Resources\help-55.png" />
     <None Include="Resources\Actions-edit-find-icon.png" />
     <None Include="Resources\Actions-application-exit-icon.png" />
-    <None Include="Resources\system-search.png" />
     <None Include="Resources\document-properties1.png" />
     <None Include="Resources\go-next-page.png" />
     <None Include="Resources\go-previous-page.png" />
