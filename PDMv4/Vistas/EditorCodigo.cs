@@ -112,7 +112,7 @@ namespace PDMv4.Vistas
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            richTextBox1.Text = comboBox1.SelectedIndex != -1 ? UtilidadesInstruccion.DescripcionesInstruccion[comboBox1.SelectedIndex] : string.Empty;
+            richTextBox1.Text = UtilidadesInstruccion.DescripcionesInstruccion[comboBox1.SelectedIndex];
             switch (comboBox1.SelectedItem)
             {
                 case "LD":
@@ -242,20 +242,7 @@ namespace PDMv4.Vistas
 
         private void ayudaToolStripButton_Click(object sender, EventArgs e)
         {
-            int numIndiceAyuda = 0;
-            if (comboBox1.SelectedIndex < 5)
-                numIndiceAyuda = 0;
-            else if (comboBox1.SelectedIndex < 12)
-                numIndiceAyuda = 1;
-            else if (comboBox1.SelectedIndex < 19)
-                numIndiceAyuda = 2;
-            else if (comboBox1.SelectedIndex < 22)
-                numIndiceAyuda = 3;
-            else if (comboBox1.SelectedIndex == 22)
-                numIndiceAyuda = 4;
-            else numIndiceAyuda = 5;
-
-            new Ayuda(3, numIndiceAyuda).ShowDialog();
+            new Ayuda().ShowDialog();
         }
 
         private void MostrarSelectorArgumentos(params Argumento.Tipo[] argumentos)

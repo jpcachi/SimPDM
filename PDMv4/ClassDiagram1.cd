@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PDMv4.Argumentos.ArgLiteral" Collapsed="true">
+    <Position X="9.75" Y="6" Width="1.5" />
+    <InheritanceLine Type="PDMv4.Argumentos.Argumento" FixedFromPoint="true">
+      <Path>
+        <Point X="8.75" Y="6.312" />
+        <Point X="9.75" Y="6.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Argumentos\ArgLiteral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Argumentos.ArgMemoria" Collapsed="true">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <InheritanceLine Type="PDMv4.Argumentos.Argumento" FixedFromPoint="true">
+      <Path>
+        <Point X="8.75" Y="6.312" />
+        <Point X="9.125" Y="6.312" />
+        <Point X="9.125" Y="7.096" />
+        <Point X="9.75" Y="7.096" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAABgAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Argumentos\ArgMemoria.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Argumentos.ArgRegistro" Collapsed="true">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="PDMv4.Argumentos.Argumento" FixedFromPoint="true">
+      <Path>
+        <Point X="8.75" Y="6.312" />
+        <Point X="9.125" Y="6.312" />
+        <Point X="9.125" Y="5.596" />
+        <Point X="9.75" Y="5.596" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAEAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Argumentos\ArgRegistro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Argumentos.Argumento" Collapsed="true">
+    <Position X="7.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Argumentos\Argumento.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Constants" Collapsed="true">
+    <Position X="9.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAIwEAAUAACKgAAAAAACAgoAAAAJAQAAkAAABCA=</HashCode>
+      <FileName>Constants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.DireccionMemoria" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DireccionMemoria.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PDMv4.Etiqueta" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAQAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Etiqueta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.OpcionesPrograma" Collapsed="true">
+    <Position X="7.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GEAgAAgAAAAAgAAAAIEgAAABAAAAAAAAAAAAEABAAAA=</HashCode>
+      <FileName>OpcionesPrograma.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Program" Collapsed="true">
+    <Position X="11" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.CustomButton" Collapsed="true">
+    <Position X="11" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Controles\CustomButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.EditorTexto" Collapsed="true">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAgCCAAAAEAAACAgBACCAGAEAAAAAAQAQAABAA=</HashCode>
+      <FileName>Controles\EditorTexto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.EtiquetaControlCambios" Collapsed="true">
+    <Position X="9.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEACAABACAAAIAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Controles\EtiquetaControlCambios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.FlatComboBox" Collapsed="true">
+    <Position X="5.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAACAAAAAAAAAAAARAAAAAA=</HashCode>
+      <FileName>Controles\FlatComboBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.MapaProcesador" Collapsed="true">
+    <Position X="11" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/zFKHARABSAAHzgBKCLCIAAjAc+7GABkQFAWkmxBMTM=</HashCode>
+      <FileName>Controles\MapaProcesador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Controles.PanelMejorado" Collapsed="true">
+    <Position X="9.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAQAAAACAAAAAAAACgAAACAAAAAAAAAAAACQAAAAA=</HashCode>
+      <FileName>Controles\PanelMejorado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.EntradaSalida.FicheroES" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAFAAACDAAAAMAAgAACAAAAAAAAAAAAAAAAgQAAAA=</HashCode>
+      <FileName>EntradaSalida\FicheroES.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ADD" Collapsed="true">
+    <Position X="11.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ADD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ADI" Collapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ADI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ANA" Collapsed="true">
+    <Position X="11.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ANA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ANI" Collapsed="true">
+    <Position X="13.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAAAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ANI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.BC" Collapsed="true">
+    <Position X="15.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIIAAAIAAAAAAAACBAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\BC.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PDMv4.Instrucciones.BEQ" Collapsed="true">
+    <Position X="15.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIIAAAIAAAAAAAACBAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\BEQ.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PDMv4.Instrucciones.CMA" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAAAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\CMA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.CMI" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\CMI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.CMP" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAICAAA=</HashCode>
+      <FileName>Instrucciones\CMP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.IN" Collapsed="true">
+    <Position X="18.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\IN.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.INC" Collapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\INC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.Instruccion" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAICAAAAAAACAAAIAAIAAAA=</HashCode>
+      <FileName>Instrucciones\Instruccion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.Instruccion0Arg" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instrucciones\Instruccion0Arg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.Instruccion1Arg" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instrucciones\Instruccion1Arg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.Instruccion2Arg" Collapsed="true">
+    <Position X="20.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAADAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Instrucciones\Instruccion2Arg.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.JMP" Collapsed="true">
+    <Position X="15.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIIAAAIAAAAAAAACBAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\JMP.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PDMv4.Instrucciones.LD" Collapsed="true">
+    <Position X="9.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\LD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.LDI" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\LDI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.LDM" Collapsed="true">
+    <Position X="18.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\LDM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.LF" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\LF.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ORA" Collapsed="true">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ORA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ORI" Collapsed="true">
+    <Position X="13.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ORI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.OUT" Collapsed="true">
+    <Position X="18.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\OUT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.ST" Collapsed="true">
+    <Position X="9.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\ST.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.STM" Collapsed="true">
+    <Position X="18.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACQAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\STM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PDMv4.Instrucciones.SUB" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\SUB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.SUI" Collapsed="true">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\SUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.XRA" Collapsed="true">
+    <Position X="11.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\XRA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Instrucciones.XRI" Collapsed="true">
+    <Position X="13.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAAAQAAgAIAAIAAAAIAAAAAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Instrucciones\XRI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Procesador.Buses" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAABAAAAAQAACAAAAAAAAAAA=</HashCode>
+      <FileName>Procesador\Buses.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PDMv4.Procesador.Main" Collapsed="true">
+    <Position X="9.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GKAaEYEJhECAACBgJECAABgABAAwZBAAINQIGBGriCI=</HashCode>
+      <FileName>Procesador\Main.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Procesador.MemoriaPrincipal" Collapsed="true">
+    <Position X="2.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAoEAAAAAACAABAAAAIQgAAAAAAAAAACABAEAAAA=</HashCode>
+      <FileName>Procesador\MemoriaPrincipal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Procesador.Registro" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Procesador\Registro.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PDMv4.Procesador.UAL" Collapsed="true">
+    <Position X="11" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAgBCEAAAACAQCAAgIBAAAAAgAAQAJEEA=</HashCode>
+      <FileName>Procesador\UAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Procesador.UC" Collapsed="true">
+    <Position X="2.25" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEhAEAAAABACAAACBQAAAAAFAAAAQQAAgAAAAYAA=</HashCode>
+      <FileName>Procesador\UC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Properties.Resources" Collapsed="true">
+    <Position X="4" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>STMUG7gCSAZIrAEAUiGxEYWEIdDEmYjPhVLoAIDQAYk=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Properties.Settings" Collapsed="true">
+    <Position X="5.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Utilidades.Fichero" Collapsed="true">
+    <Position X="2.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAQAIgAAAAAAAAEAAQAEAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Utilidades\Fichero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Utilidades.ListViewVisualStyles" Collapsed="true">
+    <Position X="7.5" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAQKQIAAGAAAAwiEAABABAAEAEagAABQAABIsgBACs=</HashCode>
+      <FileName>Utilidades\ListViewVisualStyles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Utilidades.ToolStripAeroRenderer" Collapsed="true">
+    <Position X="9.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABEITAgAAIQAQIgBAQCABACAAAWAEAAAAAAiAgAQ=</HashCode>
+      <FileName>Utilidades\NativeToolStripRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Utilidades.UtilidadesConversion" Collapsed="true">
+    <Position X="4" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAABAAAAAAAACAAAAAAQAAA=</HashCode>
+      <FileName>Utilidades\UtilidadesConversion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Utilidades.UtilidadesInstruccion" Collapsed="true">
+    <Position X="5.75" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAEAAAAABAAAAAAAAAAAQiAAAAAAABAA=</HashCode>
+      <FileName>Utilidades\UtilidadesInstruccion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.AboutBox1" Collapsed="true">
+    <Position X="2.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIAAAAgAACAgCAUAAACAAAADAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vistas\AboutBox1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.Ayuda" Collapsed="true">
+    <Position X="4" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAAAgAAAGAoAA0AoEeAAl5CACAAAAAAAARRAQAQAAA=</HashCode>
+      <FileName>Vistas\Ayuda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.Busqueda" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABIAAACAAAASAAAYAAAAEWAABgEAiAI=</HashCode>
+      <FileName>Vistas\Busqueda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.EditorCodigo" Collapsed="true">
+    <Position X="4" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASGCCAkCQSQgABEQAECBQIhCAIB8AAAQkXCQRQEzYgg=</HashCode>
+      <FileName>Vistas\EditorCodigo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.ModificarContenido" Collapsed="true">
+    <Position X="4" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAACAAABAAAACACIBSIAAYBAAAMGBAAQAAAAA=</HashCode>
+      <FileName>Vistas\ModificarContenido.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.Opciones" Collapsed="true">
+    <Position X="5.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABAAAAACAAAPEQAGCAQAFCIIA4AAAAEHAEAQEAAAA=</HashCode>
+      <FileName>Vistas\Opciones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.SimPDM" Collapsed="true">
+    <Position X="7.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AeHDC/0mQmuIH/7zi+bHVXn+R5GalU3sPlCB2zA9qKM=</HashCode>
+      <FileName>Vistas\SimPDM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PDMv4.Vistas.VerRegistro" Collapsed="true">
+    <Position X="7.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAICAACBAAIACAAAByAAAIAAAiEEAAAYBEEgg=</HashCode>
+      <FileName>Vistas\VerRegistro.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="PDMv4.Procesador.InstruccionDireccionMemoria" Collapsed="true">
+    <Position X="2.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Procesador\InstruccionDireccionMemoria.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="PDMv4.Interfaces.IAlmacenaDato" Collapsed="true">
+    <Position X="2.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IAlmacenaDato.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PDMv4.Interfaces.IInstruccionSalto" Collapsed="true">
+    <Position X="4" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IInstruccionSalto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PDMv4.Interfaces.IModificaDireccionMemoria" Collapsed="true">
+    <Position X="5.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IModificaDireccionMemoria.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="PDMv4.Utilidades.TListView" Collapsed="true">
+    <Position X="2.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACEABQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilidades\ListViewVisualStyles.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PDMv4.Utilidades.ToolbarTheme" Collapsed="true">
+    <Position X="4" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAABAAAAACAAAAAAAAgACAAAAAAAA=</HashCode>
+      <FileName>Utilidades\NativeToolStripRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

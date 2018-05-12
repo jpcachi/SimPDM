@@ -118,7 +118,6 @@ namespace PDMv4.Vistas
             this.TUAL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LUAL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.mapaProcesador = new PDMv4.Controles.MapaProcesador();
             this.listView_Registros = new System.Windows.Forms.ListView();
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -167,6 +166,7 @@ namespace PDMv4.Vistas
             this.panelMejorado3 = new PDMv4.Controles.PanelMejorado();
             this.panelMejorado2 = new PDMv4.Controles.PanelMejorado();
             this.panelMejorado1 = new PDMv4.Controles.PanelMejorado();
+            this.mapaProcesador = new PDMv4.Controles.MapaProcesador();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -350,7 +350,7 @@ namespace PDMv4.Vistas
             // reiniciarMenuItem
             // 
             this.reiniciarMenuItem.Enabled = false;
-            this.reiniciarMenuItem.Image = global::PDMv4.Properties.Resources.stop_small;
+            this.reiniciarMenuItem.Image = global::PDMv4.Properties.Resources.stop_small1;
             this.reiniciarMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.reiniciarMenuItem.Name = "reiniciarMenuItem";
             this.reiniciarMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
@@ -837,20 +837,6 @@ namespace PDMv4.Vistas
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 530);
             this.panel1.TabIndex = 2;
-            // 
-            // mapaProcesador
-            // 
-            this.mapaProcesador.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mapaProcesador.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.mapaProcesador.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mapaProcesador.BackgroundImage")));
-            this.mapaProcesador.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.mapaProcesador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.mapaProcesador.Indice = -1;
-            this.mapaProcesador.Location = new System.Drawing.Point(0, 0);
-            this.mapaProcesador.MinimumSize = new System.Drawing.Size(168, 105);
-            this.mapaProcesador.Name = "mapaProcesador";
-            this.mapaProcesador.Size = new System.Drawing.Size(845, 530);
-            this.mapaProcesador.TabIndex = 5;
             // 
             // listView_Registros
             // 
@@ -1370,6 +1356,20 @@ namespace PDMv4.Vistas
             this.panelMejorado1.Size = new System.Drawing.Size(269, 566);
             this.panelMejorado1.TabIndex = 4;
             this.panelMejorado1.Text = "Programa";
+            // 
+            // mapaProcesador
+            // 
+            this.mapaProcesador.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.mapaProcesador.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.mapaProcesador.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mapaProcesador.BackgroundImage")));
+            this.mapaProcesador.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mapaProcesador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mapaProcesador.Indice = -1;
+            this.mapaProcesador.Location = new System.Drawing.Point(0, 0);
+            this.mapaProcesador.MinimumSize = new System.Drawing.Size(168, 105);
+            this.mapaProcesador.Name = "mapaProcesador";
+            this.mapaProcesador.Size = new System.Drawing.Size(845, 530);
+            this.mapaProcesador.TabIndex = 5;
             // 
             // SimPDM
             // 

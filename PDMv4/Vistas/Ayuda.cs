@@ -11,14 +11,13 @@ namespace PDMv4.Vistas
         private Busqueda ventanaBuscar;
         private int indiceBusqueda = 0;
 
-        public Ayuda(int numNodo = 0, int nodoHijo = 0)
+        public Ayuda()
         {
             InitializeComponent();
             ventanaBuscar = new Busqueda(this);
             toolStrip1.Renderer = new ToolStripAeroRenderer(ToolbarTheme.HelpBar);
             toolStrip1.BackColor = SystemColors.Control;
 
-            treeView1.SelectedNode = treeView1.Nodes[numNodo].Nodes[nodoHijo];
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
