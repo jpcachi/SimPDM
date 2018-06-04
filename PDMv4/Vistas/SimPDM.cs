@@ -14,9 +14,9 @@ namespace PDMv4.Vistas
         private Task hiloEjecucion;
         private CancellationTokenSource tokenSource;
         private CancellationToken cancellation;
-        
+        private string startupFile = null;
 
-        public SimPDM()
+        public SimPDM(string file = null)
         {
             InitializeComponent();
             BackColor = Constants.DEFAULT_WINDOW_BACKGROUND_COLOR;
@@ -42,6 +42,20 @@ namespace PDMv4.Vistas
 
             tokenSource = new CancellationTokenSource();
             cancellation = tokenSource.Token;
+
+            startupFile = file;
+        }
+
+        private void AbrirArchivo(string nombre)
+        {
+            if (archivoActual.LeerPrograma(nombre))
+            {
+                ListViewVisualStyles.LimpiarIndices();
+                mapaProcesador.RestablecerMapaPDM();
+                RefrescarListViews();
+                ActualizarOpcionesEjecucion();
+                ActualizarStatusStrip();
+            }
         }
 
         private void nuevoToolStripButton_Click(object sender, EventArgs e)
@@ -60,14 +74,7 @@ namespace PDMv4.Vistas
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                if (archivoActual.LeerPrograma(openFileDialog1.FileName))
-                {
-                    ListViewVisualStyles.LimpiarIndices();
-                    mapaProcesador.RestablecerMapaPDM();
-                    RefrescarListViews();
-                    ActualizarOpcionesEjecucion();
-                    ActualizarStatusStrip();
-                }
+                AbrirArchivo(openFileDialog1.FileName);
             }
         }
 
@@ -683,6 +690,31 @@ namespace PDMv4.Vistas
         private void DefaultSize_Click(object sender, EventArgs e)
         {
             Size = new Size(1537, 848);
+        }
+
+        private void Programa_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string nombreArchivo = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                if (nombreArchivo == archivoActual.Ruta) return;
+                AbrirArchivo(nombreArchivo);  
+            }
+        }
+
+        private void Programa_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
+        }
+
+        private void SimPDM_Load(object sender, EventArgs e)
+        {
+            if (startupFile != null)
+            {
+                AbrirArchivo(startupFile);
+                startupFile = null;
+            }
         }
     }
 }

@@ -10,23 +10,6 @@ namespace PDMv4.Controles
     [Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design", typeof(IDesigner))]
     public partial class MapaProcesador : UserControl
     {
-        /*PictureBox LAc;
-        PictureBox LCP;
-        PictureBox LF;
-        PictureBox LH;
-        PictureBox LL;
-        PictureBox LR;
-        PictureBox TAc;
-        PictureBox TER;
-        PictureBox TF;
-        PictureBox TMEM;
-        PictureBox TSR;
-        PictureBox TUAL;
-        PictureBox LUAL;
-        PictureBox L;
-        PictureBox E;
-        PictureBox MEM;
-        PictureBox NO_MEM;*/
         Vistas.VerRegistro visor;
 
         private int indice;
@@ -47,35 +30,10 @@ namespace PDMv4.Controles
         public MapaProcesador()
         {
             InitializeComponent();
-            /*LAc = new PictureBox();
-            LCP = new PictureBox();
-            LF = new PictureBox();
-            LH = new PictureBox();
-            LL = new PictureBox();
-            LR = new PictureBox();
-            LUAL = new PictureBox();
-            TAc = new PictureBox();
-            TER = new PictureBox();
-            TF = new PictureBox();
-            TMEM = new PictureBox();
-            TSR = new PictureBox();
-            TUAL = new PictureBox();
-            L = new PictureBox();
-            E = new PictureBox();
-            MEM = new PictureBox();
-            NO_MEM = new PictureBox();
-            InicializarBuses();*/
             visor = new Vistas.VerRegistro();
             visor.Show();
             visor.VisibleChanged += Visor_VisibleChanged;
             visor.Visible = false;
-            button1InitialPoint = button1.Location;
-            button1InitialSize = button1.Size;
-            //AñadirPictureBox(TMEM);
-            //AñadirPictureBox(TER);
-            //EliminarPictureBox(TMEM);
-
-
         }
 
         private void Visor_VisibleChanged(object sender, EventArgs e)
@@ -92,49 +50,31 @@ namespace PDMv4.Controles
         private void ActivarTER(bool activado)
         {
             etiquetaTER.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(TER);
-            //else EliminarPictureBox(TER);
         }
 
         private void ActivarTSR(bool activado)
         {
             etiquetaTSR.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(TSR);
-            //else EliminarPictureBox(TSR);
         }
 
         private void ActivarLAc(bool activado)
         {
             etiquetaLAc.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(LAc);
-            //else EliminarPictureBox(LAc);
         }
 
         private void ActivarTAc(bool activado)
         {
             etiquetaTAc.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(TAc);
-            //else EliminarPictureBox(TAc);
         }
 
         private void ActivarTUAL(bool activado)
         {
             etiquetaTUAL.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(TUAL);
-            //else EliminarPictureBox(TUAL);
         }
 
         private void ActivarTF(bool activado)
         {
             etiquetaTF.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(TF);
-            //else EliminarPictureBox(TF);
         }
 
         private void ActivarUAL(bool activado)
@@ -145,59 +85,33 @@ namespace PDMv4.Controles
         private void ActivarLUAL(bool activado)
         {
             etiquetaLUAL.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(LUAL);
-            //else EliminarPictureBox(LUAL);
         }
 
         private void ActivarLF(bool activado)
         {
             etiquetaLF.Activado = activado;
             if (activado)
-            {
-                //AñadirPictureBox(LF);
                 ActivarFCFZ();
-            }
-            //else EliminarPictureBox(LF);
         }
 
         private void ActivarLCP(bool activado)
         {
             etiquetaLCP.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(LCP);
-            //else EliminarPictureBox(LCP);
         }
 
         private void ActivarLH(bool activado)
         {
             etiquetaLH.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(LH);
-            //else EliminarPictureBox(LH);
         }
 
         private void ActivarLL(bool activado)
         {
             etiquetaLL.Activado = activado;
-            //if (activado)
-                //AñadirPictureBox(LL);
-            //else EliminarPictureBox(LL);
         }
 
         private void ActivarMEM(bool activado)
         {
             etiquetaMEM.Activado = activado;
-            /*if (activado)
-            {
-                EliminarPictureBox(NO_MEM);
-                AñadirPictureBox(MEM);
-            }
-            else
-            {
-                EliminarPictureBox(MEM);
-                AñadirPictureBox(NO_MEM);
-            }*/
         }
 
         private void ActivarLRI(bool activado)
@@ -205,98 +119,16 @@ namespace PDMv4.Controles
             etiquetaLRI.Activado = activado;
             etiquetaCR.Activado = activado;
             etiquetaCO.Activado = activado;
-            /*if (activado)
-            {
-                AñadirPictureBox(LR);
-            }
-            else EliminarPictureBox(LR);*/
         }
 
         private void ActivarLE(bool activado)
         {
             etiquetaLE.Activado = activado;
-            /*if(activado)
-            {
-                EliminarPictureBox(L);
-                AñadirPictureBox(E);
-            }
-            else
-            {
-                EliminarPictureBox(E);
-                AñadirPictureBox(L);
-            }*/
         }
 
         private void ActivarTMEM(bool activado)
         {
             etiquetaTMEM.Activado = activado;
-            /*if (activado)
-                AñadirPictureBox(TMEM);
-            else EliminarPictureBox(TMEM);*/
-        }
-
-        private void InicializarBuses()
-        {
-            /*RenderizarPictureBox(LAc, Properties.Resources.Lac);
-            RenderizarPictureBox(LCP, Properties.Resources.LCP);
-            RenderizarPictureBox(LF, Properties.Resources.LF);
-            RenderizarPictureBox(LH, Properties.Resources.LH);
-            RenderizarPictureBox(LL, Properties.Resources.LL);
-            RenderizarPictureBox(LR, Properties.Resources.LRI);
-            RenderizarPictureBox(LUAL, Properties.Resources.LUAL);
-            RenderizarPictureBox(TAc, Properties.Resources.TAc);
-            RenderizarPictureBox(TER, Properties.Resources.TER);
-            RenderizarPictureBox(TF, Properties.Resources.TF);
-            RenderizarPictureBox(TMEM, Properties.Resources.TMEM);
-            RenderizarPictureBox(TSR, Properties.Resources.TSR);
-            RenderizarPictureBox(TUAL, Properties.Resources.TUAL);
-            RenderizarPictureBox(L, Properties.Resources.L);
-            RenderizarPictureBox(E, Properties.Resources.E);
-            RenderizarPictureBox(MEM, Properties.Resources.MEM);
-            RenderizarPictureBox(NO_MEM, Properties.Resources.NO_MEM);*/
-        }
-
-        private void RenderizarPictureBox(PictureBox picture, Bitmap bitmap)
-        {
-            picture.Image = bitmap;
-            picture.SizeMode = PictureBoxSizeMode.Zoom;
-            picture.BackColor = Color.Transparent;
-            picture.Dock = DockStyle.Fill;
-            picture.Visible = true;
-        }
-
-        private void AñadirPictureBox(PictureBox picture)
-        {
-            Control c = pictureBox1;
-            while(c.Controls.Count > 0)
-            {
-                if (c.Controls[0] == picture) return;
-                c = c.Controls[0];
-            }
-
-            c.Controls.Add(picture);
-        }
-
-        private void EliminarPictureBox(PictureBox picture)
-        {
-            bool eliminado = false;
-
-            Control c = pictureBox1;
-            Control hijo = new Control();
-            while (c.Controls.Count > 0 && !eliminado)
-            {
-                if (c.Controls.Contains(picture))
-                {
-                    bool tieneHijos = c.Controls[0].Controls.Count > 0;
-                    if(tieneHijos)
-                        hijo = c.Controls[0].Controls[0];
-                    c.Controls.Remove(picture);
-                    if (tieneHijos)
-                        c.Controls.Add(hijo);
-                    eliminado = true;
-                }
-                else c = c.Controls[0];
-            }
         }
 
         private void ActivarCR01()
@@ -334,6 +166,8 @@ namespace PDMv4.Controles
             string señalesTexto = string.Empty;
             foreach (sbyte señal in valores)
                 señalesTexto += señal.ToString();
+
+            Properties.Resources.ResourceManager.ReleaseAllResources();
             switch (señalesTexto)
             {
                 case "1100000000001-1-1-100":
@@ -416,9 +250,8 @@ namespace PDMv4.Controles
                     break;
             }
 
-            //pictureBox1.Controls.Clear();
+            Invoke(new Action(() => pictureBox1.Refresh()));
 
-            //if(!valores.Contains<sbyte>(1))
             ActivarCR01();
 
             ActivarLRI(ConvertirEnBool(valores[0]));
@@ -442,7 +275,7 @@ namespace PDMv4.Controles
         public void RestablecerMapaPDM()
         {
             pictureBox1.Image = null;
-            //pictureBox1.Controls.Clear();
+            Properties.Resources.ResourceManager.ReleaseAllResources();
 
             ActivarCR01();
             ActivarFCFZ();
@@ -480,7 +313,6 @@ namespace PDMv4.Controles
             visor.Location = new Point(MousePosition.X, MousePosition.Y);
             visor.Visible = true;
             ParentForm.Activate();
-            //visor.Activate();
         }
 
         private void button_RegistroB(object sender, EventArgs e)
@@ -670,35 +502,9 @@ namespace PDMv4.Controles
             button12.FlatAppearance.BorderSize = 0;
         }
 
-        private Point button1InitialPoint;
-        private Size button1InitialSize;
         private void MapaProcesador_Resize(object sender, EventArgs e)
-        {/*
-            float aspectoIdeal = 1.59659091f;
-            float aspectoActual = (Width * 1.0f / Height);
-
-            int alturaBase = 528;
-            int widthBase = 843;
-
-            int alturaIdeal = Height;
-            int widthIdeal = Width;
-
-            int offsetX = 0;
-            int offsetY = 0;
-
-            if(aspectoActual > aspectoIdeal)
-            {
-                widthIdeal = (int) Math.Round(aspectoIdeal * Height);
-                offsetX = (int)((Width - widthIdeal) / 2.0f);
-            }
-            else if (aspectoActual < aspectoIdeal)
-            {
-                alturaIdeal = (int)Math.Round(Width/aspectoIdeal);
-                offsetY = (int)((Height - alturaIdeal) / 2.0f);
-            }
-
-            button1.Location = new Point(button1InitialPoint.X + offsetX, button1InitialPoint.Y + offsetY);
-            //button1.Size = new Size(button1InitialSize.Width + (Width - widthIdeal), button1InitialSize.Height + (Height - alturaIdeal));*/
+        {
+            //Estaría bien implementar que el mapa se pudiera redimensionar
         }
     }
 }

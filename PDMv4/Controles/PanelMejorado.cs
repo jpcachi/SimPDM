@@ -17,6 +17,7 @@ namespace PDMv4.Controles
             InitializeComponent();
             panel1.BackColor = Constants.DEFAULT_PANEL_HEADER_COLOR;
             panel3.BackColor = Constants.DEFAULT_PANEL_HEADER_COLOR;
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -43,13 +44,6 @@ namespace PDMv4.Controles
             e.Graphics.FillPath(new SolidBrush(Constants.DEFAULT_PANEL_TEXT_HEADER_COLOR), graphicsPath);
         }
 
-        private void PanelMejorado_ControlAdded(object sender, ControlEventArgs e)
-        {
-            //panel2.Controls.Add(e.Control);
-            //int indiceControl = panel2.Controls.IndexOf(e.Control);
-            //panel2.Controls[indiceControl].Location = new Point(panel2.Controls[indiceControl].Location.X, panel2.Controls[indiceControl].Location.Y - 26);
-        }
-
         public ControlCollection ContentControls
         {
             get
@@ -57,6 +51,5 @@ namespace PDMv4.Controles
                 return panel2.Controls;
             }
         }
-
     }
 }

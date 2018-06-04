@@ -672,6 +672,8 @@ namespace PDMv4.Vistas
             this.listView_Programa.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
             this.listView_Programa.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_Programa_DrawSubItem);
             this.listView_Programa.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView_Programa_RetrieveVirtualItem);
+            this.listView_Programa.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.listView_Programa.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             this.listView_Programa.Resize += new System.EventHandler(this.listView_Registros_Resize);
             // 
             // columnHeader1
@@ -727,6 +729,8 @@ namespace PDMv4.Vistas
             this.listView_Microinstrucciones.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
             this.listView_Microinstrucciones.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_Microinstrucciones_DrawSubItem);
             this.listView_Microinstrucciones.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView2_RetrieveVirtualItem);
+            this.listView_Microinstrucciones.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.listView_Microinstrucciones.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             this.listView_Microinstrucciones.Resize += new System.EventHandler(this.listView_Microinstrucciones_Resize);
             // 
             // Fase
@@ -840,6 +844,7 @@ namespace PDMv4.Vistas
             // 
             // mapaProcesador
             // 
+            this.mapaProcesador.AllowDrop = true;
             this.mapaProcesador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.mapaProcesador.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.mapaProcesador.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("mapaProcesador.BackgroundImage")));
@@ -851,6 +856,8 @@ namespace PDMv4.Vistas
             this.mapaProcesador.Name = "mapaProcesador";
             this.mapaProcesador.Size = new System.Drawing.Size(845, 530);
             this.mapaProcesador.TabIndex = 5;
+            this.mapaProcesador.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.mapaProcesador.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             // 
             // listView_Registros
             // 
@@ -881,6 +888,8 @@ namespace PDMv4.Vistas
             this.listView_Registros.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
             this.listView_Registros.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_Registros_DrawSubItem);
             this.listView_Registros.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView_Registros_RetrieveVirtualItem);
+            this.listView_Registros.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.listView_Registros.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             this.listView_Registros.DoubleClick += new System.EventHandler(this.listView_Registros_DoubleClick);
             this.listView_Registros.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Registros_MouseClick);
             this.listView_Registros.Resize += new System.EventHandler(this.listView_Registros_Resize);
@@ -908,6 +917,7 @@ namespace PDMv4.Vistas
             // 
             // listView_MemoriaPrincipal
             // 
+            this.listView_MemoriaPrincipal.AllowDrop = true;
             this.listView_MemoriaPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -934,6 +944,8 @@ namespace PDMv4.Vistas
             this.listView_MemoriaPrincipal.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
             this.listView_MemoriaPrincipal.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_MemoriaPrincipal_DrawSubItem);
             this.listView_MemoriaPrincipal.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView_MemoriaPrincipal_RetrieveVirtualItem);
+            this.listView_MemoriaPrincipal.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.listView_MemoriaPrincipal.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             this.listView_MemoriaPrincipal.DoubleClick += new System.EventHandler(this.listView_MemoriaPrincipal_DoubleClick);
             this.listView_MemoriaPrincipal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_MemoriaPrincipal_MouseClick);
             this.listView_MemoriaPrincipal.Resize += new System.EventHandler(this.listView_Registros_Resize);
@@ -992,6 +1004,8 @@ namespace PDMv4.Vistas
             this.listView_Flags.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.ListView_DrawColumnHeader);
             this.listView_Flags.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_Flags_DrawSubItem);
             this.listView_Flags.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView_Flags_RetrieveVirtualItem);
+            this.listView_Flags.DragDrop += new System.Windows.Forms.DragEventHandler(this.Programa_DragDrop);
+            this.listView_Flags.DragEnter += new System.Windows.Forms.DragEventHandler(this.Programa_DragEnter);
             this.listView_Flags.Resize += new System.EventHandler(this.listView_Microinstrucciones_Resize);
             // 
             // columnHeader6
@@ -1390,6 +1404,7 @@ namespace PDMv4.Vistas
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SimPDM";
             this.Text = "SimPDM";
+            this.Load += new System.EventHandler(this.SimPDM_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

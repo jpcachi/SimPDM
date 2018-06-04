@@ -71,7 +71,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "PanelMejorado";
             this.Size = new System.Drawing.Size(574, 348);
-            this.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.PanelMejorado_ControlAdded);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
