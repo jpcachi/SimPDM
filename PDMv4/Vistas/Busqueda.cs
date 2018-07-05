@@ -21,7 +21,7 @@ namespace PDMv4.Vistas
             textBox1.Select();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = ventanaPadre.Buscar(textBox1.Text, checkBox1.Checked, radioButton1.Checked);
             busquedaFin = !button1.Enabled;
@@ -32,7 +32,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             if(busquedaFin)
                 button1.Enabled = busqueda != textBox1.Text;
@@ -40,12 +40,12 @@ namespace PDMv4.Vistas
                 button1.Enabled = !string.IsNullOrEmpty(textBox1.Text);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void RadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (busquedaFin)
                 button1.Enabled = radioButton1.Checked != up;

@@ -7,7 +7,7 @@ namespace PDMv4.Instrucciones
 {
     class LD : Instruccion1Arg
     {
-        private byte codigo;
+        private readonly byte codigo;
 
         public LD(params Argumento[] args) : base(args)
         {

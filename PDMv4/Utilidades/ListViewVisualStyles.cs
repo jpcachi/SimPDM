@@ -14,29 +14,14 @@ namespace PDMv4.Utilidades
     /// </summary>
     static class ListViewVisualStyles
     {
-        private static List<ListView> listViews = new List<ListView>();
-        public static List<ListView> Listas
-        {
-            get
-            {
-                return listViews;
-            }
-        }
-        private static Color colorCabecera = Constants.DEFAULT_HEADER_BACKGROUND_COLOR;
-        private static Color colorBackgroundItem = Constants.DEFAULT_ITEM_BACKGROUND_COLOR;
-        private static Color colorBackgroundAlternateItem = Constants.DEFAULT_ITEM_BACKGROUND_ALTERNATE_COLOR;
-        private static Color colorBackgroundSelectedItem = Constants.DEFAULT_SELECTED_ITEM_BACKGROUND_COLOR;
-        private static Color colorBackgroundReadItem = Constants.DEFAULT_READ_ITEM_COLOR;
-        private static Color colorBackgroundSelectedReadItem = Constants.DEFAULT_SELECTED_READ_ITEM_COLOR;
-        private static Color colorBackgroundWritenItem = Constants.DEFAULT_WRITEN_ITEM_COLOR;
-        private static Color colorBackgroundSelectedWritenItem = Constants.DEFAULT_SELECTED_WRITEN_ITEM_COLOR;
+        public static List<ListView> Listas { get; } = new List<ListView>();
 
-        private static Color colorTextoCabecera = Constants.DEFAULT_COLOR_TEXT;
-        private static Color colorTextoItem = Constants.DEFAULT_COLOR_TEXT;
-
-        private static Font fuenteCabecera = Constants.DEFAULT_FONT;
-        private static Font fuenteItem = Constants.DEFAULT_FONT;
-
+        private static readonly Color colorBackgroundAlternateItem = Estilos.DEFAULT_ITEM_BACKGROUND_ALTERNATE_COLOR;
+        private static readonly Color colorBackgroundSelectedItem = Estilos.DEFAULT_SELECTED_ITEM_BACKGROUND_COLOR;
+        private static readonly Color colorBackgroundReadItem = Estilos.DEFAULT_READ_ITEM_COLOR;
+        private static readonly Color colorBackgroundSelectedReadItem = Estilos.DEFAULT_SELECTED_READ_ITEM_COLOR;
+        private static readonly Color colorBackgroundWritenItem = Estilos.DEFAULT_WRITEN_ITEM_COLOR;
+        private static readonly Color colorBackgroundSelectedWritenItem = Estilos.DEFAULT_SELECTED_WRITEN_ITEM_COLOR;
         private static List<int> lecturaRegistros = new List<int>();
         private static List<int> accesoRegistros = new List<int>();
 
@@ -144,78 +129,17 @@ namespace PDMv4.Utilidades
             ejecucionMicroInstruccion = -1;
         }
 
-        public static Color ColorCabecera
-        {
-            get
-            {
-                return colorCabecera;
-            }
-            set
-            {
-                colorCabecera = value;
-            }
-        }
+        public static Color ColorCabecera { get; set; } = Estilos.DEFAULT_HEADER_BACKGROUND_COLOR;
 
-        public static Color ColorBackgroundItem
-        {
-            get
-            {
-                return colorBackgroundItem;
-            }
-            set
-            {
-                colorBackgroundItem = value;
-            }
-        }
+        public static Color ColorBackgroundItem { get; set; } = Estilos.DEFAULT_ITEM_BACKGROUND_COLOR;
 
-        public static Color ColorTextoCabecera
-        {
-            get
-            {
-                return colorTextoCabecera;
-            }
-            set
-            {
-                colorTextoCabecera = value;
-            }
-        }
+        public static Color ColorTextoCabecera { get; set; } = Estilos.DEFAULT_COLOR_TEXT;
 
-        public static Color ColorTextoItem
-        {
-            get
-            {
-                return colorTextoItem;
-            }
-            set
-            {
-                colorTextoItem = value;
-            }
-        }
+        public static Color ColorTextoItem { get; set; } = Estilos.DEFAULT_COLOR_TEXT;
 
-        public static Font FuenteCabecera
-        {
-            get
-            {
-                return fuenteCabecera;
-            }
-            set
-            {
-                fuenteCabecera = value;
-            }
-        }
+        public static Font FuenteCabecera { get; set; } = Estilos.DEFAULT_FONT;
 
-        public static Font FuenteItem
-        {
-            get
-            {
-                return fuenteItem;
-            }
-            set
-            {
-                fuenteItem = value;
-            }
-        }
-
+        public static Font FuenteItem { get; set; } = Estilos.DEFAULT_FONT;
         public static int EjecucionMicroInstruccion { set => ejecucionMicroInstruccion = value; }
 
         /// <summary>
@@ -246,9 +170,9 @@ namespace PDMv4.Utilidades
             }
             else
             {
-                Color color = e.ItemIndex % 2 != 0 ? colorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
+                Color color = e.ItemIndex % 2 != 0 ? ColorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
                 e.Graphics.FillRectangle(new SolidBrush(color), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height - Constants.BOTTOM_MARGIN));
-                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
+                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, FuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), ColorTextoItem, TextFormatFlags.ExpandTabs);
             }
             //TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
         }
@@ -313,9 +237,9 @@ namespace PDMv4.Utilidades
             }
             else
             {
-                Color color = e.ItemIndex % 2 != 0 ? colorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
+                Color color = e.ItemIndex % 2 != 0 ? ColorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
                 e.Graphics.FillRectangle(new SolidBrush(color), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height - Constants.BOTTOM_MARGIN));
-                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
+                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, FuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), ColorTextoItem, TextFormatFlags.ExpandTabs);
             }
 
             //TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
@@ -342,9 +266,9 @@ namespace PDMv4.Utilidades
             }
             else
             {
-                Color color = e.ItemIndex % 2 != 0 ? colorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
+                Color color = e.ItemIndex % 2 != 0 ? ColorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
                 e.Graphics.FillRectangle(new SolidBrush(color), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height - Constants.BOTTOM_MARGIN));
-                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
+                TextRenderer.DrawText(e.Graphics, e.SubItem.Text, FuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), ColorTextoItem, TextFormatFlags.ExpandTabs);
             }
 
             //TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTextoItem, TextFormatFlags.ExpandTabs);
@@ -359,15 +283,15 @@ namespace PDMv4.Utilidades
             if (Application.VisualStyleState == VisualStyleState.NonClientAreaEnabled) e.DrawDefault = true;
             else
             {
-                e.Graphics.FillRectangle(new SolidBrush(colorCabecera), e.Bounds);
-                TextRenderer.DrawText(e.Graphics, e.Header.Text, fuenteCabecera, new Rectangle(new Point(e.Bounds.Location.X + Constants.MARGEN_IZQUIERDO_CABECERA, e.Bounds.Location.Y + Constants.MARGEN_ABAJO_CABECERA), new Size(e.Bounds.Width - Constants.MARGEN_IZQUIERDO_CABECERA, e.Bounds.Height - Constants.MARGEN_ABAJO_CABECERA)), colorTextoCabecera, TextFormatFlags.ExpandTabs);
+                e.Graphics.FillRectangle(new SolidBrush(ColorCabecera), e.Bounds);
+                TextRenderer.DrawText(e.Graphics, e.Header.Text, FuenteCabecera, new Rectangle(new Point(e.Bounds.Location.X + Constants.MARGEN_IZQUIERDO_CABECERA, e.Bounds.Location.Y + Constants.MARGEN_ABAJO_CABECERA), new Size(e.Bounds.Width - Constants.MARGEN_IZQUIERDO_CABECERA, e.Bounds.Height - Constants.MARGEN_ABAJO_CABECERA)), ColorTextoCabecera, TextFormatFlags.ExpandTabs);
             }
         }
 
         public static void CambiarColorFondo()
         {
-            foreach (ListView vista in listViews)
-                vista.BackColor = colorBackgroundItem;
+            foreach (ListView vista in Listas)
+                vista.BackColor = ColorBackgroundItem;
         }
 
         public static void DibujarSubItemListView(object sender, DrawListViewSubItemEventArgs e)
@@ -379,17 +303,15 @@ namespace PDMv4.Utilidades
             if (e.Item.Selected)
             {
                 e.Graphics.FillRectangle(new SolidBrush(colorBackgroundSelectedItem), e.Bounds);
-                //Usar:
-                
             }
             else
             {
-                Color color = e.ItemIndex % 2 != 0 ? colorBackgroundItem : colorBackgroundAlternateItem;//Color.Honeydew;
+                Color color = e.ItemIndex % 2 != 0 ? ColorBackgroundItem : colorBackgroundAlternateItem;
                 e.Graphics.FillRectangle(new SolidBrush(color), new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height - Constants.BOTTOM_MARGIN));
                 
             }
 
-            Color colorTexto = colorTextoItem;
+            Color colorTexto = ColorTextoItem;
             if (e.SubItem.Text == "0")
                 colorTexto = Color.Firebrick;
             else if (e.SubItem.Text == "1")
@@ -397,7 +319,7 @@ namespace PDMv4.Utilidades
             else if (e.SubItem.Text == "-1")
                 e.SubItem.Text = "x";
 
-            TextRenderer.DrawText(e.Graphics, e.SubItem.Text, fuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTexto, TextFormatFlags.ExpandTabs);
+            TextRenderer.DrawText(e.Graphics, e.SubItem.Text, FuenteItem, new Rectangle(new Point(e.Bounds.Location.X + Constants.LEFT_MARGIN, e.Bounds.Location.Y + Constants.BOTTOM_MARGIN), new Size(e.Bounds.Width - Constants.LEFT_MARGIN, e.Bounds.Height - Constants.BOTTOM_MARGIN)), colorTexto, TextFormatFlags.ExpandTabs);
         }
     }
 }

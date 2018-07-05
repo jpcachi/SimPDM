@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="DireccionMemoria.cs" />
     <Compile Include="EntradaSalida\FicheroES.cs" />
+    <Compile Include="Estilos.cs" />
     <Compile Include="Etiqueta.cs" />
     <Compile Include="Instrucciones\ADD.cs" />
     <Compile Include="Instrucciones\ADI.cs" />
@@ -205,12 +206,6 @@
     <Compile Include="Vistas\SimPDM.Designer.cs">
       <DependentUpon>SimPDM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\VentanaProcesador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\VentanaProcesador.Designer.cs">
-      <DependentUpon>VentanaProcesador.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\VerRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -254,9 +249,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\SimPDM.resx">
       <DependentUpon>SimPDM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\VentanaProcesador.resx">
-      <DependentUpon>VentanaProcesador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VerRegistro.resx">
       <DependentUpon>VerRegistro.cs</DependentUpon>

@@ -5,15 +5,11 @@ namespace PDMv4.Instrucciones
 {
     class SUI : Instruccion1Arg
     {
-        private byte codigo;
-
         public SUI(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();
             if (args[0].TipoArgumento() != Argumento.Tipo.Literal)
                 throw new ArgumentException();
-
-            codigo = 104;
         }
 
         public override Argumento ObtenerArgumento(int indice)
@@ -30,7 +26,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 104;
             }
         }
 

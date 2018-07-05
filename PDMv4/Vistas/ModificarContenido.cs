@@ -23,7 +23,7 @@ namespace PDMv4.Vistas
             textBox4.Text = Utilidades.UtilidadesConversion.ToBin(valorActual, 8);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(textBox1.Text, out int num) && num < 256 && num > -1)
             {
@@ -43,7 +43,7 @@ namespace PDMv4.Vistas
             textBox1.Select(textBox1.Text.Length, 0);
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void TextBox2_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(textBox2.Text, out int num) && num < 128 && num > -129)
             {
@@ -63,7 +63,7 @@ namespace PDMv4.Vistas
             textBox2.Select(textBox2.Text.Length, 0);
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void TextBox3_TextChanged(object sender, EventArgs e)
         {
             if (int.TryParse(textBox3.Text, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture, out int num) && num < 256)
             {
@@ -83,7 +83,7 @@ namespace PDMv4.Vistas
             textBox3.Select(textBox3.Text.Length, 0);
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void TextBox4_TextChanged(object sender, EventArgs e)
         {
             int num = -1;
             try
@@ -115,7 +115,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             if(memoria)
                 Main.ObtenerMemoria.EscribirMemoria((byte)valor, pos);
@@ -125,7 +125,7 @@ namespace PDMv4.Vistas
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();

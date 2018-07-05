@@ -29,53 +29,53 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("¿Qué es SimPDM?", 1, 1);
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Créditos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Acerca de SimPDM", new System.Windows.Forms.TreeNode[] {
-            treeNode27,
-            treeNode28});
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Ventana principal", 1, 1);
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Editor de código", 1, 1);
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Opciones", 1, 1);
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Barra de herramientas", 1, 1);
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Interfaz de SimPDM", new System.Windows.Forms.TreeNode[] {
-            treeNode30,
-            treeNode31,
-            treeNode32,
-            treeNode33});
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Registros", 1, 1);
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Buses de datos y direcciones", 1, 1);
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Unidad Aritmético Lógica (UAL)", 1, 1);
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Memoria Principal", 1, 1);
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Estructura del Procesador", new System.Windows.Forms.TreeNode[] {
-            treeNode35,
-            treeNode36,
-            treeNode37,
-            treeNode38});
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Transferencia", 1, 1);
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Aritméticas", 1, 1);
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Lógicas", 1, 1);
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Saltos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Manejo de señalizadores", 1, 1);
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Entrada y salida", 1, 1);
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Instrucciones", new System.Windows.Forms.TreeNode[] {
-            treeNode40,
-            treeNode41,
-            treeNode42,
-            treeNode43,
-            treeNode44,
-            treeNode45});
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Abrir un nuevo programa", 1, 1);
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Ejecutar un programa entero", 1, 1);
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Crear un programa desde el editor", 1, 1);
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Visualizar el estado de los registros internos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("Utilizar instrucciones de entrada y salida", 1, 1);
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("Guía rápida de uso", new System.Windows.Forms.TreeNode[] {
-            treeNode47,
-            treeNode48,
-            treeNode49,
-            treeNode50,
-            treeNode51});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("¿Qué es SimPDM?", 1, 1);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Créditos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Acerca de SimPDM", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Ventana principal", 1, 1);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Editor de código", 1, 1);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Opciones", 1, 1);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Barra de herramientas", 1, 1);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Interfaz de SimPDM", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Registros", 1, 1);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Buses de datos y direcciones", 1, 1);
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Unidad Aritmético Lógica (UAL)", 1, 1);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Memoria Principal", 1, 1);
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Estructura del Procesador", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Transferencia", 1, 1);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Aritméticas", 1, 1);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Lógicas", 1, 1);
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Saltos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Manejo de señalizadores", 1, 1);
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Entrada y salida", 1, 1);
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Instrucciones", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19});
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Abrir un nuevo programa", 1, 1);
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Ejecutar un programa entero", 1, 1);
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Crear un programa desde el editor", 1, 1);
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Visualizar el estado de los registros internos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Utilizar instrucciones de entrada y salida", 1, 1);
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Guía rápida de uso", new System.Windows.Forms.TreeNode[] {
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24,
+            treeNode25});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ayuda));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -110,112 +110,112 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(13, 64);
             this.treeView1.Name = "treeView1";
-            treeNode27.ImageIndex = 1;
-            treeNode27.Name = "Nodo5";
-            treeNode27.SelectedImageIndex = 1;
-            treeNode27.Text = "¿Qué es SimPDM?";
-            treeNode28.ImageIndex = 1;
-            treeNode28.Name = "Nodo8";
-            treeNode28.SelectedImageIndex = 1;
-            treeNode28.Text = "Créditos";
-            treeNode29.Name = "Nodo0";
-            treeNode29.Text = "Acerca de SimPDM";
-            treeNode30.ImageIndex = 1;
-            treeNode30.Name = "Nodo10";
-            treeNode30.SelectedImageIndex = 1;
-            treeNode30.Text = "Ventana principal";
-            treeNode31.ImageIndex = 1;
-            treeNode31.Name = "Nodo11";
-            treeNode31.SelectedImageIndex = 1;
-            treeNode31.Text = "Editor de código";
-            treeNode32.ImageIndex = 1;
-            treeNode32.Name = "Nodo12";
-            treeNode32.SelectedImageIndex = 1;
-            treeNode32.Text = "Opciones";
-            treeNode33.ImageIndex = 1;
-            treeNode33.Name = "Nodo13";
-            treeNode33.SelectedImageIndex = 1;
-            treeNode33.Text = "Barra de herramientas";
-            treeNode34.Name = "Nodo1";
-            treeNode34.Text = "Interfaz de SimPDM";
-            treeNode35.ImageIndex = 1;
-            treeNode35.Name = "Nodo28";
-            treeNode35.SelectedImageIndex = 1;
-            treeNode35.Text = "Registros";
-            treeNode36.ImageIndex = 1;
-            treeNode36.Name = "Nodo29";
-            treeNode36.SelectedImageIndex = 1;
-            treeNode36.Text = "Buses de datos y direcciones";
-            treeNode37.ImageIndex = 1;
-            treeNode37.Name = "Nodo30";
-            treeNode37.SelectedImageIndex = 1;
-            treeNode37.Text = "Unidad Aritmético Lógica (UAL)";
-            treeNode38.ImageIndex = 1;
-            treeNode38.Name = "Nodo31";
-            treeNode38.SelectedImageIndex = 1;
-            treeNode38.Text = "Memoria Principal";
-            treeNode39.Name = "Nodo2";
-            treeNode39.Text = "Estructura del Procesador";
-            treeNode40.ImageIndex = 1;
-            treeNode40.Name = "Nodo14";
-            treeNode40.SelectedImageIndex = 1;
-            treeNode40.Text = "Transferencia";
-            treeNode41.ImageIndex = 1;
-            treeNode41.Name = "Nodo15";
-            treeNode41.SelectedImageIndex = 1;
-            treeNode41.Text = "Aritméticas";
-            treeNode42.ImageIndex = 1;
-            treeNode42.Name = "Nodo20";
-            treeNode42.SelectedImageIndex = 1;
-            treeNode42.Text = "Lógicas";
-            treeNode43.ImageIndex = 1;
-            treeNode43.Name = "Nodo16";
-            treeNode43.SelectedImageIndex = 1;
-            treeNode43.Text = "Saltos";
-            treeNode44.ImageIndex = 1;
-            treeNode44.Name = "Nodo21";
-            treeNode44.SelectedImageIndex = 1;
-            treeNode44.Text = "Manejo de señalizadores";
-            treeNode45.ImageIndex = 1;
-            treeNode45.Name = "Nodo22";
-            treeNode45.SelectedImageIndex = 1;
-            treeNode45.Text = "Entrada y salida";
-            treeNode46.Name = "Nodo3";
-            treeNode46.Text = "Instrucciones";
-            treeNode47.ImageIndex = 1;
-            treeNode47.Name = "Nodo23";
-            treeNode47.SelectedImageIndex = 1;
-            treeNode47.Text = "Abrir un nuevo programa";
-            treeNode48.ImageIndex = 1;
-            treeNode48.Name = "Nodo24";
-            treeNode48.SelectedImageIndex = 1;
-            treeNode48.Text = "Ejecutar un programa entero";
-            treeNode49.ImageIndex = 1;
-            treeNode49.Name = "Nodo25";
-            treeNode49.SelectedImageIndex = 1;
-            treeNode49.Text = "Crear un programa desde el editor";
-            treeNode50.ImageIndex = 1;
-            treeNode50.Name = "Nodo26";
-            treeNode50.SelectedImageIndex = 1;
-            treeNode50.Text = "Visualizar el estado de los registros internos";
-            treeNode51.ImageIndex = 1;
-            treeNode51.Name = "Nodo27";
-            treeNode51.SelectedImageIndex = 1;
-            treeNode51.Text = "Utilizar instrucciones de entrada y salida";
-            treeNode52.Name = "Nodo4";
-            treeNode52.Text = "Guía rápida de uso";
+            treeNode1.ImageIndex = 1;
+            treeNode1.Name = "Nodo5";
+            treeNode1.SelectedImageIndex = 1;
+            treeNode1.Text = "¿Qué es SimPDM?";
+            treeNode2.ImageIndex = 1;
+            treeNode2.Name = "Nodo8";
+            treeNode2.SelectedImageIndex = 1;
+            treeNode2.Text = "Créditos";
+            treeNode3.Name = "Nodo0";
+            treeNode3.Text = "Acerca de SimPDM";
+            treeNode4.ImageIndex = 1;
+            treeNode4.Name = "Nodo10";
+            treeNode4.SelectedImageIndex = 1;
+            treeNode4.Text = "Ventana principal";
+            treeNode5.ImageIndex = 1;
+            treeNode5.Name = "Nodo11";
+            treeNode5.SelectedImageIndex = 1;
+            treeNode5.Text = "Editor de código";
+            treeNode6.ImageIndex = 1;
+            treeNode6.Name = "Nodo12";
+            treeNode6.SelectedImageIndex = 1;
+            treeNode6.Text = "Opciones";
+            treeNode7.ImageIndex = 1;
+            treeNode7.Name = "Nodo13";
+            treeNode7.SelectedImageIndex = 1;
+            treeNode7.Text = "Barra de herramientas";
+            treeNode8.Name = "Nodo1";
+            treeNode8.Text = "Interfaz de SimPDM";
+            treeNode9.ImageIndex = 1;
+            treeNode9.Name = "Nodo28";
+            treeNode9.SelectedImageIndex = 1;
+            treeNode9.Text = "Registros";
+            treeNode10.ImageIndex = 1;
+            treeNode10.Name = "Nodo29";
+            treeNode10.SelectedImageIndex = 1;
+            treeNode10.Text = "Buses de datos y direcciones";
+            treeNode11.ImageIndex = 1;
+            treeNode11.Name = "Nodo30";
+            treeNode11.SelectedImageIndex = 1;
+            treeNode11.Text = "Unidad Aritmético Lógica (UAL)";
+            treeNode12.ImageIndex = 1;
+            treeNode12.Name = "Nodo31";
+            treeNode12.SelectedImageIndex = 1;
+            treeNode12.Text = "Memoria Principal";
+            treeNode13.Name = "Nodo2";
+            treeNode13.Text = "Estructura del Procesador";
+            treeNode14.ImageIndex = 1;
+            treeNode14.Name = "Nodo14";
+            treeNode14.SelectedImageIndex = 1;
+            treeNode14.Text = "Transferencia";
+            treeNode15.ImageIndex = 1;
+            treeNode15.Name = "Nodo15";
+            treeNode15.SelectedImageIndex = 1;
+            treeNode15.Text = "Aritméticas";
+            treeNode16.ImageIndex = 1;
+            treeNode16.Name = "Nodo20";
+            treeNode16.SelectedImageIndex = 1;
+            treeNode16.Text = "Lógicas";
+            treeNode17.ImageIndex = 1;
+            treeNode17.Name = "Nodo16";
+            treeNode17.SelectedImageIndex = 1;
+            treeNode17.Text = "Saltos";
+            treeNode18.ImageIndex = 1;
+            treeNode18.Name = "Nodo21";
+            treeNode18.SelectedImageIndex = 1;
+            treeNode18.Text = "Manejo de señalizadores";
+            treeNode19.ImageIndex = 1;
+            treeNode19.Name = "Nodo22";
+            treeNode19.SelectedImageIndex = 1;
+            treeNode19.Text = "Entrada y salida";
+            treeNode20.Name = "Nodo3";
+            treeNode20.Text = "Instrucciones";
+            treeNode21.ImageIndex = 1;
+            treeNode21.Name = "Nodo23";
+            treeNode21.SelectedImageIndex = 1;
+            treeNode21.Text = "Abrir un nuevo programa";
+            treeNode22.ImageIndex = 1;
+            treeNode22.Name = "Nodo24";
+            treeNode22.SelectedImageIndex = 1;
+            treeNode22.Text = "Ejecutar un programa entero";
+            treeNode23.ImageIndex = 1;
+            treeNode23.Name = "Nodo25";
+            treeNode23.SelectedImageIndex = 1;
+            treeNode23.Text = "Crear un programa desde el editor";
+            treeNode24.ImageIndex = 1;
+            treeNode24.Name = "Nodo26";
+            treeNode24.SelectedImageIndex = 1;
+            treeNode24.Text = "Visualizar el estado de los registros internos";
+            treeNode25.ImageIndex = 1;
+            treeNode25.Name = "Nodo27";
+            treeNode25.SelectedImageIndex = 1;
+            treeNode25.Text = "Utilizar instrucciones de entrada y salida";
+            treeNode26.Name = "Nodo4";
+            treeNode26.Text = "Guía rápida de uso";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode29,
-            treeNode34,
-            treeNode39,
-            treeNode46,
-            treeNode52});
+            treeNode3,
+            treeNode8,
+            treeNode13,
+            treeNode20,
+            treeNode26});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(276, 516);
             this.treeView1.TabIndex = 0;
-            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
-            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCollapse);
+            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterExpand);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
             // imageList1
             // 
@@ -291,9 +291,9 @@
             this.siguienteToolStripMenuItem,
             this.buscarToolStripMenuItem,
             this.acercaDeToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(247, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(966, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -304,7 +304,7 @@
             this.atrasToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
             this.atrasToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.atrasToolStripMenuItem.Text = "Atras";
-            this.atrasToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.atrasToolStripMenuItem.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // siguienteToolStripMenuItem
             // 
@@ -312,7 +312,7 @@
             this.siguienteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
             this.siguienteToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.siguienteToolStripMenuItem.Text = "Siguiente";
-            this.siguienteToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.siguienteToolStripMenuItem.Click += new System.EventHandler(this.ToolStripButton2_Click);
             // 
             // buscarToolStripMenuItem
             // 
@@ -320,7 +320,7 @@
             this.buscarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.buscarToolStripMenuItem.Text = "Buscar";
-            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // acercaDeToolStripMenuItem
             // 
@@ -328,7 +328,7 @@
             this.acercaDeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
-            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.ToolStripButton4_Click);
             // 
             // toolStrip1
             // 
@@ -357,7 +357,7 @@
             this.toolStripButton1.Size = new System.Drawing.Size(38, 51);
             this.toolStripButton1.Text = "Atrás";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -367,7 +367,7 @@
             this.toolStripButton2.Size = new System.Drawing.Size(60, 51);
             this.toolStripButton2.Text = "Siguiente";
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
             // 
             // toolStripButton3
             // 
@@ -377,7 +377,7 @@
             this.toolStripButton3.Size = new System.Drawing.Size(46, 51);
             this.toolStripButton3.Text = "Buscar";
             this.toolStripButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // toolStripButton4
             // 
@@ -387,7 +387,7 @@
             this.toolStripButton4.Size = new System.Drawing.Size(63, 51);
             this.toolStripButton4.Text = "Acerca de";
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButton4_Click);
             // 
             // toolStripButton5
             // 
@@ -397,7 +397,7 @@
             this.toolStripButton5.Size = new System.Drawing.Size(43, 51);
             this.toolStripButton5.Text = "Cerrar";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.toolStripButton5.Click += new System.EventHandler(this.ToolStripButton5_Click);
             // 
             // Ayuda
             // 

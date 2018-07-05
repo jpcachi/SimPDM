@@ -2,13 +2,12 @@
 {
     class ArgLiteral : Argumento
     {
-        private byte valor;
 
-        public byte Valor { get => valor; }
+        public byte Valor { get; }
 
         public ArgLiteral(byte num)
         {
-            valor = num;
+            Valor = num;
         }
 
         public override Tipo TipoArgumento()

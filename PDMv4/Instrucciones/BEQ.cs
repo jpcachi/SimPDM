@@ -7,16 +7,14 @@ namespace PDMv4.Instrucciones
 {
     class BEQ : Instruccion1Arg, IInstruccionSalto
     {
-        private byte codigo;
         private ushort IndiceMemoriaSalto;
-        private int numMicroInstrucciones = 5;
+        private readonly int numMicroInstrucciones = 5;
         public BEQ(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();
             if (args[0].TipoArgumento() != Argumento.Tipo.Memoria)
                 throw new ArgumentException();
 
-            codigo = 208;
         }
 
         public override Argumento ObtenerArgumento(int indice)
@@ -53,7 +51,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 208;
             }
         }
 

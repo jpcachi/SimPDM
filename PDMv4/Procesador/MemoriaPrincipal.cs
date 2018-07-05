@@ -8,15 +8,13 @@ namespace PDMv4.Procesador
 {
     class MemoriaPrincipal
     {
-        private DireccionMemoria[] memoria;
-        private List<Etiqueta> etiquetas;
-        private int tamaño;
+        private readonly DireccionMemoria[] memoria;
 
         private MemoriaPrincipal(int tamaño)
         {
-            this.tamaño = tamaño;
+            this.Tamaño = tamaño;
             memoria = new DireccionMemoria[tamaño];
-            etiquetas = new List<Etiqueta>();
+            Etiquetas = new List<Etiqueta>();
         }
 
         public static MemoriaPrincipal ObtenerMemoria(int tamaño)
@@ -24,25 +22,13 @@ namespace PDMv4.Procesador
             return new MemoriaPrincipal(tamaño);
         }
 
-        public int Tamaño
-        {
-            get
-            {
-                return tamaño;
-            }
-        }
+        public int Tamaño { get; }
 
-        public List<Etiqueta> Etiquetas
-        {
-            get
-            {
-                return etiquetas;
-            }
-        }
+        public List<Etiqueta> Etiquetas { get; }
 
         public void InicializarMemoria()
         {
-            for (int i = 0; i < tamaño; i++)
+            for (int i = 0; i < Tamaño; i++)
             {
                 memoria[i] = new DireccionMemoria();
             }
@@ -50,11 +36,11 @@ namespace PDMv4.Procesador
 
         public void RestablecerMemoria()
         {
-            for (int i = 0; i < tamaño; i++)
+            for (int i = 0; i < Tamaño; i++)
             {
                 memoria[i].Contenido = 0;
             }
-            etiquetas.Clear();
+            Etiquetas.Clear();
         }
 
         public void EscribirMemoria(byte contenido, int posicion)

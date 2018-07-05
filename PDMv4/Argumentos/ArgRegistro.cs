@@ -4,15 +4,8 @@ namespace PDMv4.Argumentos
 {
     class ArgRegistro : Argumento
     {
-        private byte numRegistro;
 
-        public byte NumeroRegistro
-        {
-            get
-            {
-                return numRegistro;
-            }
-        }
+        public byte NumeroRegistro { get; }
 
         public ArgRegistro(byte numRegistro)
         {
@@ -21,7 +14,7 @@ namespace PDMv4.Argumentos
                 throw new ArgumentOutOfRangeException();
             }
 
-            this.numRegistro = numRegistro;
+            this.NumeroRegistro = numRegistro;
         }
 
         public override Tipo TipoArgumento()

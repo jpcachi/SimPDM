@@ -1,4 +1,6 @@
-﻿using PDMv4.Procesador;
+﻿using PDMv4.Instrucciones;
+using PDMv4.Interfaces;
+using PDMv4.Procesador;
 using PDMv4.Utilidades;
 using System;
 using System.Drawing;
@@ -19,7 +21,7 @@ namespace PDMv4.Vistas
         public SimPDM(string file = null)
         {
             InitializeComponent();
-            BackColor = Constants.DEFAULT_WINDOW_BACKGROUND_COLOR;
+            BackColor = Estilos.DEFAULT_WINDOW_BACKGROUND_COLOR;
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
@@ -40,10 +42,23 @@ namespace PDMv4.Vistas
             archivoActual = new Fichero();
             listView_MemoriaPrincipal.VirtualListSize = Main.ObtenerMemoria.Tamaño;
 
-            tokenSource = new CancellationTokenSource();
-            cancellation = tokenSource.Token;
+            //tokenSource = new CancellationTokenSource();
+            //cancellation = tokenSource.Token;
 
             startupFile = file;
+
+            listView_MemoriaPrincipal.GridLines = false;
+            listView_Flags.GridLines = false;
+            listView_Programa.GridLines = false;
+            listView_Registros.GridLines = false;
+            listView_Microinstrucciones.GridLines = false;
+
+            listView_MemoriaPrincipal.BackColor = Estilos.DEFAULT_GRID_COLOR;
+            listView_Flags.BackColor = Estilos.DEFAULT_GRID_COLOR;
+            listView_Programa.BackColor = Estilos.DEFAULT_GRID_COLOR;
+            listView_Registros.BackColor = Estilos.DEFAULT_GRID_COLOR;
+            listView_Microinstrucciones.BackColor = Estilos.DEFAULT_GRID_COLOR;
+            //toolStripContainer1.TopToolStripPanel.BackColor = Estilos.DEFAULT_WINDOW_BACKGROUND_COLOR;
         }
 
         private void AbrirArchivo(string nombre)
@@ -58,7 +73,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void nuevoToolStripButton_Click(object sender, EventArgs e)
+        private void NuevoToolStripButton_Click(object sender, EventArgs e)
         {
             Main.Restablecer();
             archivoActual.ObtenerLineasPrograma.Clear();
@@ -70,7 +85,7 @@ namespace PDMv4.Vistas
             ActualizarOpcionesEjecucion();
         }
 
-        private void abrirToolStripButton_Click(object sender, EventArgs e)
+        private void AbrirToolStripButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -79,7 +94,7 @@ namespace PDMv4.Vistas
         }
 
 
-        private void listView_Registros_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void ListView_Registros_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             int contenidoRegistro = Main.ObtenerRegistro(e.ItemIndex).Contenido;
             ListViewItem itemRegistro = new ListViewItem(Main.ObtenerNombreRegistro(e.ItemIndex));
@@ -93,7 +108,7 @@ namespace PDMv4.Vistas
             e.Item = itemRegistro;
         }
 
-        private void listView_MemoriaPrincipal_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void ListView_MemoriaPrincipal_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             int contenidoDireccion = Main.ObtenerMemoria.ObtenerDireccion((ushort)e.ItemIndex).Contenido;
             ListViewItem itemLineaMemoria = new ListViewItem(e.ItemIndex.ToString("X4"));
@@ -108,7 +123,7 @@ namespace PDMv4.Vistas
             e.Item = itemLineaMemoria;
         }
 
-        private void listView2_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void ListView2_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             sbyte[] microinstruccion = Main.ListaMicroinstrucciones[e.ItemIndex];
             ListViewItem itemMicroinstruccion = new ListViewItem(UC.ObtenerMicroInstruccionAPartirDeSeñales(microinstruccion));
@@ -137,7 +152,7 @@ namespace PDMv4.Vistas
             e.Item = itemMicroinstruccion;
         }
 
-        private void listView_Flags_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void ListView_Flags_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             ListViewItem item;
             if (e.ItemIndex == 0)
@@ -277,13 +292,13 @@ namespace PDMv4.Vistas
             ListViewVisualStyles.DibujarCabeceras(sender, e);
         }
 
-        private void listView_Programa_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
+        private void ListView_Programa_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
         {
             e.Item = new ListViewItem(archivoActual.ObtenerLineasPrograma[e.ItemIndex][0]);
             e.Item.SubItems.Add(new ListViewItem.ListViewSubItem(e.Item, archivoActual.ObtenerLineasPrograma[e.ItemIndex][1]));
         }
 
-        private void listView_Microinstrucciones_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView_Microinstrucciones_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListView(sender, e, TListView.Microinstrucciones);
         }
@@ -314,33 +329,33 @@ namespace PDMv4.Vistas
                 RevertirInstruccion();
         }
 
-        private void listView_Programa_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView_Programa_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListView(sender, e, TListView.Programa);
         }
 
-        private void listView_Registros_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView_Registros_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListView(sender, e, TListView.Registros);
         }
 
-        private void listView_MemoriaPrincipal_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView_MemoriaPrincipal_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListView(sender, e, TListView.Memoria);
         }
 
-        private void listView_Flags_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView_Flags_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListView(sender, e, TListView.Flags);
         }
 
-        private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        private void ListView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = (sender as ListView).Columns[e.ColumnIndex].Width;
         }
 
-        private void listView_Registros_Resize(object sender, EventArgs e)
+        private void ListView_Registros_Resize(object sender, EventArgs e)
         {
             (sender as ListView).Columns[(sender as ListView).Columns.Count - 1].Width = -2;
         }
@@ -350,7 +365,7 @@ namespace PDMv4.Vistas
             e.Cancel = true;
         }
 
-        private void listView_Microinstrucciones_Resize(object sender, EventArgs e)
+        private void ListView_Microinstrucciones_Resize(object sender, EventArgs e)
         {
             int calculateFaseWidth = listView_Microinstrucciones.Width - (listView_Microinstrucciones.Columns.Count - 1) * 50;
             Fase.Width = calculateFaseWidth >= 205 ? calculateFaseWidth : 205;
@@ -379,7 +394,9 @@ namespace PDMv4.Vistas
         }
 
         private void Ejecutar_Click(object sender, EventArgs e)
-        {        
+        {
+            tokenSource = new CancellationTokenSource();
+            cancellation = tokenSource.Token;
             hiloEjecucion = new Task(new Action(EjecutarHastaElFinal), cancellation);
             hiloEjecucion.Start();
         }
@@ -392,8 +409,7 @@ namespace PDMv4.Vistas
 
             }));
             
-            while (Main.IndiceInstruccionActual < Main.ListaInstrucciones.Count - 1 ||
-                (Main.IndiceInstruccionActual == Main.ListaInstrucciones.Count - 1 && Main.IndiceMicroinstruccionActual < Main.ListaMicroinstrucciones.Count - 1))
+            while (!FinalEjecucion())
             {
                 if (cancellation.IsCancellationRequested == true)
                 {
@@ -406,11 +422,33 @@ namespace PDMv4.Vistas
                 Main.EjecutarInstruccion();
                 
             }
-            reiniciarProgramaToolStripButton.Image = Properties.Resources.HistoryItem_16x16;
+
+            Invoke(new Action(() =>
+            {
+                reiniciarProgramaToolStripButton.Image = Properties.Resources.HistoryItem_16x16;
             
-            VisualizarMicroinstruccionEjecutada();
-            ActualizarOpcionesEjecucion();
-            ActualizarStatusStrip();
+                VisualizarMicroinstruccionEjecutada();
+                ActualizarOpcionesEjecucion();
+                ActualizarStatusStrip();
+            }));
+        }
+
+        private bool FinalEjecucion()
+        {
+            int diferencia = (Main.ListaInstrucciones.Count - 1) - Main.IndiceInstruccionActual;
+
+            if (diferencia == 0)
+            {
+                if (!(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is IInstruccionSalto))
+                    diferencia = (Main.ListaMicroinstrucciones.Count - 1) - Main.IndiceMicroinstruccionActual;
+                else
+                {
+                    if((Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BEQ && !Main.FlagZero) || (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BC && !Main.FlagCarry))
+                       diferencia = (Main.ListaMicroinstrucciones.Count - 2) - Main.IndiceMicroinstruccionActual;
+                    else diferencia = 1;
+                }
+            }
+            return diferencia == 0;
         }
 
         private void ActualizarOpcionesEjecucion()
@@ -436,7 +474,7 @@ namespace PDMv4.Vistas
             }
             else
             {
-                bool activado = Main.IndiceMicroinstruccionActual < Main.ListaMicroinstrucciones.Count - 1;
+                bool activado = !FinalEjecucion() && Main.ListaInstrucciones.Count > 0;
                 instruccionSiguienteToolStripButton.Enabled = activado;
                 microinstruccionSiguienteToolStripButton.Enabled = activado;
                 instruccionSiguienteMenuItem.Enabled = activado;
@@ -465,9 +503,8 @@ namespace PDMv4.Vistas
 
         private void ActivarEjecutarHastaFinal()
         {
-            bool activado = Main.ListaInstrucciones.Count > 0 &&
-               (Main.IndiceInstruccionActual < Main.ListaInstrucciones.Count - 1 ||
-                (Main.IndiceInstruccionActual == Main.ListaInstrucciones.Count - 1 && Main.IndiceMicroinstruccionActual < Main.ListaMicroinstrucciones.Count - 1));
+            bool activado = Main.ListaInstrucciones.Count > 0 && !FinalEjecucion();
+               
             ejecutarHastaFinalStripButton.Enabled = activado;
             ejecutarHastaElFinalPasoStripButton.Enabled = activado;
             ejecutarHastaElFinalPasoPorPasoMenuItem.Enabled = activado;
@@ -517,9 +554,9 @@ namespace PDMv4.Vistas
 
         private void DetenerHiloEjecucionInstrucciones()
         {
-            tokenSource.Cancel();
             try
             {
+                tokenSource.Cancel();
                 hiloEjecucion.Wait(tokenSource.Token);
             }
             catch (Exception ex)
@@ -528,9 +565,8 @@ namespace PDMv4.Vistas
             }
             finally
             {
-                tokenSource.Dispose();
-                tokenSource = new CancellationTokenSource();
-                cancellation = tokenSource.Token;
+                if(tokenSource!= null)
+                    tokenSource.Dispose();
             }
         }
 
@@ -550,6 +586,8 @@ namespace PDMv4.Vistas
 
         private void EjecutarHastaElFinalPasoStripButton_Click(object sender, EventArgs e)
         {
+            tokenSource = new CancellationTokenSource();
+            cancellation = tokenSource.Token;
             hiloEjecucion = new Task(new Action(EjecutarHastaFinalPorPasos), cancellation);
             hiloEjecucion.Start();
         }
@@ -562,8 +600,7 @@ namespace PDMv4.Vistas
                 ActivarItemsEjecucion();
             }));
 
-            while (Main.IndiceInstruccionActual < Main.ListaInstrucciones.Count - 1 ||
-                (Main.IndiceInstruccionActual == Main.ListaInstrucciones.Count - 1 && Main.IndiceMicroinstruccionActual < Main.ListaMicroinstrucciones.Count - 1))
+            while (!FinalEjecucion())
             {
                 if (cancellation.IsCancellationRequested == true)
                 {
@@ -577,9 +614,13 @@ namespace PDMv4.Vistas
                 VisualizarMicroinstruccionEjecutada();
             }
 
-            reiniciarProgramaToolStripButton.Image = Properties.Resources.HistoryItem_16x16;
-            ActualizarOpcionesEjecucion();
-            ActualizarStatusStrip();
+            Invoke(new Action(() =>
+            {
+                reiniciarProgramaToolStripButton.Image = Properties.Resources.HistoryItem_16x16;
+                VisualizarMicroinstruccionEjecutada();
+                ActualizarOpcionesEjecucion();
+                ActualizarStatusStrip();
+            }));
         }
 
         private void Ayuda_Click(object sender, EventArgs e)
@@ -610,12 +651,12 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void listView_Registros_DoubleClick(object sender, EventArgs e)
+        private void ListView_Registros_DoubleClick(object sender, EventArgs e)
         {
             ModificarContenido escribirRegistro = new ModificarContenido(listView_Registros.SelectedIndices[0])
             {
@@ -625,7 +666,7 @@ namespace PDMv4.Vistas
             escribirRegistro.ShowDialog(this);
         }
 
-        private void listView_MemoriaPrincipal_DoubleClick(object sender, EventArgs e)
+        private void ListView_MemoriaPrincipal_DoubleClick(object sender, EventArgs e)
         {
             ModificarContenido escribirRegistro = new ModificarContenido(listView_MemoriaPrincipal.SelectedIndices[0], true)
             {
@@ -635,7 +676,7 @@ namespace PDMv4.Vistas
             escribirRegistro.ShowDialog(this);
         }
 
-        private void listView_MemoriaPrincipal_MouseClick(object sender, MouseEventArgs e)
+        private void ListView_MemoriaPrincipal_MouseClick(object sender, MouseEventArgs e)
         {
             if(e.Button == MouseButtons.Right)
             {
@@ -644,7 +685,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void listView_Registros_MouseClick(object sender, MouseEventArgs e)
+        private void ListView_Registros_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -652,37 +693,37 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void modificarContenidoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ModificarContenidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            listView_MemoriaPrincipal_DoubleClick(sender, e);
+            ListView_MemoriaPrincipal_DoubleClick(sender, e);
         }
 
-        private void modificarContenidoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ModificarContenidoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            listView_Registros_DoubleClick(sender, e);
+            ListView_Registros_DoubleClick(sender, e);
         }
 
-        private void copiarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CopiarRegistroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView_Registros.Items[listView_Registros.SelectedIndices[0]].SubItems[0].Text);
         }
 
-        private void decimalToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void DecimalToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView_Registros.Items[listView_Registros.SelectedIndices[0]].SubItems[1].Text);
         }
 
-        private void ca2ToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void Ca2ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView_Registros.Items[listView_Registros.SelectedIndices[0]].SubItems[2].Text);
         }
 
-        private void hexadecimalToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void HexadecimalToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView_Registros.Items[listView_Registros.SelectedIndices[0]].SubItems[3].Text);
         }
 
-        private void binarioToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void BinarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(listView_Registros.Items[listView_Registros.SelectedIndices[0]].SubItems[4].Text);
         }

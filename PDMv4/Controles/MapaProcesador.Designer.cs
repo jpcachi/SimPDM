@@ -468,7 +468,7 @@
             this.button12.TabIndex = 7;
             this.button12.Text = "BUS DE DIRECCIONES";
             this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button_BusDirecciones);
+            this.button12.Click += new System.EventHandler(this.Button_BusDirecciones);
             // 
             // button11
             // 
@@ -486,7 +486,7 @@
             this.button11.TabIndex = 7;
             this.button11.Text = "BUS DE DATOS";
             this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button_BusDatos);
+            this.button11.Click += new System.EventHandler(this.Button_BusDatos);
             // 
             // button2
             // 
@@ -502,7 +502,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "C";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button_RegistroC);
+            this.button2.Click += new System.EventHandler(this.Button_RegistroC);
             // 
             // button6
             // 
@@ -518,7 +518,7 @@
             this.button6.TabIndex = 7;
             this.button6.Text = "RI";
             this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button_RegistroInstrucciones);
+            this.button6.Click += new System.EventHandler(this.Button_RegistroInstrucciones);
             // 
             // button10
             // 
@@ -534,7 +534,7 @@
             this.button10.TabIndex = 7;
             this.button10.Text = "UAL";
             this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button_RegistroUAL);
+            this.button10.Click += new System.EventHandler(this.Button_RegistroUAL);
             // 
             // button9
             // 
@@ -550,7 +550,7 @@
             this.button9.TabIndex = 7;
             this.button9.Text = "RF";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button_RegistroFlags);
+            this.button9.Click += new System.EventHandler(this.Button_RegistroFlags);
             // 
             // button5
             // 
@@ -566,7 +566,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "Ac";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button_Acumulador);
+            this.button5.Click += new System.EventHandler(this.Button_Acumulador);
             // 
             // button8
             // 
@@ -582,7 +582,7 @@
             this.button8.TabIndex = 7;
             this.button8.Text = "RDD";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button_RegistroDirecciones);
+            this.button8.Click += new System.EventHandler(this.Button_RegistroDirecciones);
             // 
             // button7
             // 
@@ -598,7 +598,7 @@
             this.button7.TabIndex = 7;
             this.button7.Text = "CP";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button_ContadorPrograma);
+            this.button7.Click += new System.EventHandler(this.Button_ContadorPrograma);
             // 
             // button4
             // 
@@ -614,7 +614,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "E";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button_RegistroE);
+            this.button4.Click += new System.EventHandler(this.Button_RegistroE);
             // 
             // button3
             // 
@@ -630,7 +630,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "D";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button_RegistroD);
+            this.button3.Click += new System.EventHandler(this.Button_RegistroD);
             // 
             // button1
             // 
@@ -648,7 +648,7 @@
             this.button1.TabStop = false;
             this.button1.Text = "B";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button_RegistroB);
+            this.button1.Click += new System.EventHandler(this.Button_RegistroB);
             // 
             // etiquetaTUAL
             // 
@@ -928,7 +928,6 @@
             this.MinimumSize = new System.Drawing.Size(168, 105);
             this.Name = "MapaProcesador";
             this.Size = new System.Drawing.Size(843, 528);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.Resize += new System.EventHandler(this.MapaProcesador_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

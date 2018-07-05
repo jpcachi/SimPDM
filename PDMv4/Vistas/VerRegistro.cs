@@ -37,17 +37,17 @@ namespace PDMv4.Vistas
             Owner.Activate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             Visible = false;
         }
 
-        private void listView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        private void ListView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             ListViewVisualStyles.DibujarCabeceras(sender, e);
         }
 
-        private void listView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        private void ListView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             ListViewVisualStyles.DibujarSubItemListVistaContenidoMapaProcesador(sender, e);
         }
@@ -87,23 +87,23 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void listView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        private void ListView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = (sender as ListView).Columns[e.ColumnIndex].Width;
         }
 
-        private void button1_MouseHover(object sender, EventArgs e)
+        private void Button1_MouseHover(object sender, EventArgs e)
         {
             
         }
 
-        private void button1_MouseEnter(object sender, EventArgs e)
+        private void Button1_MouseEnter(object sender, EventArgs e)
         {
             button1.BackgroundImage = Properties.Resources.Close_Over;
         }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
+        private void Button1_MouseLeave(object sender, EventArgs e)
         {
             button1.BackgroundImage = Properties.Resources.Close;
         }

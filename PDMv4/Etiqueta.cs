@@ -2,28 +2,13 @@
 {
     class Etiqueta
     {
-        private ushort direccionMemoria;
-        private string etiqueta;
-
-        public string ObtenerEtiqueta
-        {
-            get
-            {
-                return etiqueta;
-            }
-        }
-        public ushort ObtenerDireccionMemoria
-        {
-            get
-            {
-                return direccionMemoria;
-            }
-        }
+        public string ObtenerEtiqueta { get; }
+        public ushort ObtenerDireccionMemoria { get; }
 
         public Etiqueta(ushort direccion, string etiqueta)
         {
-            direccionMemoria = direccion;
-            this.etiqueta = etiqueta;
+            ObtenerDireccionMemoria = direccion;
+            ObtenerEtiqueta = etiqueta;
         }
     }
 }

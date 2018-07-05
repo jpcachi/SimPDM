@@ -6,7 +6,7 @@ namespace PDMv4.Instrucciones
 {
     class SUB : Instruccion1Arg
     {
-        private byte codigo;
+        private readonly byte codigo;
         public SUB(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();

@@ -42,11 +42,6 @@ namespace PDMv4.Controles
                 Indice = -1;
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            //DibujarLinea(e);
-        }
-
         private void ActivarTER(bool activado)
         {
             etiquetaTER.Activado = activado;
@@ -298,6 +293,8 @@ namespace PDMv4.Controles
 
             visor.Visible = false;
             Indice = -1;
+
+            Invoke(new Action(() => pictureBox1.Refresh()));
         }
 
         private bool ConvertirEnBool(sbyte valor, bool ual = false)
@@ -305,7 +302,7 @@ namespace PDMv4.Controles
             return ual ? valor != - 1 : valor == 1;
         }
 
-        private void button_Click(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
             ActualizarBotonMapaProcesadorActivo();
             visor.Owner = ParentForm;
@@ -315,88 +312,88 @@ namespace PDMv4.Controles
             ParentForm.Activate();
         }
 
-        private void button_RegistroB(object sender, EventArgs e)
+        private void Button_RegistroB(object sender, EventArgs e)
         {
             Indice = 0;
             visor.ModificarVista("Registro B", Main.ObtenerRegistro(0).Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroC(object sender, EventArgs e)
+        private void Button_RegistroC(object sender, EventArgs e)
         {
             Indice = 1;
             visor.ModificarVista("Registro C", Main.ObtenerRegistro(1).Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroD(object sender, EventArgs e)
+        private void Button_RegistroD(object sender, EventArgs e)
         {
             Indice = 2;
             visor.ModificarVista("Registro D", Main.ObtenerRegistro(2).Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroE(object sender, EventArgs e)
+        private void Button_RegistroE(object sender, EventArgs e)
         {
             Indice = 3;
             visor.ModificarVista("Registro E", Main.ObtenerRegistro(3).Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_Acumulador(object sender, EventArgs e)
+        private void Button_Acumulador(object sender, EventArgs e)
         {
             Indice = 4;
             visor.ModificarVista("Acumulador", Main.ObtenerRegistro(4).Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroInstrucciones(object sender, EventArgs e)
+        private void Button_RegistroInstrucciones(object sender, EventArgs e)
         {
             Indice = 5;
             visor.ModificarVista("Registro Instrucciones", Main.RegistroInstruccion.Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_ContadorPrograma(object sender, EventArgs e)
+        private void Button_ContadorPrograma(object sender, EventArgs e)
         {
             Indice = 6;
             visor.ModificarVista("Registro ContadorPrograma", Main.ContadorPrograma, true);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroDirecciones(object sender, EventArgs e)
+        private void Button_RegistroDirecciones(object sender, EventArgs e)
         {
             Indice = 7;
             visor.ModificarVista("Registro Direcciones", (Main.RegistroDireccionesH.Contenido << 8) + Main.RegistroDireccionesL.Contenido, true);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroFlags(object sender, EventArgs e)
+        private void Button_RegistroFlags(object sender, EventArgs e)
         {
             Indice = 8;
             visor.ModificarVistaFlags("Registro Flags", Main.FlagCarry, Main.FlagZero);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_RegistroUAL(object sender, EventArgs e)
+        private void Button_RegistroUAL(object sender, EventArgs e)
         {
             Indice = 9;
             visor.ModificarVista("Registro UAL", Main.UnidadAritmeticoLogica.Resultado);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_BusDatos(object sender, EventArgs e)
+        private void Button_BusDatos(object sender, EventArgs e)
         {
             Indice = 10;
             visor.ModificarVista("Bus de Datos", Main.BusesDatosYDireccion.Contenido);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
-        private void button_BusDirecciones(object sender, EventArgs e)
+        private void Button_BusDirecciones(object sender, EventArgs e)
         {
             Indice = 11;
             visor.ModificarVista("Bus de Direcciones", Main.BusesDatosYDireccion.ContenidoDireccion, true);
-            button_Click(sender, e);
+            Button_Click(sender, e);
         }
 
         public void ActualizarVentanaVistaContenido()

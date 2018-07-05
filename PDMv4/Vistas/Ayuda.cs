@@ -21,7 +21,7 @@ namespace PDMv4.Vistas
             treeView1.SelectedNode = treeView1.Nodes[numNodo].Nodes[nodoHijo];
         }
 
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void ToolStripButton5_Click(object sender, EventArgs e)
         {
             richTextBox1.Clear();
             Properties.Resources.ResourceManager.ReleaseAllResources();
@@ -29,12 +29,12 @@ namespace PDMv4.Vistas
             Dispose();
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void ToolStripButton4_Click(object sender, EventArgs e)
         {
             new AboutBox1().ShowDialog();
         }
 
-        private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterExpand(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Parent == null)
             {
@@ -43,7 +43,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterCollapse(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Parent == null)
             {
@@ -53,7 +53,7 @@ namespace PDMv4.Vistas
         }
 
         
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             int indiceNodo = e.Node.Index * (e.Node.Parent == null ? 1 : 10) + (e.Node.Parent == null ? 0 : e.Node.Parent.Index);
             indiceBusqueda = 0;
@@ -141,18 +141,18 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void ToolStripButton2_Click(object sender, EventArgs e)
         {
             SeleccionarNodoSiguiente();
         }
 
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             SeleccionarNodoAnterior();
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void ToolStripButton3_Click(object sender, EventArgs e)
         {
             if (ventanaBuscar == null || ventanaBuscar.IsDisposed)
                 ventanaBuscar = new Busqueda(this);
@@ -188,7 +188,7 @@ namespace PDMv4.Vistas
                 if (indiceBusqueda == -1 && ((!toolStripButton2.Enabled && !up) || (!toolStripButton1.Enabled && up)))
                 {
                     indiceBusqueda = 0;
-                    MessageBox.Show(string.Format("No se encontró \"{0}\" en el documento de ayuda.", texto), "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(string.Format("No se han encontrado más apariciones de \"{0}\" en el documento de ayuda.", texto), "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
                 else

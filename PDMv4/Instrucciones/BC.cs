@@ -7,17 +7,14 @@ namespace PDMv4.Instrucciones
 {
     class BC : Instruccion1Arg, IInstruccionSalto
     {
-        private byte codigo;
         private ushort IndiceMemoriaSalto;
-        private int numMicroInstrucciones = 5;
+        private readonly int numMicroInstrucciones = 5;
 
         public BC(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();
             if (args[0].TipoArgumento() != Argumento.Tipo.Memoria)
                 throw new ArgumentException();
-
-            codigo = 216;
         }
 
 
@@ -53,7 +50,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 216;
             }
         }
 

@@ -61,6 +61,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panelMejorado1 = new PDMv4.Controles.PanelMejorado();
@@ -112,7 +113,7 @@
             this.checkBox1.Text = "Valores numéricos hexadecimales";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // numericUpDown1
             // 
@@ -168,7 +169,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Añadir";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // label3
             // 
@@ -205,7 +206,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // textBox3
             // 
@@ -258,17 +259,18 @@
             this.nuevoToolStripButton.Name = "nuevoToolStripButton";
             this.nuevoToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.nuevoToolStripButton.Text = "&Nuevo";
-            this.nuevoToolStripButton.Click += new System.EventHandler(this.nuevoToolStripButton_Click);
+            this.nuevoToolStripButton.Click += new System.EventHandler(this.NuevoToolStripButton_Click);
             // 
             // guardarToolStripButton
             // 
             this.guardarToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.guardarToolStripButton.Enabled = false;
             this.guardarToolStripButton.Image = global::PDMv4.Properties.Resources.Save_16x16;
             this.guardarToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.guardarToolStripButton.Name = "guardarToolStripButton";
             this.guardarToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.guardarToolStripButton.Text = "&Guardar";
-            this.guardarToolStripButton.Click += new System.EventHandler(this.button2_Click);
+            this.guardarToolStripButton.Click += new System.EventHandler(this.Button2_Click);
             // 
             // toolStripSeparator
             // 
@@ -284,7 +286,7 @@
             this.cortarToolStripButton.Name = "cortarToolStripButton";
             this.cortarToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.cortarToolStripButton.Text = "Cort&ar";
-            this.cortarToolStripButton.Click += new System.EventHandler(this.cortarToolStripButton_Click);
+            this.cortarToolStripButton.Click += new System.EventHandler(this.CortarToolStripButton_Click);
             // 
             // copiarToolStripButton
             // 
@@ -295,7 +297,7 @@
             this.copiarToolStripButton.Name = "copiarToolStripButton";
             this.copiarToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.copiarToolStripButton.Text = "&Copiar";
-            this.copiarToolStripButton.Click += new System.EventHandler(this.copiarToolStripButton_Click);
+            this.copiarToolStripButton.Click += new System.EventHandler(this.CopiarToolStripButton_Click);
             // 
             // pegarToolStripButton
             // 
@@ -305,7 +307,7 @@
             this.pegarToolStripButton.Name = "pegarToolStripButton";
             this.pegarToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.pegarToolStripButton.Text = "&Pegar";
-            this.pegarToolStripButton.Click += new System.EventHandler(this.pegarToolStripButton_Click);
+            this.pegarToolStripButton.Click += new System.EventHandler(this.PegarToolStripButton_Click);
             // 
             // toolStripSeparator1
             // 
@@ -320,18 +322,19 @@
             this.ayudaToolStripButton.Name = "ayudaToolStripButton";
             this.ayudaToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.ayudaToolStripButton.Text = "Ay&uda";
-            this.ayudaToolStripButton.Click += new System.EventHandler(this.ayudaToolStripButton_Click);
+            this.ayudaToolStripButton.Click += new System.EventHandler(this.AyudaToolStripButton_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(640, 16);
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(12, 16);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 8;
-            this.button2.Text = "Aceptar";
+            this.button2.Text = "Guardar como";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 
@@ -343,11 +346,12 @@
             this.button3.TabIndex = 8;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -355,6 +359,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(808, 51);
             this.panel1.TabIndex = 9;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(640, 16);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Aceptar";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.Button4_Click);
             // 
             // groupBox2
             // 
@@ -377,13 +393,14 @@
             this.richTextBox1.Size = new System.Drawing.Size(335, 242);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
             // 
             // panelMejorado1
             // 
             this.panelMejorado1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMejorado1.ColorFondoControladoPorEstilo = true;
             this.panelMejorado1.Controls.Add(this.editorTexto1);
             this.panelMejorado1.Location = new System.Drawing.Point(12, 28);
             this.panelMejorado1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
@@ -418,7 +435,7 @@
             this.seleccionartodoToolStripMenuItem.Name = "seleccionartodoToolStripMenuItem";
             this.seleccionartodoToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.seleccionartodoToolStripMenuItem.Text = "Seleccionar &todo";
-            this.seleccionartodoToolStripMenuItem.Click += new System.EventHandler(this.seleccionartodoToolStripMenuItem_Click);
+            this.seleccionartodoToolStripMenuItem.Click += new System.EventHandler(this.SeleccionartodoToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -432,7 +449,7 @@
             this.cortarToolStripMenuItem.Name = "cortarToolStripMenuItem";
             this.cortarToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.cortarToolStripMenuItem.Text = "&Cortar";
-            this.cortarToolStripMenuItem.Click += new System.EventHandler(this.cortarToolStripButton_Click);
+            this.cortarToolStripMenuItem.Click += new System.EventHandler(this.CortarToolStripButton_Click);
             // 
             // copiarToolStripMenuItem
             // 
@@ -441,7 +458,7 @@
             this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
             this.copiarToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.copiarToolStripMenuItem.Text = "Co&piar";
-            this.copiarToolStripMenuItem.Click += new System.EventHandler(this.copiarToolStripButton_Click);
+            this.copiarToolStripMenuItem.Click += new System.EventHandler(this.CopiarToolStripButton_Click);
             // 
             // pegarToolStripMenuItem
             // 
@@ -449,7 +466,7 @@
             this.pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
             this.pegarToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.pegarToolStripMenuItem.Text = "&Pegar";
-            this.pegarToolStripMenuItem.Click += new System.EventHandler(this.pegarToolStripButton_Click);
+            this.pegarToolStripMenuItem.Click += new System.EventHandler(this.PegarToolStripButton_Click);
             // 
             // EditorCodigo
             // 
@@ -521,5 +538,6 @@
         private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pegarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.Button button4;
     }
 }

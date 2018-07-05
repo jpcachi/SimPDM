@@ -82,11 +82,12 @@ namespace PDMv4.Vistas
         {
             bool activarGuardarSeleccionar = !string.IsNullOrWhiteSpace(editorTexto1.richTextBoxEditor.Text);
             button2.Enabled = activarGuardarSeleccionar;
+            button4.Enabled = activarGuardarSeleccionar;
             guardarToolStripButton.Enabled = activarGuardarSeleccionar;
             seleccionartodoToolStripMenuItem.Enabled = activarGuardarSeleccionar;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             string argumento1 = string.Empty;
             string argumento2 = string.Empty;
@@ -110,7 +111,7 @@ namespace PDMv4.Vistas
             editorTexto1.AñadirInstruccion(instruccion);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             richTextBox1.Text = comboBox1.SelectedIndex != -1 ? UtilidadesInstruccion.DescripcionesInstruccion[comboBox1.SelectedIndex] : string.Empty;
             switch (comboBox1.SelectedItem)
@@ -163,7 +164,7 @@ namespace PDMv4.Vistas
             button1.Enabled = comboBox1.SelectedIndex != -1 && DesactivarBotonAñadirInstruccion();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto1.richTextBoxEditor.Text, out int numLinea);
             if (programaCorrecto)
@@ -176,6 +177,7 @@ namespace PDMv4.Vistas
                 }
                 SaveFileDialog guardar = new SaveFileDialog
                 {
+                    FileName = Path.GetFileName(_ruta),
                     Filter = "Programas de PDM (*.pdm)|*.pdm|Todos los archivos (*.*)|*.*"
                 };
                 if (guardar.ShowDialog(this) == DialogResult.OK)
@@ -200,34 +202,34 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private void nuevoToolStripButton_Click(object sender, EventArgs e)
+        private void NuevoToolStripButton_Click(object sender, EventArgs e)
         {
             editorTexto1.richTextBoxEditor.Clear();
             button2.Enabled = false;
         }
 
-        private void copiarToolStripButton_Click(object sender, EventArgs e)
+        private void CopiarToolStripButton_Click(object sender, EventArgs e)
         {
             SendKeys.Send("^C");
         }
 
-        private void cortarToolStripButton_Click(object sender, EventArgs e)
+        private void CortarToolStripButton_Click(object sender, EventArgs e)
         {
             SendKeys.Send("^X");
         }
 
-        private void pegarToolStripButton_Click(object sender, EventArgs e)
+        private void PegarToolStripButton_Click(object sender, EventArgs e)
         {
             SendKeys.Send("^V");
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
         {
             richTextBox1.SelectAll();
             richTextBox1.SelectionColor = Color.Black;
@@ -240,7 +242,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void ayudaToolStripButton_Click(object sender, EventArgs e)
+        private void AyudaToolStripButton_Click(object sender, EventArgs e)
         {
             int numIndiceAyuda = 0;
             if (comboBox1.SelectedIndex < 5)
@@ -320,12 +322,12 @@ namespace PDMv4.Vistas
             return activado;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             numericUpDown1.Hexadecimal = checkBox1.Checked;
         }
 
-        private void seleccionartodoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SeleccionartodoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             editorTexto1.richTextBoxEditor.SelectAll();
         }
@@ -336,6 +338,43 @@ namespace PDMv4.Vistas
             {
                 pegarToolStripButton.Enabled = true;
                 pegarToolStripMenuItem.Enabled = true;
+            }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto1.richTextBoxEditor.Text, out int numLinea);
+            if (programaCorrecto)
+            {
+                if (string.IsNullOrWhiteSpace(editorTexto1.richTextBoxEditor.Text) || programaOriginal == editorTexto1.richTextBoxEditor.Text)
+                {
+                    DialogResult = DialogResult.Cancel;
+                    Close();
+                    return;
+                }
+
+                DialogResult guardar = MessageBox.Show("El archivo " + Path.GetFileName(_ruta) + " ya existe. ¿Desea sobreescribirlo?", "Confirmar Aceptar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (guardar == DialogResult.Yes)
+                {
+                    writer = new StreamWriter(_ruta);
+                    foreach (string linea in editorTexto1.richTextBoxEditor.Lines)
+                    {
+                        writer.Write(linea + "\r\n");
+                    }
+                    writer.Close();
+                    DialogResult = DialogResult.OK;
+                }
+                else if (guardar == DialogResult.No)
+                    return;
+
+                Close();
+            }
+            else
+            {
+                editorTexto1.richTextBoxEditor.Select(editorTexto1.richTextBoxEditor.GetFirstCharIndexFromLine(numLinea - 1), editorTexto1.richTextBoxEditor.Lines[numLinea - 1].Length);
+                MessageBox.Show("Error en la línea " + (editorTexto1.ConvertirNumeroLinea(numLinea)) + ": El formato de la instrucción " + editorTexto1.richTextBoxEditor.Lines[numLinea - 1] + " no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "Comprobar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                editorTexto1.richTextBoxEditor.Focus();
             }
         }
     }

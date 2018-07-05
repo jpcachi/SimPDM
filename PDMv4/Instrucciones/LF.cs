@@ -4,11 +4,7 @@ namespace PDMv4.Instrucciones
 {
     class LF : Instruccion0Arg
     {
-        private byte codigo;
-        public LF(params Argumento[] args) : base(args)
-        {
-            codigo = 224;
-        }
+        public LF(params Argumento[] args) : base(args) { }
 
         public override Argumento ObtenerArgumento(int indice)
         {
@@ -19,7 +15,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 224;
             }
         }
 

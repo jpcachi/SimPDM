@@ -6,7 +6,7 @@ namespace PDMv4.Instrucciones
 {
     class OUT : Instruccion2Arg
     {
-        private byte codigo;
+        private readonly byte codigo;
         public OUT(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();

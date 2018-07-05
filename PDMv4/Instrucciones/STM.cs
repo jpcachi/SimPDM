@@ -7,7 +7,7 @@ namespace PDMv4.Instrucciones
 {
     class STM : Instruccion2Arg, IModificaDireccionMemoria
     {
-        private byte codigo;
+        private readonly byte codigo;
         public STM(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();

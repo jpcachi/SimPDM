@@ -4,12 +4,10 @@ namespace PDMv4.Instrucciones
 {
     class CMA: Instruccion0Arg
     {
-        private byte codigo;
 
-        public CMA(params Argumento[] args) : base(args)
-        {
-            codigo = 152;
-        }
+
+        public CMA(params Argumento[] args) : base(args) { }
+
 
         public override Argumento ObtenerArgumento(int indice)
         {
@@ -20,7 +18,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 152;
             }
         }
 

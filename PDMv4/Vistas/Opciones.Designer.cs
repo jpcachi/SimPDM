@@ -105,7 +105,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // comboBox8
             // 
@@ -132,7 +132,7 @@
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(32, 21);
             this.comboBox8.TabIndex = 1;
-            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.comboBox_Entrada_SelectedIndexChanged);
+            this.comboBox8.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Entrada_SelectedIndexChanged);
             // 
             // comboBox7
             // 
@@ -159,7 +159,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(32, 21);
             this.comboBox7.TabIndex = 1;
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox_Entrada_SelectedIndexChanged);
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Entrada_SelectedIndexChanged);
             // 
             // comboBox6
             // 
@@ -186,7 +186,7 @@
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(32, 21);
             this.comboBox6.TabIndex = 1;
-            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.comboBox_Entrada_SelectedIndexChanged);
+            this.comboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Entrada_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -213,7 +213,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(32, 21);
             this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox_Entrada_SelectedIndexChanged);
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Entrada_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -277,7 +277,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Buscar";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label3
             // 
@@ -331,7 +331,7 @@
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(32, 21);
             this.comboBox11.TabIndex = 1;
-            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.comboBox_Salida_SelectedIndexChanged);
+            this.comboBox11.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Salida_SelectedIndexChanged);
             // 
             // comboBox10
             // 
@@ -358,7 +358,7 @@
             this.comboBox10.Name = "comboBox10";
             this.comboBox10.Size = new System.Drawing.Size(32, 21);
             this.comboBox10.TabIndex = 1;
-            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.comboBox_Salida_SelectedIndexChanged);
+            this.comboBox10.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Salida_SelectedIndexChanged);
             // 
             // comboBox9
             // 
@@ -385,7 +385,7 @@
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(32, 21);
             this.comboBox9.TabIndex = 1;
-            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.comboBox_Salida_SelectedIndexChanged);
+            this.comboBox9.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Salida_SelectedIndexChanged);
             // 
             // comboBox4
             // 
@@ -412,7 +412,7 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(32, 21);
             this.comboBox4.TabIndex = 1;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox_Salida_SelectedIndexChanged);
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Salida_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -446,7 +446,7 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Habilitar instrucciones de entrada y salida";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -510,7 +510,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(32, 21);
             this.comboBox5.TabIndex = 1;
-            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox_Memoria_SelectedIndexChanged);
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Memoria_SelectedIndexChanged);
             // 
             // comboBox12
             // 
@@ -537,7 +537,7 @@
             this.comboBox12.Name = "comboBox12";
             this.comboBox12.Size = new System.Drawing.Size(32, 21);
             this.comboBox12.TabIndex = 1;
-            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.comboBox_Memoria_SelectedIndexChanged);
+            this.comboBox12.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Memoria_SelectedIndexChanged);
             // 
             // comboBox14
             // 
@@ -564,7 +564,7 @@
             this.comboBox14.Name = "comboBox14";
             this.comboBox14.Size = new System.Drawing.Size(32, 21);
             this.comboBox14.TabIndex = 1;
-            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.comboBox_Memoria_SelectedIndexChanged);
+            this.comboBox14.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Memoria_SelectedIndexChanged);
             // 
             // comboBox13
             // 
@@ -591,7 +591,7 @@
             this.comboBox13.Name = "comboBox13";
             this.comboBox13.Size = new System.Drawing.Size(32, 21);
             this.comboBox13.TabIndex = 1;
-            this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.comboBox_Memoria_SelectedIndexChanged);
+            this.comboBox13.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Memoria_SelectedIndexChanged);
             // 
             // button3
             // 
@@ -602,7 +602,7 @@
             this.button3.TabIndex = 4;
             this.button3.Text = "Aceptar";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
             // button5
             // 
@@ -614,7 +614,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Cancelar";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
             // panel1
             // 

@@ -6,7 +6,7 @@ namespace PDMv4.Instrucciones
 {
     class CMP : Instruccion1Arg
     {
-        private byte codigo;
+        private readonly byte codigo;
 
         public CMP(params Argumento[] args) : base(args)
         {

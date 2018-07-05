@@ -7,16 +7,12 @@ namespace PDMv4.Instrucciones
 {
     class JMP : Instruccion1Arg, IInstruccionSalto
     {
-        private byte codigo;
         private ushort IndiceMemoriaSalto;
-        //TODO: Revisar
         public JMP(params Argumento[] args) : base(args)
         {
             if (args[0] == null) throw new ArgumentException();
             if (args[0].TipoArgumento() != Argumento.Tipo.Memoria)
                 throw new ArgumentException();
-
-            codigo = 192;
         }
 
         public override Argumento ObtenerArgumento(int indice)
@@ -49,7 +45,7 @@ namespace PDMv4.Instrucciones
         {
             get
             {
-                return codigo;
+                return 192;
             }
         }
 

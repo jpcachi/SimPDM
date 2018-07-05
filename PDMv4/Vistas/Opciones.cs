@@ -31,17 +31,17 @@ namespace PDMv4.Vistas
             comboBox11.SelectedIndex = OpcionesPrograma.DireccionMemoriaSalida % 16;
         }
 
-        private void comboBox_Entrada_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox_Entrada_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarCampoTextoMemoria(comboBox2.SelectedIndex, comboBox6.SelectedIndex, comboBox7.SelectedIndex, comboBox8.SelectedIndex, textBox2);
         }
 
-        private void comboBox_Salida_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox_Salida_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarCampoTextoMemoria(comboBox4.SelectedIndex, comboBox9.SelectedIndex, comboBox10.SelectedIndex, comboBox11.SelectedIndex, textBox3);
         }
 
-        private void comboBox_Memoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox_Memoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarCampoTextoMemoria(comboBox5.SelectedIndex, comboBox12.SelectedIndex, comboBox13.SelectedIndex, comboBox14.SelectedIndex, textBox4);
         }
@@ -54,7 +54,7 @@ namespace PDMv4.Vistas
                 textBox.Text = "0x" + index1.ToString("X") + index2.ToString("X") + index3.ToString("X") + index4.ToString("X");
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
 
             OpcionesPrograma.EntradaSalida = checkBox1.Checked;
@@ -91,19 +91,19 @@ namespace PDMv4.Vistas
             Close();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             groupBox1.Enabled = checkBox1.Checked;
             groupBox2.Enabled = checkBox1.Checked;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "in.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -113,7 +113,7 @@ namespace PDMv4.Vistas
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "out.txt";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
