@@ -13,9 +13,6 @@ namespace PDMv4.Instrucciones
 
         }
 
-
-        //public int NumMicroinstrucciones => 4;
-
         public override Argumento ObtenerArgumento(int indice)
         {
             if (indice != 0)

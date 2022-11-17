@@ -17,11 +17,6 @@ namespace PDMv4.Instrucciones
             codigo = (byte)(80 + (args[0] as ArgRegistro).NumeroRegistro);
         }
 
-        public void ActualizarFlags(int result)
-        {
-
-        }
-
         public override Argumento ObtenerArgumento(int indice)
         {
             if (indice != 0)

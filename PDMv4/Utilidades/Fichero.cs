@@ -1,12 +1,15 @@
 ﻿using PDMv4.Argumentos;
+using PDMv4.Controles;
 using PDMv4.Instrucciones;
 using PDMv4.Interfaces;
+using PDMv4.Memoria;
 using PDMv4.Procesador;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PDMv4.Utilidades
@@ -24,6 +27,9 @@ namespace PDMv4.Utilidades
 
             private static bool DireccionMemoria(string texto)
             {
+                if(texto.StartsWith("@") && texto.Length > 1)
+                    texto = texto.Substring(1);
+
                 if (texto.Length > 5)
                     return false;
                 else
@@ -66,11 +72,11 @@ namespace PDMv4.Utilidades
 
             private static bool Instruccion1(string texto)
             {
-                bool resul = true;
                 string instruccion1 = texto.Trim().Substring(0, 3);
                 string instruccion2 = texto.Trim().Substring(0, 2);
 
 
+                bool resul;
                 switch (instruccion1.ToUpperInvariant())
                 {
                     case "ORA":
@@ -79,6 +85,8 @@ namespace PDMv4.Utilidades
                     case "ANA":
                     case "SUB":
                     case "XRA":
+
+                    case "LMR":
                         resul = texto.Trim().Substring(3).Trim().Length == 1 && registro.Contains(texto.Trim().Substring(3).Trim());
                         break;
                     case "CMI":
@@ -140,6 +148,9 @@ namespace PDMv4.Utilidades
                     case "IN":
                         resul = parametros[1].Trim().Length == 1 && registro.Contains(parametros[1].Trim()) && (DireccionMemoria(parametros[0].Trim()) || (Etiqueta(parametros[0].Trim()) && etiquetas.Contains(parametros[0].Trim())));
                         break;
+                    case "SMR":
+                        resul = parametros[0].Trim().Length == 1 && registro.Contains(parametros[0].Trim()) && parametros[1].Trim().Length == 1 && registro.Contains(parametros[1].Trim());
+                        break;
                     default:
                         resul = false;
                         break;
@@ -192,40 +203,16 @@ namespace PDMv4.Utilidades
             }
 
 
-            public static string[] Comprobar(string texto)
+            public static string[] ComprobarYExtraer(string texto, out int numLinea, out string lineaError)
             {
 
                 bool resul = true;
                 texto = texto.Replace('\t', ' ');
-                string textoLimpio = texto.Trim().Replace("\r", null);
-
-
-                string[] lineas = textoLimpio.Trim().Split('\n');
-                try
-                {
-                    AñadirEtiquetas(lineas);
-                    foreach (string linea in lineas)
-                    {
-                        if (linea.Trim().Length > 0)
-                            resul = ComprobarLinea(linea.Trim());
-                        if (!resul) break;
-                    }
-                }
-                catch
-                {
-                    resul = false;
-                }
-                return resul ? lineas : null;
-            }
-
-            public static bool Comprobar(string texto, out int numLinea)
-            {
-
-                bool resul = true;
-                texto = texto.Replace('\t', ' ');
-                string textoLimpio = texto.Trim().Replace("\r", null);
+                string textoLimpio = Regex.Replace(texto, @"\s*;[^\n]*\n", "\n").Trim().Replace("\r", null);
                 numLinea = -1;
+                lineaError = null;
                 int cont = 1;
+                string lineaActual = null;
 
                 string[] lineas = textoLimpio.Trim().Split('\n');
                 try
@@ -233,12 +220,15 @@ namespace PDMv4.Utilidades
                     AñadirEtiquetas(lineas);
                     foreach (string linea in lineas)
                     {
+                        lineaActual = linea;
                         if (linea.Trim().Length > 0)
                             resul = ComprobarLinea(linea.Trim());
+
                         if (!resul)
                         {
                             if (!string.IsNullOrWhiteSpace(linea))
                             {
+                                lineaError = linea;
                                 numLinea = cont;
                                 cont = 1;
                             }
@@ -250,7 +240,49 @@ namespace PDMv4.Utilidades
                 catch
                 {
                     numLinea = cont;
-                    cont = 1;
+                    lineaError = lineaActual;
+                    resul = false;
+                }
+                return resul ? lineas : null;
+            }
+
+            public static bool Comprobar(string texto, out int numLinea, out string lineaError)
+            {
+
+                bool resul = true;
+                texto = texto.Replace('\t', ' ');
+                string textoLimpio = Regex.Replace(texto, @"\s*;[^\n]*\n", "\n").Trim().Replace("\r", null);
+                numLinea = -1;
+                lineaError = null;
+                int cont = 1;
+                string lineaActual = null;
+
+                string[] lineas = textoLimpio.Trim().Split('\n');
+                try
+                {
+                    AñadirEtiquetas(lineas);
+                    foreach (string linea in lineas)
+                    {
+                        lineaActual = linea;
+                        if (linea.Trim().Length > 0)
+                            resul = ComprobarLinea(linea.Trim());
+                        if (!resul)
+                        {
+                            if (!string.IsNullOrWhiteSpace(linea))
+                            {
+                                lineaError = linea;
+                                numLinea = cont;
+                                cont = 1;
+                            }
+                            break;
+                        }
+                        cont++;
+                    }
+                }
+                catch
+                {
+                    numLinea = cont;
+                    lineaError = lineaActual;
                     resul = false;
                 }
                 return resul;
@@ -258,8 +290,8 @@ namespace PDMv4.Utilidades
         }
 
         private string ruta;
+        private string programa;
         private List<string[]> lineas;
-        //private BindingList<EtiquetaInstruccion> lineas2;
         public string Ruta
         {
             get
@@ -276,12 +308,24 @@ namespace PDMv4.Utilidades
             }
         }
 
-        //public BindingList<EtiquetaInstruccion> ObtenerBindingSourceLineasPrograma{ get => lineas2; }
+        public string ObtenerPrograma
+        {
+            get
+            {
+                return programa;
+            }
+        }
+
+        public void Restablecer()
+        {
+            lineas.Clear();
+            programa = null;
+            ruta = null;
+        }
 
         public Fichero()
         {
             lineas = new List<string[]>();
-            //lineas2 = new BindingList<EtiquetaInstruccion>();
             ruta = null;
         }
 
@@ -299,8 +343,6 @@ namespace PDMv4.Utilidades
             {
                 instruccion = Instruccion.ConvertirEnInstruccion(instruccionArgumentos);
                 lineas.Add(new string[] { string.Empty, linea });
-                //--
-                //lineas2.Add(new EtiquetaInstruccion(string.Empty, linea));
             }
             else
             {
@@ -315,7 +357,6 @@ namespace PDMv4.Utilidades
                 }
                 instruccion = Instruccion.ConvertirEnInstruccion(_instruccionArgumentos);
                 lineas.Add(new string[] { instruccionArgumentos[0], linea.Substring(instruccionArgumentos[0].Length).TrimStart() });
-                //lineas2.Add(new EtiquetaInstruccion(instruccionArgumentos[0], linea.Substring(instruccionArgumentos[0].Length).TrimStart()));
             }
 
             switch (instruccion.NumArgumentos)
@@ -345,6 +386,10 @@ namespace PDMv4.Utilidades
                     {
                         posicion += 2;
                     }
+                    else if (instruccion.ObtenerArgumento(0).TipoArgumento() == Argumento.Tipo.Registro && instruccion.ObtenerArgumento(1).TipoArgumento() == Argumento.Tipo.Registro)
+                    {
+                        posicion++;
+                    }
                     else
                     {
                         posicion += 3;
@@ -364,54 +409,114 @@ namespace PDMv4.Utilidades
 
                     ushort pos = posicion;
                     Main.ObtenerMemoria.EscribirInstruccionMemoria(Instruccion.ConvertirEnInstruccion(UtilidadesInstruccion.ExtraerInstruccionArgumentos(linea[1])), ref posicion);
-                    Main.AñadirInstruccionListaInstrucciones(UtilidadesInstruccion.DescodificarInstruccion(Main.ObtenerMemoria.ObtenerDireccion(pos).Contenido, pos), pos);
+                    Main.AñadirInstruccionListaInstrucciones(UtilidadesInstruccion.DecodificarInstruccion(Main.ObtenerMemoria.ObtenerDireccion(pos).Contenido, pos), pos);
 
                 }
             }
         }
+        public bool GuardarPrograma()
+        {
+            bool resul = false;
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(ruta))
+                {
+                    writer.Write(programa);
+                }
+                resul = true;
+            } 
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+
+            return resul;
+        }
+
+        public bool GuardarProgramaComo(string ruta)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(ruta))
+                {
+                    writer.Write(programa);
+                }
+                this.ruta = ruta;
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        private bool LeerPrograma(string programa, string ruta, bool avisarMemoriaPreviamenteEditada = true)
+        {
+            ushort pos = OpcionesPrograma.DireccionMemoriaComienzoPrograma;
+
+            string[] lineasTexto = ComprobarProgramaCorrecto.ComprobarYExtraer(programa, out int numLinea, out string lineaError);
+            if (lineasTexto == null)
+            {
+                MessageBox.Show("Error en la línea " + numLinea + ": El formato de la instrucción \"" + lineaError + "\" no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "No se ha podido cargar el programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            try
+            {
+                
+
+                bool restablecer = false;
+                if (Main.EditadaMemoriaManualmente && avisarMemoriaPreviamenteEditada)
+                {
+                    if (MessageBox.Show("¿Desea restablecer el contenido modificado de la memoria principal y los registros antes de cargar el programa?", "Restablecer memoria principal y registros", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        restablecer = true;
+                }
+                lineas.Clear();
+                Main.Restablecer(restablecerRegistrosYMemoria: restablecer);
+                foreach (string linea in lineasTexto)
+                {
+                    if (linea != string.Empty)
+                        LeerLinea(linea.Trim(), ref pos);
+                }
+                pos = OpcionesPrograma.DireccionMemoriaComienzoPrograma;
+                EscribirLinea(ref pos);
+                Main.EstablecerUltimaDireccionPrograma(pos);
+
+                if (ruta != null)
+                    this.ruta = ruta;
+
+                this.programa = programa;
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public bool LeerProgramaSinFichero(string programa, bool avisarMemoriaPreviamenteEditada = true)
+        {
+            return LeerPrograma(programa, null, avisarMemoriaPreviamenteEditada);
+        }
 
         public bool LeerPrograma(string ruta)
         {
-            ushort pos = OpcionesPrograma.DireccionMemoriaComienzoPrograma;
             if (ruta != null)
             {
                 if(ruta == OpcionesPrograma.FicheroEntrada || ruta == OpcionesPrograma.FicheroSalida)
                 {
-                    MessageBox.Show("El archivo no tiene el formato correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se puede leer el archivo seleccionado porque actualmente se encuentra configurado como entrada o salida para las instrucciones IN y OUT del simulador.\r\n\r\nPor favor, revise las opciones de entrada y salida de SimPDM y vuelva a intentarlo de nuevo.", "No se puede leer el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
 
                 StreamReader sr = new StreamReader(ruta);
                 string programa = sr.ReadToEnd();
                 sr.Close();
-                string[] lineasTexto = ComprobarProgramaCorrecto.Comprobar(programa);
-                if (lineasTexto == null)
-                {
-                    MessageBox.Show("El archivo no tiene el formato correcto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                try
-                {
-                    lineas.Clear();
-                    Main.Restablecer();
-
-                    foreach (string linea in lineasTexto)
-                    {
-                        if (linea != string.Empty)
-                            LeerLinea(linea.Trim(), ref pos);
-                    }
-                    pos = OpcionesPrograma.DireccionMemoriaComienzoPrograma;
-                    EscribirLinea(ref pos);
-                    this.ruta = ruta;
-                    return true;
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return false;
-                }
+                return LeerPrograma(programa, ruta, Main.EditadaMemoriaManualmente);
 
             }
             return false;

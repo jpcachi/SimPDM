@@ -1,5 +1,7 @@
 ﻿using PDMv4.EntradaSalida;
+using PDMv4.Instrucciones;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PDMv4.Procesador
 {
@@ -17,7 +19,7 @@ namespace PDMv4.Procesador
             return "RI <- (CP); CP <- CP + 1";
         }
 
-        public static string Descodificacion()
+        public static string Decodificacion()
         {
             Main.BusesDatosYDireccion.ContenidoDireccion = Main.ContadorPrograma;
             return "Evaluación del RI";
@@ -45,7 +47,6 @@ namespace PDMv4.Procesador
             int numRegistro = Main.RegistroInstruccion.Contenido % 4;
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = Main.ContadorPrograma;
             Main.ObtenerRegistro(numRegistro).Contenido = Main.BusesDatosYDireccion.Contenido;
 
             return Main.ObtenerNombreRegistro(numRegistro) + " <- (CP); CP <- CP + 1";
@@ -55,7 +56,6 @@ namespace PDMv4.Procesador
         {
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.RegistroDireccionesH.Contenido = Main.BusesDatosYDireccion.Contenido;
 
             return "LH <- (CP); CP <- CP + 1";
@@ -63,9 +63,9 @@ namespace PDMv4.Procesador
 
         public static string S6()
         {
+            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.RegistroDireccionesL.Contenido = Main.BusesDatosYDireccion.Contenido;
 
             return " LL <- (CP); CP <- CP + 1";
@@ -89,6 +89,8 @@ namespace PDMv4.Procesador
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerRegistro(numRegistro).Contenido;
             Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)((Main.RegistroDireccionesH.Contenido << 8) + Main.RegistroDireccionesL.Contenido);
             Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido = Main.BusesDatosYDireccion.Contenido;
+            Main.EditadaMemoriaManualmente = true;
+            
             return Main.BusesDatosYDireccion.ContenidoDireccion + " <- " + Main.ObtenerNombreRegistro(numRegistro);
         }
 
@@ -107,6 +109,7 @@ namespace PDMv4.Procesador
 
         public static string S10()
         {
+            Main.BusesDatosYDireccion.ContenidoDireccion = Main.ContadorPrograma;
             Main.BusesDatosYDireccion.Contenido = Main.UnidadAritmeticoLogica.Resultado;
             Main.Acumulador.Contenido = Main.BusesDatosYDireccion.Contenido;
 
@@ -228,7 +231,6 @@ namespace PDMv4.Procesador
         {
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.UnidadAritmeticoLogica.Cargar();
             Main.UnidadAritmeticoLogica.AND();
 
@@ -239,7 +241,6 @@ namespace PDMv4.Procesador
         {
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.UnidadAritmeticoLogica.Cargar();
             Main.UnidadAritmeticoLogica.OR();
 
@@ -250,31 +251,10 @@ namespace PDMv4.Procesador
         {
             Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
             Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)Main.ContadorPrograma;
             Main.UnidadAritmeticoLogica.Cargar();
             Main.UnidadAritmeticoLogica.XOR();
 
             return "R_UAL <- Ac XOR (CP)";
-        }
-
-        public static string S24()
-        {
-            Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
-            Main.RegistroDireccionesH.Contenido = Main.BusesDatosYDireccion.Contenido;
-            Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = Main.ContadorPrograma;
-
-            return "LH <- (CP); CP <- CP + 1";
-        }
-
-        public static string S25()
-        {
-            Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
-            Main.RegistroDireccionesL.Contenido = Main.BusesDatosYDireccion.Contenido;
-            Main.ContadorPrograma = (ushort)(Main.BusesDatosYDireccion.ContenidoDireccion + 1);
-            Main.BusesDatosYDireccion.ContenidoDireccion = Main.ContadorPrograma;
-
-            return "LL <- (CP); CP <- CP + 1";
         }
 
         public static string S26()
@@ -289,8 +269,13 @@ namespace PDMv4.Procesador
 
         public static string S27()
         {
+            //ponemos primer y último bytes a 0 -> 0xxxxxxxx0
+            byte nuevoContenido = (byte)((byte)(Main.BusesDatosYDireccion.Contenido << 1) >> 1);
+
+            //Máscara FCxxxxxxFZ
             byte contenidoRF = (byte)((Main.FlagCarry ? 128 : 0) + (Main.FlagZero ? 1 : 0));
-            Main.BusesDatosYDireccion.Contenido |= contenidoRF;
+
+            Main.BusesDatosYDireccion.Contenido = (byte)(nuevoContenido | contenidoRF);
             Main.Acumulador.Contenido = Main.BusesDatosYDireccion.Contenido;
 
             return "AC <- FC & xxxxxx & FZ";
@@ -330,6 +315,64 @@ namespace PDMv4.Procesador
             return "Instrucción salida no disponible.";
         }
 
+        public static string S30()
+        {
+            int numRegistro = Main.RegistroInstruccion.Contenido % 4;
+            Main.BusesDatosYDireccion.Contenido = Main.ObtenerRegistro(numRegistro).Contenido;
+            Main.RegistroDireccionesH.Contenido = Main.BusesDatosYDireccion.Contenido;
+
+            return "LH <- " + Main.ObtenerNombreRegistro(numRegistro);
+        }
+
+        public static string S31()
+        {
+            Main.BusesDatosYDireccion.Contenido = Main.Acumulador.Contenido;
+            Main.RegistroDireccionesL.Contenido = Main.BusesDatosYDireccion.Contenido;
+
+            return "LL <- Ac";
+        }
+
+        public static string S32()
+        {
+            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)((Main.RegistroDireccionesH.Contenido << 8) + Main.RegistroDireccionesL.Contenido);
+            Main.BusesDatosYDireccion.Contenido = Main.ObtenerMemoria.ObtenerDireccion(Main.BusesDatosYDireccion.ContenidoDireccion).Contenido;
+            Main.Acumulador.Contenido = Main.BusesDatosYDireccion.Contenido;
+
+            return "Ac <- (RDD)";
+        }
+
+        public static string S33()
+        {
+            int numRegistro = Main.RegistroInstruccion.Contenido % 4;
+
+            switch(Main.RegistroInstruccion.Contenido >> 2)
+            {
+                case 3:
+                    numRegistro = 0; break;
+                case 5:
+                    numRegistro = 1; break;
+                case 7:
+                    numRegistro = 2; break;
+                case 15:
+                    numRegistro = 3; break;
+            }
+
+            Main.BusesDatosYDireccion.Contenido = Main.ObtenerRegistro(numRegistro).Contenido;
+            Main.RegistroDireccionesL.Contenido = Main.BusesDatosYDireccion.Contenido;
+
+            return "LL <- " + Main.ObtenerNombreRegistro(numRegistro);
+        }
+
+        public static string S34()
+        {
+            Main.BusesDatosYDireccion.Contenido = Main.Acumulador.Contenido;
+            Main.BusesDatosYDireccion.ContenidoDireccion = (ushort)((Main.RegistroDireccionesH.Contenido << 8) + Main.RegistroDireccionesL.Contenido);
+            Main.ObtenerMemoria.EscribirMemoria(Main.BusesDatosYDireccion.Contenido, Main.BusesDatosYDireccion.ContenidoDireccion);
+
+            return Main.BusesDatosYDireccion.ContenidoDireccion + " <- Ac";
+        }
+
+
         public static string ObtenerMicroInstruccionAPartirDeSeñales(sbyte[] señales)
         {
             bool escritura = false;
@@ -363,7 +406,7 @@ namespace PDMv4.Procesador
                     señalesTexto = Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumRegistroEscrito()) + " <- (RDD)";
                     break;
                 case "0010000000110-1-1-100":
-                    señalesTexto = "0x" + (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura).ToString("X4")) + " <- " + Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumRegistroLeido());
+                    señalesTexto = "0x" + Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura).ToString("X4") + " <- " + Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumRegistroLeido());
                     break;
                 case "001000100000000001":
                     señalesTexto = "R_UAL <- Ac + " + Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumRegistroLeido()) + "; FZ; FC";
@@ -414,14 +457,30 @@ namespace PDMv4.Procesador
                     señalesTexto = "RI <- (RDD); CP <- RDD + 1";
                     break;
                 case "0000000110000-1-1-100":
-                    señalesTexto = "AC <- FC & xxxxxx & FZ";
+                    señalesTexto = "AC <- FC && xxxxxx && FZ";
                     break;
                 case "0001000000011-2-2-200":
-                    señalesTexto = OpcionesPrograma.EntradaSalida ? "input: @(0x" + (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura).ToString("X4")) + 
+                    señalesTexto = OpcionesPrograma.EntradaSalida ? "input: @(0x" + Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura).ToString("X4") + 
                         ")" : "Instrucción entrada no disponible.";
                     break;
                 case "0010000000110-2-2-200":
                     señalesTexto = OpcionesPrograma.EntradaSalida ? "output: @(0x" + OpcionesPrograma.DireccionMemoriaSalida.ToString("X4") + ")" : "Instrucción salida no disponible.";
+                    break;
+
+                case "0010100000000-1-1-100":
+                    señalesTexto = "LH <- " + Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumRegistroLeido());
+                    break;
+                case "0000010001000-1-1-100":
+                    señalesTexto = "LL <- AC";
+                    break;
+                case "0000000010011-1-1-100":
+                    señalesTexto = "AC <- (RDD)";
+                    break;
+                case "0010010000000-1-1-100":
+                    señalesTexto = "LL <- " + Main.ObtenerNombreRegistro(Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerNumSegundoRegistroLeido());
+                    break;
+                case "0000000001110-1-1-100":
+                    señalesTexto = "0x" + (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura).ToString("X4")) + " <- AC";
                     break;
                 default:
                     señalesTexto = string.Empty;
@@ -444,7 +503,7 @@ namespace PDMv4.Procesador
                     microinstruccion = 0;
                     break;
                 case "0000000000000-1-1-100":
-                    Descodificacion();
+                    Decodificacion();
                     microinstruccion = 1;
                     break;
                 case "0010000010000-1-1-100":
@@ -551,6 +610,27 @@ namespace PDMv4.Procesador
                     S29();
                     microinstruccion = 29;
                     break;
+
+                case "0010100000000-1-1-100":
+                    S30();
+                    microinstruccion = 30;
+                    break;
+                case "0000010001000-1-1-100":
+                    S31();
+                    microinstruccion = 31;
+                    break;
+                case "0000000010011-1-1-100":
+                    S32();
+                    microinstruccion = 32;
+                    break;
+                case "0010010000000-1-1-100":
+                    S33();
+                    microinstruccion = 33;
+                    break;
+                case "0000000001110-1-1-100":
+                    S34();
+                    microinstruccion = 34;
+                    break;
             }
 
             return microinstruccion;
@@ -565,7 +645,14 @@ namespace PDMv4.Procesador
             };
 
             int codigoInstruccion = (Main.ListaInstrucciones[indice].instruccion.Codigo >> 3) * 4 + 2 * (Main.FlagZero ? 1 : 0) + (Main.FlagCarry ? 1 : 0);
-            if (codigoInstruccion >> 2 == 1)
+            int[] instruccionSTR = new int[] { 3, 5, 7, 15};
+            if (instruccionSTR.Contains(Main.ListaInstrucciones[indice].instruccion.Codigo >> 2))
+            {
+                resul.Add(new sbyte[18] { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, 0, 0 });
+                resul.Add(new sbyte[18] { 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, 0, 0 });
+                resul.Add(new sbyte[18] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, -1, -1, -1, 0, 0 });
+            }
+            else if (codigoInstruccion >> 2 == 1)
             {
                 resul.Add(new sbyte[18] { 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, -1, -1, -1, 0, 0 });
             }
@@ -665,6 +752,12 @@ namespace PDMv4.Procesador
             }
             else if (codigoInstruccion >> 3 == 14)
                 resul.Add(new sbyte[18] { 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, -1, -1, -1, 0, 0 });
+            else if (Main.ListaInstrucciones[indice].instruccion.Codigo >> 2 == 63)
+            {
+                resul.Add(new sbyte[18] { 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, 0, 0 });
+                resul.Add(new sbyte[18] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, -1, -1, -1, 0, 0 });
+                resul.Add(new sbyte[18] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, -1, -1, -1, 0, 0 });
+            }
             else if (codigoInstruccion >> 2 == 30)
             {
                 resul.Add(new sbyte[18] { 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, 0, 0 });
@@ -677,6 +770,7 @@ namespace PDMv4.Procesador
                 resul.Add(new sbyte[18] { 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, -1, -1, -1, 0, 0 });
                 resul.Add(new sbyte[18] { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, -2, -2, -2, 0, 0 });
             }
+            
 
             return resul;
         }

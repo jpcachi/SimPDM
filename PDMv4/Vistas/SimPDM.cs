@@ -1,9 +1,12 @@
 ﻿using PDMv4.Instrucciones;
 using PDMv4.Interfaces;
 using PDMv4.Procesador;
+using PDMv4.Temas;
 using PDMv4.Utilidades;
 using System;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,22 +15,31 @@ namespace PDMv4.Vistas
 {
     public partial class SimPDM : Form
     {
+
         private Fichero archivoActual;
         private Task hiloEjecucion;
         private CancellationTokenSource tokenSource;
         private CancellationToken cancellation;
+        private Debug debugWindow;
         private string startupFile = null;
+
+        private bool ProgrmaConCambiosSinGuardar { get; set; }
 
         public SimPDM(string file = null)
         {
+            
             InitializeComponent();
-            BackColor = Estilos.DEFAULT_WINDOW_BACKGROUND_COLOR;
+
+            BackColor = Estilos.GetStyle().DEFAULT_WINDOW_BACKGROUND_COLOR;
+            panelIrA.BackColor = Estilos.GetStyle().DEFAULT_PANEL_HEADER_COLOR;
+
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
             comboBox4.SelectedIndex = 0;
 
             panelMejorado1.ContentControls.Add(listView_Programa);
+            panelMejorado2.CustomBorders = false;
             panelMejorado2.ContentControls.Add(panel1);
             panelMejorado3.ContentControls.Add(listView_Registros);
             panelMejorado4.ContentControls.Add(panelIrA);
@@ -42,9 +54,6 @@ namespace PDMv4.Vistas
             archivoActual = new Fichero();
             listView_MemoriaPrincipal.VirtualListSize = Main.ObtenerMemoria.Tamaño;
 
-            //tokenSource = new CancellationTokenSource();
-            //cancellation = tokenSource.Token;
-
             startupFile = file;
 
             listView_MemoriaPrincipal.GridLines = false;
@@ -53,12 +62,15 @@ namespace PDMv4.Vistas
             listView_Registros.GridLines = false;
             listView_Microinstrucciones.GridLines = false;
 
-            listView_MemoriaPrincipal.BackColor = Estilos.DEFAULT_GRID_COLOR;
-            listView_Flags.BackColor = Estilos.DEFAULT_GRID_COLOR;
-            listView_Programa.BackColor = Estilos.DEFAULT_GRID_COLOR;
-            listView_Registros.BackColor = Estilos.DEFAULT_GRID_COLOR;
-            listView_Microinstrucciones.BackColor = Estilos.DEFAULT_GRID_COLOR;
-            //toolStripContainer1.TopToolStripPanel.BackColor = Estilos.DEFAULT_WINDOW_BACKGROUND_COLOR;
+            listView_MemoriaPrincipal.BackColor = Estilos.GetStyle().DEFAULT_GRID_COLOR;
+            listView_Flags.BackColor = Estilos.GetStyle().DEFAULT_GRID_COLOR;
+            listView_Programa.BackColor = Estilos.GetStyle().DEFAULT_GRID_COLOR;
+            listView_Registros.BackColor = Estilos.GetStyle().DEFAULT_GRID_COLOR;
+            listView_Microinstrucciones.BackColor = Estilos.GetStyle().DEFAULT_GRID_COLOR;
+
+            debugWindow = new Debug();
+            
+            ActualizarStatusStrip();
         }
 
         private void AbrirArchivo(string nombre)
@@ -76,8 +88,7 @@ namespace PDMv4.Vistas
         private void NuevoToolStripButton_Click(object sender, EventArgs e)
         {
             Main.Restablecer();
-            archivoActual.ObtenerLineasPrograma.Clear();
-            archivoActual.ResetearRuta();
+            archivoActual.Restablecer();
             mapaProcesador.RestablecerMapaPDM();
             ListViewVisualStyles.LimpiarIndices();
             RefrescarListViews();
@@ -90,6 +101,8 @@ namespace PDMv4.Vistas
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 AbrirArchivo(openFileDialog1.FileName);
+                listView_Programa.EnsureVisible(listView_Programa.Items.Count - 1);
+                listView_Programa.EnsureVisible(0);
             }
         }
 
@@ -232,15 +245,19 @@ namespace PDMv4.Vistas
             ListViewVisualStyles.EjecucionMicroInstruccion = Main.IndiceMicroinstruccionActual;
 
             RefrescarListViews();
+
             mapaProcesador.ActualizarMapaPDM(Main.ListaMicroinstrucciones[Main.IndiceMicroinstruccionActual]);
             mapaProcesador.ActualizarVentanaVistaContenido();
+
+            if (debugWindow != null && !debugWindow.IsDisposed)
+                debugWindow.Actualizar();
         }
 
         private void RefrescarListViewPrograma()
         {
             listView_Programa.VirtualListSize = archivoActual.ObtenerLineasPrograma.Count;
             if (listView_Programa.VirtualListSize > 0)
-                listView_Programa.RedrawItems(0, listView_Programa.VirtualListSize - 1, false);           
+                listView_Programa.RedrawItems(0, listView_Programa.VirtualListSize - 1, false);   
         }
 
         private void RefrescarListViewDireccionMemoria()
@@ -266,8 +283,9 @@ namespace PDMv4.Vistas
             listView_Microinstrucciones.VirtualListSize = Main.ListaMicroinstrucciones.Count;
             
             if(listView_Microinstrucciones.VirtualListSize > 0)
-                listView_Microinstrucciones.RedrawItems(0, listView_Microinstrucciones.VirtualListSize - 1, false);    
-        }
+                listView_Microinstrucciones.RedrawItems(0, listView_Microinstrucciones.VirtualListSize - 1, false);
+
+         }
 
         private void RefrescarListViewFlags()
         {
@@ -316,7 +334,7 @@ namespace PDMv4.Vistas
         private void MicroinstruccionAnterior_Click(object sender, EventArgs e)
         {
             if (Main.IndiceInstruccionActual == 0 && Main.IndiceMicroinstruccionActual == 0 && Main.ListaMicroinstrucciones.Count > 0)
-                ReiniciarPrograma_Click(sender, e);
+                RestablecerPrograma();
             else
                 RevertirMicroInstruccion(); 
         }
@@ -324,7 +342,7 @@ namespace PDMv4.Vistas
         private void InstruccionAnterior_Click(object sender, EventArgs e)
         {
             if (Main.IndiceInstruccionActual == 0)
-                ReiniciarPrograma_Click(sender, e);
+                RestablecerPrograma();
             else
                 RevertirInstruccion();
         }
@@ -355,7 +373,7 @@ namespace PDMv4.Vistas
             e.NewWidth = (sender as ListView).Columns[e.ColumnIndex].Width;
         }
 
-        private void ListView_Registros_Resize(object sender, EventArgs e)
+        private void ListView_Resize(object sender, EventArgs e)
         {
             (sender as ListView).Columns[(sender as ListView).Columns.Count - 1].Width = -2;
         }
@@ -372,25 +390,47 @@ namespace PDMv4.Vistas
             listView_Microinstrucciones.Scrollable = listView_Microinstrucciones.Width < 50 * (listView_Microinstrucciones.Columns.Count  - 1) + 205;
         }
 
-        private void ActualizarStatusStrip()
+        private void ActualizarStatusStrip(bool editado = false)
         {
             etiquetaRuta_BarraEstado.Text = archivoActual.Ruta ?? "Nuevo";
+            if (editado && etiquetaRuta_BarraEstado.Text != "Nuevo")
+            {
+                ProgrmaConCambiosSinGuardar = true;
+                etiquetaRuta_BarraEstado.Text += "*";
+                etiquetaRuta_BarraEstado.Font = new Font(etiquetaRuta_BarraEstado.Font, FontStyle.Italic);
+            }
+            else
+            {
+                ProgrmaConCambiosSinGuardar = false;
+                etiquetaRuta_BarraEstado.Font = new Font(etiquetaRuta_BarraEstado.Font, FontStyle.Regular);
+            }
+
             etiquetaEstado_BarraEstado.Text = "Listo";
             etiquetaNumeroLineas_BarraEstado.Text = archivoActual.ObtenerLineasPrograma.Count + " líneas";
-            statusStrip1.BackColor = SystemColors.ActiveCaption;
-            statusStrip1.ForeColor = SystemColors.ControlText;
+            statusStrip1.BackColor = Estilos.GetStyle().DEFAULT_STATUS_STRIP_COLOR;
+            statusStrip1.ForeColor = Estilos.EsColorOscuro(statusStrip1.BackColor) ? Color.White : Color.Black;
         }
 
-        private void ReiniciarPrograma_Click(object sender, EventArgs e)
+        private void RestablecerPrograma()
         {
-            DetenerHiloEjecucionInstrucciones();
-            archivoActual.LeerPrograma(archivoActual.Ruta);
+            archivoActual.LeerProgramaSinFichero(archivoActual.ObtenerPrograma, false);
             ListViewVisualStyles.LimpiarIndices();
             mapaProcesador.RestablecerMapaPDM();
             RefrescarListViews();
             ActualizarOpcionesEjecucion();
             reiniciarProgramaToolStripButton.Image = Properties.Resources.HistoryItem_16x16;
             ActivarItemsArchivo(true);
+        }
+
+        private void ReiniciarPrograma_Click(object sender, EventArgs e)
+        {
+            
+            if (tokenSource != null)
+                DetenerHiloEjecucionInstrucciones();
+
+            RestablecerPrograma();
+            ActualizarStatusStrip();
+            mapaProcesador.RestablecerMapaPDM();
         }
 
         private void Ejecutar_Click(object sender, EventArgs e)
@@ -430,6 +470,7 @@ namespace PDMv4.Vistas
                 VisualizarMicroinstruccionEjecutada();
                 ActualizarOpcionesEjecucion();
                 ActualizarStatusStrip();
+
             }));
         }
 
@@ -443,7 +484,8 @@ namespace PDMv4.Vistas
                     diferencia = (Main.ListaMicroinstrucciones.Count - 1) - Main.IndiceMicroinstruccionActual;
                 else
                 {
-                    if((Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BEQ && !Main.FlagZero) || (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BC && !Main.FlagCarry))
+                    if((Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BEQ && !Main.FlagZero) || 
+                        (Main.ListaInstrucciones[Main.IndiceInstruccionActual].instruccion is BC && !Main.FlagCarry))
                        diferencia = (Main.ListaMicroinstrucciones.Count - 2) - Main.IndiceMicroinstruccionActual;
                     else diferencia = 1;
                 }
@@ -528,6 +570,9 @@ namespace PDMv4.Vistas
             nuevoToolStripMenuItem.Enabled = activado;
             editorToolStripButton.Enabled = activado;
             guardarToolStripMenuItem.Enabled = activado;
+            guardarToolStripMenuItem1.Enabled = activado;
+            guardarToolStripButton.Enabled = activado;
+            guardarcomoToolStripMenuItem.Enabled = activado;
         }
 
         private void ActivarItemsEjecucion()
@@ -547,9 +592,11 @@ namespace PDMv4.Vistas
             instruccionAnteriorMenuItem.Enabled = false;
             microinstruccionAnteriorToolStripButton.Enabled = false;
             microinstruccionAnteriorMenuItem.Enabled = false;
-            statusStrip1.BackColor = Color.OrangeRed;
-            statusStrip1.ForeColor = Color.White;
+            statusStrip1.BackColor = Estilos.GetStyle().RUNNING_STATUS_STRIP_COLOR;
+            statusStrip1.ForeColor = Estilos.EsColorOscuro(statusStrip1.BackColor) ? Color.White : Color.Black;
             etiquetaEstado_BarraEstado.Text = "En Ejecución...";
+            statusStrip1.Refresh();
+            toolStrip1.Refresh();
         }
 
         private void DetenerHiloEjecucionInstrucciones()
@@ -567,6 +614,8 @@ namespace PDMv4.Vistas
             {
                 if(tokenSource!= null)
                     tokenSource.Dispose();
+
+                ActualizarStatusStrip();
             }
         }
 
@@ -591,7 +640,7 @@ namespace PDMv4.Vistas
             hiloEjecucion = new Task(new Action(EjecutarHastaFinalPorPasos), cancellation);
             hiloEjecucion.Start();
         }
-
+        
         private void EjecutarHastaFinalPorPasos()
         {
             Invoke(new Action(() =>
@@ -635,18 +684,20 @@ namespace PDMv4.Vistas
 
         private void Editor_Click(object sender, EventArgs e)
         {
-            EditorCodigo editor = new EditorCodigo(archivoActual.Ruta);
+            EditorCodigo editor = new EditorCodigo(archivoActual.ObtenerPrograma, archivoActual.Ruta);
             
             if(editor.ShowDialog(this) == DialogResult.OK)
             {
-                string rutaEditor = editor.Ruta;
-                if (archivoActual.LeerPrograma(rutaEditor))
+                if (archivoActual.LeerProgramaSinFichero(editor.Programa))
                 {
                     ListViewVisualStyles.LimpiarIndices();
                     mapaProcesador.RestablecerMapaPDM();
                     RefrescarListViews();
                     ActualizarOpcionesEjecucion();
-                    ActualizarStatusStrip();
+                    ActualizarStatusStrip(true);
+
+                    listView_Programa.EnsureVisible(listView_Programa.Items.Count - 1);
+                    listView_Programa.EnsureVisible(0);
                 }
             }
         }
@@ -739,7 +790,9 @@ namespace PDMv4.Vistas
             {
                 string nombreArchivo = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
                 if (nombreArchivo == archivoActual.Ruta) return;
-                AbrirArchivo(nombreArchivo);  
+                AbrirArchivo(nombreArchivo);
+                listView_Programa.EnsureVisible(listView_Programa.Items.Count - 1);
+                listView_Programa.EnsureVisible(0);
             }
         }
 
@@ -756,6 +809,74 @@ namespace PDMv4.Vistas
                 AbrirArchivo(startupFile);
                 startupFile = null;
             }
+        }
+
+        private void GuardarArchivo()
+        {
+            SaveFileDialog guardar = new SaveFileDialog
+            {
+                FileName = Path.GetFileName(archivoActual.Ruta ?? "Programa"),
+                Filter = "Programas de PDM (*.pdm)|*.pdm|Todos los archivos (*.*)|*.*"
+            };
+            if (guardar.ShowDialog(this) == DialogResult.OK)
+            {
+                archivoActual.GuardarProgramaComo(guardar.FileName);
+            }
+        }
+
+        private void guardarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (archivoActual.Ruta != null)
+                archivoActual.GuardarPrograma();
+            else
+                GuardarArchivo();
+
+            ActualizarStatusStrip();
+        }
+
+        private void guardarcomoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GuardarArchivo();
+            ActualizarStatusStrip();
+
+        }
+
+        private void restablecerDireccionesSeleccionadasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Main.ObtenerMemoria.RestablecerMemoria(listView_MemoriaPrincipal.SelectedIndices.Cast<int>());
+            listView_MemoriaPrincipal.Invalidate();
+        }
+
+        private void SimPDM_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(archivoActual.Ruta == null && !string.IsNullOrEmpty(archivoActual.ObtenerPrograma))
+            {
+                DialogResult guardar = MessageBox.Show("¿Desea guardar el programa antes de salir?", "Guardar y salir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                switch (guardar)
+                {
+                    case DialogResult.Yes: GuardarArchivo(); break;
+                    case DialogResult.Cancel: e.Cancel = true; break;
+                }
+
+            }
+            else if (ProgrmaConCambiosSinGuardar)
+            {
+                DialogResult guardar = MessageBox.Show("El programa \"" + Path.GetFileName(archivoActual.Ruta) + "\" ha sido modificado. ¿Desea guardar los cambios antes de salir?", "Guardar y salir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                switch(guardar)
+                {
+                    case DialogResult.Yes: archivoActual.GuardarPrograma();break;
+                    case DialogResult.Cancel: e.Cancel = true; break;
+                }
+            }
+        }
+
+        private void debugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (debugWindow == null || debugWindow.IsDisposed)
+                debugWindow = new Debug();
+
+            debugWindow.Show(this);
+
         }
     }
 }

@@ -32,8 +32,6 @@ namespace PDMv4.Instrucciones
             }
         }
 
-        //public int NumMicroinstrucciones => 4;
-
         public override string ConvertirEnLinea()
         {
             return "ANI " + (argumento as ArgLiteral).Valor;

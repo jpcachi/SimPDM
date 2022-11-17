@@ -1,9 +1,14 @@
-﻿using PDMv4.Argumentos;
+﻿using FastColoredTextBoxNS;
+using PDMv4.Argumentos;
+using PDMv4.Temas;
 using PDMv4.Utilidades;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+
 
 namespace PDMv4.Vistas
 {
@@ -12,54 +17,47 @@ namespace PDMv4.Vistas
         private string _ruta;
         private string programaOriginal;
         private StreamWriter writer;
-        private StreamReader reader;
 
         public string Ruta { get => _ruta; set => _ruta = value; }
+        public string Programa { get; private set; }
 
-        public EditorCodigo(string ruta = null)
+        public EditorCodigo(string programa = null, string ruta = null)
         {
             InitializeComponent();
-            comboBox1.Items.AddRange(UtilidadesInstruccion.InstruccionesTexto.ToArray());
-            panelMejorado1.ContentControls.Add(editorTexto1);
+            string[] instrucciones = UtilidadesInstruccion.InstruccionesTexto.ToArray();
+            Array.Sort(instrucciones);
+            comboBox1.Items.AddRange(instrucciones);
+            editorTexto.SyntaxHighlighter = new AsmPdmHighlighter(editorTexto);
+
+            panelMejorado1.ContentControls.Add(editorTexto);
+
             toolStrip1.Renderer = new ToolStripAeroRenderer(ToolbarTheme.HelpBar);
             contextMenuStrip1.Renderer = new ToolStripAeroRenderer(ToolbarTheme.HelpBar);
-            seleccionartodoToolStripMenuItem.Enabled = !string.IsNullOrEmpty(editorTexto1.richTextBoxEditor.Text);
+            seleccionartodoToolStripMenuItem.Enabled = !string.IsNullOrEmpty(editorTexto.Text);
 
-            editorTexto1.richTextBoxEditor.ForeColor = Color.ForestGreen;
-            editorTexto1.richTextBoxEditor.Focus();
-            editorTexto1.richTextBoxEditor.TextChanged += RichTextBoxEditor_TextChanged;
-            editorTexto1.richTextBoxEditor.SelectionChanged += RichTextBoxEditor_SelectionChanged;
-            editorTexto1.richTextBoxEditor.GotFocus += RichTextBoxEditor_GotFocus;
-            editorTexto1.richTextBoxEditor.LostFocus += RichTextBoxEditor_LostFocus;
-            editorTexto1.richTextBoxEditor.MouseUp+= RichTextBoxEditor_MouseUp;
+            if(programa != null)
+            {
+                programaOriginal = programa;
+                editorTexto.Text = programaOriginal;
 
+                editorTexto.SelectionStart = editorTexto.Text.Length;
+                editorTexto.SelectionLength = 0;
+            }
             if (ruta != null)
             {
-                reader = new StreamReader(ruta);
-                programaOriginal = reader.ReadToEnd();
-                programaOriginal = programaOriginal.Replace("\r\n", "\n");
-                editorTexto1.richTextBoxEditor.Text = programaOriginal;
-                reader.Close();
                 _ruta = ruta;
                 guardarToolStripButton.Enabled = true;
             }
         }
 
-        private void RichTextBoxEditor_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                contextMenuStrip1.Show(editorTexto1.richTextBoxEditor.PointToScreen(e.Location));
-            }
-        }
 
-        private void RichTextBoxEditor_LostFocus(object sender, EventArgs e)
+        private void TextBoxEditor_LostFocus(object sender, EventArgs e)
         {
             pegarToolStripButton.Enabled = false;
             pegarToolStripMenuItem.Enabled = false;
         }
 
-        private void RichTextBoxEditor_GotFocus(object sender, EventArgs e)
+        private void TextBoxEditor_GotFocus(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
             {
@@ -67,24 +65,6 @@ namespace PDMv4.Vistas
                 pegarToolStripButton.Enabled = true;
                 pegarToolStripMenuItem.Enabled = true;
             }
-        }
-
-        private void RichTextBoxEditor_SelectionChanged(object sender, EventArgs e)
-        {
-            bool activarCopiarCortar = editorTexto1.richTextBoxEditor.SelectionLength > 0;
-            copiarToolStripButton.Enabled = activarCopiarCortar;
-            copiarToolStripMenuItem.Enabled = activarCopiarCortar;
-            cortarToolStripButton.Enabled = activarCopiarCortar;
-            cortarToolStripMenuItem.Enabled = activarCopiarCortar;
-        }
-
-        private void RichTextBoxEditor_TextChanged(object sender, EventArgs e)
-        {
-            bool activarGuardarSeleccionar = !string.IsNullOrWhiteSpace(editorTexto1.richTextBoxEditor.Text);
-            button2.Enabled = activarGuardarSeleccionar;
-            button4.Enabled = activarGuardarSeleccionar;
-            guardarToolStripButton.Enabled = activarGuardarSeleccionar;
-            seleccionartodoToolStripMenuItem.Enabled = activarGuardarSeleccionar;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -108,12 +88,13 @@ namespace PDMv4.Vistas
                 comboBox1.Text + (argumento1 != string.Empty ? " " + argumento1 : string.Empty) + 
                 (argumento2 != string.Empty ? ", " + argumento2 : string.Empty);
 
-            editorTexto1.AñadirInstruccion(instruccion);
+            editorTexto.InsertText(instruccion + "\n");
+            editorTexto.Select();
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            richTextBox1.Text = comboBox1.SelectedIndex != -1 ? UtilidadesInstruccion.DescripcionesInstruccion[comboBox1.SelectedIndex] : string.Empty;
+            richTextBox1.Text = comboBox1.SelectedIndex != -1 ? UtilidadesInstruccion.InstruccionesDescripcion[(string)comboBox1.SelectedItem] : string.Empty;
             switch (comboBox1.SelectedItem)
             {
                 case "LD":
@@ -145,7 +126,7 @@ namespace PDMv4.Vistas
                     MostrarSelectorArgumentos();
                     break;
                 case "LDI":
-                    MostrarSelectorArgumentos(Argumento.Tipo.Literal, Argumento.Tipo.Memoria);
+                    MostrarSelectorArgumentos(Argumento.Tipo.Literal, Argumento.Tipo.Registro);
                     break;
                 case "LDM":
                 case "IN":
@@ -166,10 +147,10 @@ namespace PDMv4.Vistas
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto1.richTextBoxEditor.Text, out int numLinea);
+            bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto.Text, out int numLinea, out string lineaError);
             if (programaCorrecto)
             {
-                if (string.IsNullOrWhiteSpace(editorTexto1.richTextBoxEditor.Text) || programaOriginal == editorTexto1.richTextBoxEditor.Text)
+                if (string.IsNullOrWhiteSpace(editorTexto.Text) || programaOriginal == editorTexto.Text)
                 {
                     DialogResult = DialogResult.Cancel;
                     Close();
@@ -183,7 +164,7 @@ namespace PDMv4.Vistas
                 if (guardar.ShowDialog(this) == DialogResult.OK)
                 {
                     writer = new StreamWriter(guardar.FileName);
-                    foreach (string linea in editorTexto1.richTextBoxEditor.Lines)
+                    foreach (string linea in editorTexto.Lines)
                     {
                         writer.Write(linea + "\r\n");
                     }
@@ -195,10 +176,8 @@ namespace PDMv4.Vistas
             }
             else
             {
-                editorTexto1.richTextBoxEditor.Select(editorTexto1.richTextBoxEditor.GetFirstCharIndexFromLine(numLinea - 1), editorTexto1.richTextBoxEditor.Lines[numLinea - 1].Length);
-                MessageBox.Show("Error en la línea " + (editorTexto1.ConvertirNumeroLinea(numLinea)) + ": El formato de la instrucción " + editorTexto1.richTextBoxEditor.Lines[numLinea - 1] + " no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "Comprobar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                editorTexto1.richTextBoxEditor.Focus();
+                MessageBox.Show("Error en la línea " + numLinea + ": El formato de la instrucción " + lineaError + " no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "Comprobar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                editorTexto.Focus();
             }
         }
 
@@ -210,23 +189,26 @@ namespace PDMv4.Vistas
 
         private void NuevoToolStripButton_Click(object sender, EventArgs e)
         {
-            editorTexto1.richTextBoxEditor.Clear();
+            editorTexto.Clear();
             button2.Enabled = false;
         }
 
         private void CopiarToolStripButton_Click(object sender, EventArgs e)
         {
-            SendKeys.Send("^C");
+            //SendKeys.Send("^C");
+            editorTexto.Copy();
         }
 
         private void CortarToolStripButton_Click(object sender, EventArgs e)
         {
-            SendKeys.Send("^X");
+            //SendKeys.Send("^X");
+            editorTexto.Cut();
         }
 
         private void PegarToolStripButton_Click(object sender, EventArgs e)
         {
-            SendKeys.Send("^V");
+            //SendKeys.Send("^V");
+            editorTexto.Paste();
         }
 
         private void RichTextBox1_TextChanged(object sender, EventArgs e)
@@ -245,17 +227,20 @@ namespace PDMv4.Vistas
         private void AyudaToolStripButton_Click(object sender, EventArgs e)
         {
             int numIndiceAyuda = 0;
-            if (comboBox1.SelectedIndex < 5)
-                numIndiceAyuda = 0;
-            else if (comboBox1.SelectedIndex < 12)
-                numIndiceAyuda = 1;
-            else if (comboBox1.SelectedIndex < 19)
-                numIndiceAyuda = 2;
-            else if (comboBox1.SelectedIndex < 22)
-                numIndiceAyuda = 3;
-            else if (comboBox1.SelectedIndex == 22)
-                numIndiceAyuda = 4;
-            else numIndiceAyuda = 5;
+            string[] instruccionesTransferencia = new string[] { "LD", "ST", "LDI", "LDM", "STM" };
+            string[] instruccionesAritmeticas   = new string[] { "ADD", "SUB", "CMP", "INC", "ADI", "SUI", "CMI" };
+            string[] instruccionesLogicas       = new string[] { "AND", "ORA", "CRA", "CMA", "ANI", "ORI", "XRI" };
+            string[] instruccionesSalto         = new string[] { "JMP", "BEQ", "BC" };
+            string[] instruccionesEntradaSalida = new string[] { "IN", "OUT" };
+            string instruccionFlag = "LF";
+
+
+            if (instruccionesTransferencia.Contains(comboBox1.SelectedItem)) numIndiceAyuda = 0;
+            else if (instruccionesAritmeticas.Contains(comboBox1.SelectedItem)) numIndiceAyuda = 1;
+            else if (instruccionesLogicas.Contains(comboBox1.SelectedItem)) numIndiceAyuda = 2;
+            else if (instruccionesSalto.Contains(comboBox1.SelectedItem)) numIndiceAyuda = 3;
+            else if ((string)comboBox1.SelectedItem == instruccionFlag) numIndiceAyuda = 4;
+            else if (instruccionesEntradaSalida.Contains(comboBox1.SelectedItem)) numIndiceAyuda = 5;
 
             new Ayuda(3, numIndiceAyuda).ShowDialog();
         }
@@ -264,8 +249,12 @@ namespace PDMv4.Vistas
         {
             OcultarSelectorArgumentos();
             if (argumentos.Length < 1 || argumentos.Length > 2)
+            {
+                label3.Visible = false;
                 return;
+            }
 
+            label3.Visible = true;
             int numArgumento = 0;
             foreach(Argumento.Tipo argumento in argumentos)
             {
@@ -290,7 +279,7 @@ namespace PDMv4.Vistas
                         break;
                 }
                 numArgumento++;
-            }
+            }  
         }
 
         private void OcultarSelectorArgumentos()
@@ -329,7 +318,7 @@ namespace PDMv4.Vistas
 
         private void SeleccionartodoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            editorTexto1.richTextBoxEditor.SelectAll();
+            editorTexto.SelectAll();
         }
 
         private void Argumentos_TextBoxes_Enter(object sender, EventArgs e)
@@ -343,39 +332,89 @@ namespace PDMv4.Vistas
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto1.richTextBoxEditor.Text, out int numLinea);
+            bool programaCorrecto = Fichero.ComprobarProgramaCorrecto.Comprobar(editorTexto.Text, out int numLinea, out string lineaError);
             if (programaCorrecto)
             {
-                if (string.IsNullOrWhiteSpace(editorTexto1.richTextBoxEditor.Text) || programaOriginal == editorTexto1.richTextBoxEditor.Text)
+                if (string.IsNullOrWhiteSpace(editorTexto.Text) || programaOriginal == editorTexto.Text)
                 {
                     DialogResult = DialogResult.Cancel;
                     Close();
                     return;
                 }
 
-                DialogResult guardar = MessageBox.Show("El archivo " + Path.GetFileName(_ruta) + " ya existe. ¿Desea sobreescribirlo?", "Confirmar Aceptar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                if (guardar == DialogResult.Yes)
+
+                foreach (string linea in editorTexto.Lines)
                 {
-                    writer = new StreamWriter(_ruta);
-                    foreach (string linea in editorTexto1.richTextBoxEditor.Lines)
-                    {
-                        writer.Write(linea + "\r\n");
-                    }
-                    writer.Close();
-                    DialogResult = DialogResult.OK;
+                    Programa += linea + "\r\n";
                 }
-                else if (guardar == DialogResult.No)
-                    return;
+                DialogResult = DialogResult.OK;
+                
 
                 Close();
             }
             else
             {
-                editorTexto1.richTextBoxEditor.Select(editorTexto1.richTextBoxEditor.GetFirstCharIndexFromLine(numLinea - 1), editorTexto1.richTextBoxEditor.Lines[numLinea - 1].Length);
-                MessageBox.Show("Error en la línea " + (editorTexto1.ConvertirNumeroLinea(numLinea)) + ": El formato de la instrucción " + editorTexto1.richTextBoxEditor.Lines[numLinea - 1] + " no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "Comprobar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                editorTexto1.richTextBoxEditor.Focus();
+                MessageBox.Show("Error en la línea " + numLinea + ": El formato de la instrucción " + lineaError + " no es el correcto. Por favor, compruebe que la instrucción y/o la etiqueta estén correctamente escritas.\r\n\r\nSi necesita ayuda sobre la sintaxis de las instrucciones puede acceder al fichero de ayuda desde el menú principal o la barra de herramientas.", "Comprobar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                editorTexto.Focus();
             }
+        }
+
+
+        private void fastColoredTextBox1_TextChanged(object sender, FastColoredTextBoxNS.TextChangedEventArgs e)
+        {
+            bool activarGuardarSeleccionar = !string.IsNullOrWhiteSpace(editorTexto.Text);
+            button2.Enabled = activarGuardarSeleccionar;
+            button4.Enabled = activarGuardarSeleccionar;
+            guardarToolStripButton.Enabled = activarGuardarSeleccionar;
+            seleccionartodoToolStripMenuItem.Enabled = activarGuardarSeleccionar;
+        }
+
+        private void editorTexto_SelectionChanged(object sender, EventArgs e)
+        {
+            bool activarCopiarCortar = editorTexto.SelectionLength > 0;
+            copiarToolStripButton.Enabled = activarCopiarCortar;
+            copiarToolStripMenuItem.Enabled = activarCopiarCortar;
+            cortarToolStripButton.Enabled = activarCopiarCortar;
+            cortarToolStripMenuItem.Enabled = activarCopiarCortar;
+        }
+
+        private void editorTexto_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(editorTexto.PointToScreen(e.Location));
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            editorTexto.CommentSelected();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            SendKeys.Send("{TAB}");
+        }
+
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            SendKeys.Send("+{TAB}");
+        }
+
+        private void editorTexto_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string nombreArchivo = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                editorTexto.Text = File.ReadAllText(nombreArchivo);
+            }
+        }
+
+        private void editorTexto_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.All;
         }
     }
 }

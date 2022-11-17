@@ -121,11 +121,20 @@
   <data name="24x24_chevron_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24x24_chevron_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Visualizar_Registros_Internos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Visualizar Registros Internos.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="Hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="accum_remove_16_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\accum_remove_16_all.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Programa_editor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Programa editor.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="saveas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Registros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Registros.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -138,6 +147,9 @@
   </data>
   <data name="S26" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="S2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,23 +166,32 @@
   <data name="Opciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Opciones.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Buses_de_datos_y_direcciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Buses de datos y direcciones.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="Programa_ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Programa ES.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Actions-transform-scale-Icon-541953" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Actions-transform-scale-Icon-541953.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Abrir_programa_de_prueba" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Abrir programa de prueba.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="UAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UAL.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="accum_add_16_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\accum_add_16_all.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="S27" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S27.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="execute-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\execute-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Paste_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Paste_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="accum_remove_16_all" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\accum_remove_16_all.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logicas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logicas.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Memoria_Principal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Memoria Principal.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -181,8 +202,8 @@
   <data name="sm_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sm_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Barra_de_herramientas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Barra de herramientas.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="S0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,26 +217,29 @@
   <data name="fileIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileIcon.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="S5_6_24_25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\S5-6-24-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="document-properties" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\document-properties.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Barra_de_herramientas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Barra de herramientas.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="HistoryItem_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HistoryItem_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Señalizadores" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Señalizadores.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ES.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Actions-transform-scale-Icon-541953" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Actions-transform-scale-Icon-541953.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stop-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Acerca_de_SimPDM" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Acerca de SimPDM.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="PDM_Image_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PDM_Image_fix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Actions-edit-find-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Actions-edit-find-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Actions-application-exit-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Actions-application-exit-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,11 +247,11 @@
   <data name="24x24_chevron_remove_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\24x24_chevron_remove_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="S3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Transferencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Transferencia.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Actions-edit-find-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Actions-edit-find-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="go-previous-page" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\go-previous-page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,35 +265,26 @@
   <data name="S7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="open_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Acerca_de_SimPDM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Acerca de SimPDM.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Saltos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Saltos.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Tile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="execute-small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\execute-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logicas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logicas.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="S17_18_19_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\S17-18-19-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Señalizadores" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Señalizadores.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
-  <data name="PDM_Image_fix" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PDM_Image_fix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="help-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Save_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UAL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UAL.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Tile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,8 +307,8 @@
   <data name="Tile3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tile3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="S3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\S3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Buses_de_datos_y_direcciones" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buses de datos y direcciones.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="Copy_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Copy_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -304,19 +319,61 @@
   <data name="Aritmetica" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aritmetica.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="help-55" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help-55.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Save_as_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_as_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Visualizar_Registros_Internos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Visualizar Registros Internos.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="resize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Programa_ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Programa ES.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="S30_33" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S30-33.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Abrir_programa_de_prueba" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Abrir programa de prueba.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="S31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Programa_editor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Programa editor.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  <data name="S32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="S34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="comment2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\comment2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="comment3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\comment3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="find" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\find.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="indent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\indent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="indent2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\indent2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="indent4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\indent4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="outdent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outdent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="outdent2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outdent2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="outdent4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outdent4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="S1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="S5_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S5-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="S6_25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\S6-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

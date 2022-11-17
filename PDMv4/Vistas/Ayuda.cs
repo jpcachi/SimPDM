@@ -1,4 +1,4 @@
-﻿using PDMv4.Utilidades;
+﻿using PDMv4.Temas;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -65,6 +65,7 @@ namespace PDMv4.Vistas
 
             if (indiceNodo != indiceUltimoNodo)
             {
+                richTextBox1.ReadOnly = false;
                 richTextBox1.ClearUndo();
                 richTextBox1.Clear();
 
@@ -96,6 +97,7 @@ namespace PDMv4.Vistas
                 indiceUltimoNodo = indiceNodo;
                 richTextBox1.Select(0, 0);
                 richTextBox1.ScrollToCaret();
+                richTextBox1.ReadOnly = true;
                 Properties.Resources.ResourceManager.ReleaseAllResources();
                 GC.Collect();
             }

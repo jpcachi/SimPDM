@@ -1,4 +1,5 @@
-﻿using PDMv4.Procesador;
+﻿using PDMv4.Memoria;
+using PDMv4.Procesador;
 using System;
 using System.Globalization;
 
@@ -19,7 +20,12 @@ namespace PDMv4.Argumentos
                     if (mem.ObtenerEtiqueta.ToUpperInvariant().Trim() == etiqueta.ToUpperInvariant().Trim())
                         return mem.ObtenerDireccionMemoria;
                 }
-                if ((ushort.TryParse(etiqueta, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out ushort n)) || (ushort.TryParse(etiqueta.Substring(0, etiqueta.Length - 1), NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out n)))
+
+                if (etiqueta.StartsWith("@"))
+                    etiqueta = etiqueta.Substring(1);
+
+                if ((ushort.TryParse(etiqueta, NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out ushort n)) || 
+                    (ushort.TryParse(etiqueta.Substring(0, etiqueta.Length - 1), NumberStyles.HexNumber, CultureInfo.InvariantCulture.NumberFormat, out n)))
                 {
                     if (n <= Main.ObtenerMemoria.Tamaño)
                         return n;

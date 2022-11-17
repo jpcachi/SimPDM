@@ -1,5 +1,6 @@
 ﻿using PDMv4.Instrucciones;
 using PDMv4.Interfaces;
+using PDMv4.Memoria;
 using System;
 using System.Collections.Generic;
 
@@ -26,6 +27,7 @@ namespace PDMv4.Procesador
         private static int indiceMicroinstruccionActual;
         private static int codMicroinstruccion;
         private static int numRegistroSeleccionado;
+
         public static MemoriaPrincipal ObtenerMemoria{ get => memoria; }
         public static bool FlagCarry { get => flagCarry; set => flagCarry = value; }
         public static bool FlagZero { get => flagZero; set => flagZero = value; }
@@ -38,6 +40,8 @@ namespace PDMv4.Procesador
         internal static Registro ContadorProgramaL { get => contadorProgramaL; set => contadorProgramaL = value; }
 
         private static Stack<int[]> pilaProcesador;
+
+        public static bool EditadaMemoriaManualmente { get; set; }
 
         static Main()
         {
@@ -89,6 +93,19 @@ namespace PDMv4.Procesador
             }
         }
 
+        internal static ushort RegistroDirecciones
+        {
+            get
+            {
+                return (ushort)((registroDireccionesH.Contenido << 8) + registroDireccionesL.Contenido);
+            }
+            set
+            {
+                registroDireccionesL.Contenido = (byte)(value % 256);
+                registroDireccionesH.Contenido = (byte)(value >> 8);
+            }
+        }
+
         internal static UAL UnidadAritmeticoLogica { get => unidadAritmeticoLogica;}
         public static List<InstruccionDireccionMemoria> ListaInstrucciones => listaInstrucciones;
 
@@ -133,15 +150,24 @@ namespace PDMv4.Procesador
             return registros[numRegistro];
         }
 
-        public static void Restablecer(bool completo = true)
+        private static ushort ultimaPosicionPrograma;
+        public static void EstablecerUltimaDireccionPrograma(ushort pos)
         {
-            registros[0].Contenido = 0;
-            registros[1].Contenido = 0;
-            registros[2].Contenido = 0;
-            registros[3].Contenido = 0;
-            
+            ultimaPosicionPrograma = pos;
+        }
+        public static void Restablecer(bool completo = true, bool restablecerRegistrosYMemoria = true)
+        {
+            if (restablecerRegistrosYMemoria)
+            {
+                EditadaMemoriaManualmente = false;
 
-            acumulador.Contenido = 0;
+                registros[0].Contenido = 0;
+                registros[1].Contenido = 0;
+                registros[2].Contenido = 0;
+                registros[3].Contenido = 0;
+
+                acumulador.Contenido = 0;
+            }
             registroInstruccion.Contenido = 0;
             registroDireccionesH.Contenido = 0;
             registroDireccionesL.Contenido = 0;
@@ -154,7 +180,11 @@ namespace PDMv4.Procesador
 
             if (completo)
             {
-                memoria.RestablecerMemoria();
+                if(restablecerRegistrosYMemoria)
+                    memoria.RestablecerMemoria();
+                else
+                    memoria.RestablecerMemoria(ContadorPrograma, ultimaPosicionPrograma);
+
                 listaInstrucciones.Clear();
             } 
             listaMicroinstrucciones.Clear();
@@ -392,7 +422,13 @@ namespace PDMv4.Procesador
                 case 17:
                 case 18:
                 case 19:
+                case 30:
                     registroLeido[0] = listaInstrucciones[indiceInstruccionActual].instruccion.ObtenerNumRegistroLeido();
+                    break;
+                case 33:
+                    registroLeido = new int[2];
+                    registroLeido[0] = listaInstrucciones[indiceInstruccionActual].instruccion.ObtenerNumRegistroLeido();
+                    registroLeido[1] = listaInstrucciones[indiceInstruccionActual].instruccion.ObtenerNumSegundoRegistroLeido();
                     break;
             }
             if(registroLeido[0] > 4)
@@ -414,6 +450,7 @@ namespace PDMv4.Procesador
                 case 7:
                 case 10:
                 case 27:
+                case 32:
                     registroEscrito = listaInstrucciones[indiceInstruccionActual].instruccion.ObtenerNumRegistroEscrito();
                     break;
             }
@@ -441,6 +478,7 @@ namespace PDMv4.Procesador
                 case 7:
                 case 8:
                 case 26:
+                case 34:
                     dirMem = listaInstrucciones[indiceInstruccionActual].instruccion.ObtenerDirMemoria(out escritura);
                     break;
 

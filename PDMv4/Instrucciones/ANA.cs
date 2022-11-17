@@ -31,7 +31,6 @@ namespace PDMv4.Instrucciones
                 return (byte)(128 + (argumento as ArgRegistro).NumeroRegistro);
             }
         }
-        //public int NumMicroinstrucciones => 4;
 
         public override string ConvertirEnLinea()
         {

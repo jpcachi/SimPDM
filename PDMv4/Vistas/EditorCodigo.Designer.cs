@@ -13,8 +13,8 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if(reader != null)
-                reader.Dispose();
+            //if(reader != null)
+                //reader.Dispose();
 
             if (writer != null)
                 writer.Dispose();
@@ -57,6 +57,10 @@
             this.copiarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pegarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ayudaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -64,21 +68,22 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panelMejorado1 = new PDMv4.Controles.PanelMejorado();
-            this.editorTexto1 = new PDMv4.Controles.EditorTexto();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.seleccionartodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.cortarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMejorado1 = new PDMv4.Controles.PanelMejorado();
+            this.editorTexto = new FastColoredTextBoxNS.FastColoredTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panelMejorado1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panelMejorado1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editorTexto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -244,6 +249,10 @@
             this.copiarToolStripButton,
             this.pegarToolStripButton,
             this.toolStripSeparator1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton1,
+            this.toolStripSeparator3,
             this.ayudaToolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -259,6 +268,7 @@
             this.nuevoToolStripButton.Name = "nuevoToolStripButton";
             this.nuevoToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.nuevoToolStripButton.Text = "&Nuevo";
+            this.nuevoToolStripButton.Visible = false;
             this.nuevoToolStripButton.Click += new System.EventHandler(this.NuevoToolStripButton_Click);
             // 
             // guardarToolStripButton
@@ -270,12 +280,14 @@
             this.guardarToolStripButton.Name = "guardarToolStripButton";
             this.guardarToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.guardarToolStripButton.Text = "&Guardar";
+            this.guardarToolStripButton.Visible = false;
             this.guardarToolStripButton.Click += new System.EventHandler(this.Button2_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator.Visible = false;
             // 
             // cortarToolStripButton
             // 
@@ -314,6 +326,41 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::PDMv4.Properties.Resources.indent4;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Añadir &tabulación";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::PDMv4.Properties.Resources.outdent4;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Quitar tabulación";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::PDMv4.Properties.Resources.comment3;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Comentar líneas se&leccionadas";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // ayudaToolStripButton
             // 
             this.ayudaToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -328,12 +375,13 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(12, 16);
+            this.button2.Location = new System.Drawing.Point(539, 16);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(95, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "Guardar como";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
@@ -374,7 +422,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Location = new System.Drawing.Point(449, 161);
             this.groupBox2.Name = "groupBox2";
@@ -385,7 +434,8 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(6, 20);
             this.richTextBox1.Name = "richTextBox1";
@@ -394,30 +444,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.RichTextBox1_TextChanged);
-            // 
-            // panelMejorado1
-            // 
-            this.panelMejorado1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelMejorado1.ColorFondoControladoPorEstilo = true;
-            this.panelMejorado1.Controls.Add(this.editorTexto1);
-            this.panelMejorado1.Location = new System.Drawing.Point(12, 28);
-            this.panelMejorado1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
-            this.panelMejorado1.Name = "panelMejorado1";
-            this.panelMejorado1.Size = new System.Drawing.Size(430, 401);
-            this.panelMejorado1.TabIndex = 6;
-            this.panelMejorado1.Text = "Editor";
-            // 
-            // editorTexto1
-            // 
-            this.editorTexto1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.editorTexto1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorTexto1.Location = new System.Drawing.Point(0, 0);
-            this.editorTexto1.Name = "editorTexto1";
-            this.editorTexto1.NumeroLinea = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(85)))), ((int)(((byte)(102)))));
-            this.editorTexto1.Size = new System.Drawing.Size(430, 401);
-            this.editorTexto1.TabIndex = 5;
             // 
             // contextMenuStrip1
             // 
@@ -468,6 +494,62 @@
             this.pegarToolStripMenuItem.Text = "&Pegar";
             this.pegarToolStripMenuItem.Click += new System.EventHandler(this.PegarToolStripButton_Click);
             // 
+            // panelMejorado1
+            // 
+            this.panelMejorado1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMejorado1.ColorFondoControladoPorEstilo = true;
+            this.panelMejorado1.Controls.Add(this.editorTexto);
+            this.panelMejorado1.CustomBorders = true;
+            this.panelMejorado1.Location = new System.Drawing.Point(12, 28);
+            this.panelMejorado1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 1);
+            this.panelMejorado1.Name = "panelMejorado1";
+            this.panelMejorado1.Size = new System.Drawing.Size(430, 401);
+            this.panelMejorado1.TabIndex = 6;
+            this.panelMejorado1.Text = "Editor";
+            // 
+            // editorTexto
+            // 
+            this.editorTexto.AutoCompleteBracketsList = new char[] {
+        '(',
+        ')',
+        '{',
+        '}',
+        '[',
+        ']',
+        '\"',
+        '\"',
+        '\'',
+        '\''};
+            this.editorTexto.AutoIndent = false;
+            this.editorTexto.AutoScrollMinSize = new System.Drawing.Size(2, 14);
+            this.editorTexto.BackBrush = null;
+            this.editorTexto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.editorTexto.CharHeight = 14;
+            this.editorTexto.CharWidth = 8;
+            this.editorTexto.CommentPrefix = ";";
+            this.editorTexto.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.editorTexto.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.editorTexto.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editorTexto.Hotkeys = resources.GetString("editorTexto.Hotkeys");
+            this.editorTexto.IsReplaceMode = false;
+            this.editorTexto.LineNumberColor = System.Drawing.SystemColors.ControlDark;
+            this.editorTexto.Location = new System.Drawing.Point(0, 0);
+            this.editorTexto.Name = "editorTexto";
+            this.editorTexto.Paddings = new System.Windows.Forms.Padding(0);
+            this.editorTexto.ReservedCountOfLineNumberChars = 4;
+            this.editorTexto.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.editorTexto.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("editorTexto.ServiceColors")));
+            this.editorTexto.Size = new System.Drawing.Size(430, 401);
+            this.editorTexto.TabIndex = 6;
+            this.editorTexto.Zoom = 100;
+            this.editorTexto.TextChanged += new System.EventHandler<FastColoredTextBoxNS.TextChangedEventArgs>(this.fastColoredTextBox1_TextChanged);
+            this.editorTexto.SelectionChanged += new System.EventHandler(this.editorTexto_SelectionChanged);
+            this.editorTexto.DragDrop += new System.Windows.Forms.DragEventHandler(this.editorTexto_DragDrop);
+            this.editorTexto.DragEnter += new System.Windows.Forms.DragEventHandler(this.editorTexto_DragEnter);
+            this.editorTexto.MouseUp += new System.Windows.Forms.MouseEventHandler(this.editorTexto_MouseUp);
+            // 
             // EditorCodigo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,10 +562,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panelMejorado1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(824, 523);
             this.MinimumSize = new System.Drawing.Size(824, 523);
             this.Name = "EditorCodigo";
             this.Text = "EditorCodigo";
@@ -494,8 +573,9 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.panelMejorado1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panelMejorado1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.editorTexto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,7 +592,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private Controles.EditorTexto editorTexto1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
         private Controles.PanelMejorado panelMejorado1;
@@ -539,5 +618,10 @@
         private System.Windows.Forms.ToolStripMenuItem pegarToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Button button4;
+        private FastColoredTextBoxNS.FastColoredTextBox editorTexto;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

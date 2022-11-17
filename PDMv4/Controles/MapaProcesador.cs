@@ -109,11 +109,11 @@ namespace PDMv4.Controles
             etiquetaMEM.Activado = activado;
         }
 
-        private void ActivarLRI(bool activado)
+        private void ActivarLRI(bool activado, bool evaluacion = false)
         {
             etiquetaLRI.Activado = activado;
-            etiquetaCR.Activado = activado;
-            etiquetaCO.Activado = activado;
+            etiquetaCR.Activado = evaluacion;
+            etiquetaCO.Activado = evaluacion;
         }
 
         private void ActivarLE(bool activado)
@@ -161,7 +161,7 @@ namespace PDMv4.Controles
             string señalesTexto = string.Empty;
             foreach (sbyte señal in valores)
                 señalesTexto += señal.ToString();
-
+            bool evaluacion = false;
             Properties.Resources.ResourceManager.ReleaseAllResources();
             switch (señalesTexto)
             {
@@ -169,7 +169,8 @@ namespace PDMv4.Controles
                     pictureBox1.Image = Properties.Resources.S0;
                     break;
                 case "0000000000000-1-1-100":
-                    pictureBox1.Image = null;
+                    evaluacion = true;
+                    pictureBox1.Image = Properties.Resources.S1;
                     break;
                 case "0010000010000-1-1-100":
                     pictureBox1.Image = Properties.Resources.S2;
@@ -181,15 +182,17 @@ namespace PDMv4.Controles
                     pictureBox1.Image = Properties.Resources.S4;
                     break;
                 case "0100100000001-1-1-100":
-                    pictureBox1.Image = Properties.Resources.S5_6_24_25;
+                    pictureBox1.Image = Properties.Resources.S5_24;
                     break;
                 case "0100010000001-1-1-100":
-                    pictureBox1.Image = Properties.Resources.S5_6_24_25;
+                    pictureBox1.Image = Properties.Resources.S6_25;
                     break;
                 case "0001000000011-1-1-100":
+                case "0001000000011-2-2-200":
                     pictureBox1.Image = Properties.Resources.S7;
                     break;
                 case "0010000000110-1-1-100":
+                case "0010000000110-2-2-200":
                     pictureBox1.Image = Properties.Resources.S8;
                     break;
                 case "001000100000000001":
@@ -243,13 +246,29 @@ namespace PDMv4.Controles
                 case "0000000110000-1-1-100":
                     pictureBox1.Image = Properties.Resources.S27;
                     break;
+
+                case "0010100000000-1-1-100":
+                    pictureBox1.Image = Properties.Resources.S30_33;
+                    break;
+                case "0000010001000-1-1-100":
+                    pictureBox1.Image = Properties.Resources.S31;
+                    break;
+                case "0000000010011-1-1-100":
+                    pictureBox1.Image = Properties.Resources.S32;
+                    break;
+                case "0010010000000-1-1-100":
+                    pictureBox1.Image = Properties.Resources.S30_33;
+                    break;
+                case "0000000001110-1-1-100":
+                    pictureBox1.Image = Properties.Resources.S34;
+                    break;
             }
 
             Invoke(new Action(() => pictureBox1.Refresh()));
 
             ActivarCR01();
 
-            ActivarLRI(ConvertirEnBool(valores[0]));
+            ActivarLRI(ConvertirEnBool(valores[0]), evaluacion);
             ActivarLCP(ConvertirEnBool(valores[1]));
             ActivarTSR(ConvertirEnBool(valores[2]));
             ActivarTER(ConvertirEnBool(valores[3]));

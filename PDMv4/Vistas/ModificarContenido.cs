@@ -121,6 +121,8 @@ namespace PDMv4.Vistas
                 Main.ObtenerMemoria.EscribirMemoria((byte)valor, pos);
             else 
                 Main.ObtenerRegistro(pos).Contenido = (byte)valor;
+
+            Main.EditadaMemoriaManualmente = true;
             DialogResult = DialogResult.OK;
             Close();
         }

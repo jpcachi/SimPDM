@@ -82,7 +82,8 @@ namespace PDMv4.Vistas
             }
             else
             {
-                UC.ArchivoES.CerrarFichero();
+                if(UC.ArchivoES != null)
+                    UC.ArchivoES.CerrarFichero();
             }
 
             OpcionesPrograma.DireccionMemoriaComienzoPrograma = (ushort)(comboBox5.SelectedIndex * 4096 + comboBox12.SelectedIndex * 256 + comboBox13.SelectedIndex * 16 + comboBox14.SelectedIndex);

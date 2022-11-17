@@ -105,8 +105,12 @@ namespace PDMv4.EntradaSalida
                     rutaSalida = null;
                 }
 
-                archivoSalida.Close();
-                archivoEntrada.Close();
+                if(archivoSalida != null)
+                    archivoSalida.Close();
+
+                if(archivoEntrada != null)
+                    archivoEntrada.Close();
+
                 archivoEntrada = null;
                 archivoSalida = null;
 

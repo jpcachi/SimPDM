@@ -52,7 +52,11 @@ namespace PDMv4.Instrucciones
         public override int ObtenerDirMemoria(out bool escritura)
         {
             escritura = true;
-            return (argumento2 as ArgMemoria).DireccionMemoria;
+
+            ushort LH = Main.ObtenerMemoria.ObtenerDireccion((ushort)(DireccionMemoriaDondeEsEscrita + 1)).Contenido;
+            ushort LL = Main.ObtenerMemoria.ObtenerDireccion((ushort)(DireccionMemoriaDondeEsEscrita + 2)).Contenido;
+
+            return LH * 256 + LL;
         }
         public override int[] ObtenerFlags(out bool escritura)
         {
@@ -62,7 +66,10 @@ namespace PDMv4.Instrucciones
 
         public int ObtenerDirMemoriaModificada()
         {
-            return (argumento2 as ArgMemoria).DireccionMemoria;
+            ushort LH = Main.ObtenerMemoria.ObtenerDireccion((ushort)(DireccionMemoriaDondeEsEscrita + 1)).Contenido;
+            ushort LL = Main.ObtenerMemoria.ObtenerDireccion((ushort)(DireccionMemoriaDondeEsEscrita + 2)).Contenido;
+
+            return LH * 256 + LL;
         }
     }
 }

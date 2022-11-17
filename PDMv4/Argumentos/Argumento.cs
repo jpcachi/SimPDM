@@ -33,14 +33,14 @@ namespace PDMv4.Argumentos
                         int num;
                         if (hex)
                         {
-                            if (int.TryParse(argumento.Substring(0, argumento.Length - 1), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out num) && num <= 65535)
+                            if (int.TryParse(argumento.Substring(0, argumento.Length - 1), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out num) && num <= ushort.MaxValue)
                             {
                                 _argumento = new ArgLiteral((byte)(num.ToDecimal()));
                             }
                         }
                         else
                         {
-                            if (int.TryParse(argumento.Trim(), out num) || (int.TryParse(argumento.Trim(), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out num) && num <= 65535))
+                            if (int.TryParse(argumento.Trim(), out num) || (int.TryParse(argumento.Trim(), NumberStyles.HexNumber, CultureInfo.CurrentCulture, out num) && num <= ushort.MaxValue))
                             {
                                 _argumento = new ArgLiteral((byte)(num.ToDecimal()));
                             }

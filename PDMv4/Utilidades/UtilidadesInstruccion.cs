@@ -1,7 +1,9 @@
 ﻿using PDMv4.Argumentos;
 using PDMv4.Instrucciones;
+using PDMv4.Instrucciones.Personalizadas;
 using PDMv4.Procesador;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PDMv4.Utilidades
 {
@@ -65,6 +67,8 @@ namespace PDMv4.Utilidades
             "Instrucción OUTPUT:\n\nFormato: OUT <Parametro1>, <Parametro2>\n\tParametro1: <Letra_Registro: (B, C, D, E)>\n\tParametro2: <Dir_Mem: [0x0000 ~ 0xFFFF]>    ||\n\t\t      <Etiqueta>\n\nFunción: Guarda el contenido del registro <Letra_Registro> en el periférico de salida conectado a la dirección de memoria <Dir_Mem> || <Etiqueta>.\n\nEjemplos de uso:\n\tOUT C, 0010 (Guarda el contenido del registro C en el periférico de salida conectado a la dirección de memoria 0010).\n\n\tOUT B, inicio (Guarda el contenido del registro B en el periférico de salida conectado a la dirección de memoria con etiqueta inicio)."
         };
 
+        public static Dictionary<string, string> InstruccionesDescripcion => instruccionesTexto.Zip(instruccionesDescripcion, (inst, desc) => (inst, desc)).ToDictionary(x => x.inst, x => x.desc);
+
         public static List<string> InstruccionesTexto => instruccionesTexto; 
 
         public static List<string> DescripcionesInstruccion => instruccionesDescripcion;
@@ -120,6 +124,9 @@ namespace PDMv4.Utilidades
                 case "LF":
                 case "IN":
                 case "OUT":
+
+                case "LMR":
+                case "SMR":
                     instruccion = true;
                     break;
                 default:
@@ -130,102 +137,119 @@ namespace PDMv4.Utilidades
             return instruccion;
         }
 
-        public static Instruccion DescodificarInstruccion(byte codigo, ushort pos)
+        public static Instruccion DecodificarInstruccion(byte codigo, ushort pos)
         {
             Instruccion instruccion = null;
             ArgMemoria argumentoMemoria = Argumento.ConvertirEnArgumento((Main.ObtenerMemoria.ObtenerDireccion((ushort)(pos + 1)).Contenido * 256 + Main.ObtenerMemoria.ObtenerDireccion((ushort)(pos + 2)).Contenido).ToString("X4"), true) as ArgMemoria;
             ArgRegistro argumentoRegistro = Argumento.ConvertirEnArgumento(Main.ObtenerNombreRegistro(codigo % 4), false) as ArgRegistro;
             ArgLiteral argumentoLiteral = Argumento.ConvertirEnArgumento(Main.ObtenerMemoria.ObtenerDireccion((ushort)(pos + 1)).Contenido.ToString(), false) as ArgLiteral;
 
-            switch (codigo / 8)
+            switch (codigo / 4)
             {
                 case 0:
                     instruccion = new LD(argumentoRegistro);
                     break;
-                case 1:
+                case 2:
                     instruccion = new ST(argumentoRegistro);
                     break;
+                case 8:
+                case 10:
+                    instruccion = new LDM(argumentoMemoria, argumentoRegistro) { DireccionMemoriaDondeEsEscrita = pos};
+                    break;
+                case 12:
+                case 14:
+                    instruccion = new STM(argumentoRegistro, argumentoMemoria) { DireccionMemoriaDondeEsEscrita = pos };
+                    break;
                 case 4:
-                case 5:
-                    instruccion = new LDM(argumentoMemoria, argumentoRegistro);
-                    break;
                 case 6:
-                case 7:
-                    instruccion = new STM(argumentoRegistro, argumentoMemoria);
-                    break;
-                case 2:
-                case 3:
                     instruccion = new LDI(argumentoLiteral, argumentoRegistro);
                     break;
-                case 8:
+                case 16:
                     instruccion = new ADD(argumentoRegistro);
                     break;
-                case 9:
+                case 18:
                     instruccion = new SUB(argumentoRegistro);
                     break;
-                case 10:
+                case 20:
                     instruccion = new CMP(argumentoRegistro);
                     break;
 
 
-                case 11:
+                case 22:
                     instruccion = new INC();
                     break;
-                case 12:
+                case 24:
                     instruccion = new ADI(argumentoLiteral);
                     break;
-                case 13:
+                case 26:
                     instruccion = new SUI(argumentoLiteral);
                     break;
-                case 14:
-                case 15:
+                case 28:
+                case 30:
                     instruccion = new CMI(argumentoLiteral);
                     break;
 
 
-                case 16:
+                case 32:
                     instruccion = new ANA(argumentoRegistro);
                     break;
-                case 17:
+                case 34:
                     instruccion = new ORA(argumentoRegistro);
                     break;
-                case 18:
+                case 36:
                     instruccion = new XRA(argumentoRegistro);
                     break;
 
 
-                case 19:
+                case 38:
                     instruccion = new CMA();
                     break;
-                case 20:
+                case 40:
                     instruccion = new ANI(argumentoLiteral);
                     break;
-                case 21:
+                case 42:
                     instruccion = new ORI(argumentoLiteral);
                     break;
-                case 22:
-                case 23:
+                case 44:
+                case 46:
                     instruccion = new XRI(argumentoLiteral);
                     break;
-                case 24:
-                case 25:
+                case 48:
+                case 50:
                     instruccion = new JMP(argumentoMemoria);
                     break;
-                case 26:
+                case 52:
                     instruccion = new BEQ(argumentoMemoria);
                     break;
-                case 27:
+                case 54:
                     instruccion = new BC(argumentoMemoria);
                     break;
-                case 28:
-                case 29:
+                case 56:
+                case 58:
                     instruccion = new LF();
                     break;
-                case 30:
+                case 60:
                     instruccion = new IN(argumentoMemoria, argumentoRegistro);
                     break;
-                case 31:
+                case 62:
                     instruccion = new OUT(argumentoRegistro, argumentoMemoria);
+                    break;
+
+               //EXPERIMENTAL
+                case 63:
+                    instruccion = new LMR(argumentoRegistro);
+                    break;
+                case 3:
+                    instruccion = new SMR(argumentoRegistro, Argumento.ConvertirEnArgumento(Main.ObtenerNombreRegistro(0), false) as ArgRegistro);
+                    break;
+                case 5:
+                    instruccion = new SMR(argumentoRegistro, Argumento.ConvertirEnArgumento(Main.ObtenerNombreRegistro(1), false) as ArgRegistro);
+                    break;
+                case 7:
+                    instruccion = new SMR(argumentoRegistro, Argumento.ConvertirEnArgumento(Main.ObtenerNombreRegistro(2), false) as ArgRegistro);
+                    break;
+                case 15:
+                    instruccion = new SMR(argumentoRegistro, Argumento.ConvertirEnArgumento(Main.ObtenerNombreRegistro(3), false) as ArgRegistro);
                     break;
             }
             return instruccion;

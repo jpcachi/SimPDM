@@ -1,5 +1,7 @@
 ﻿using PDMv4.Argumentos;
+using PDMv4.Instrucciones.Personalizadas;
 using System;
+using System.Runtime.InteropServices;
 
 namespace PDMv4.Instrucciones
 {
@@ -8,9 +10,11 @@ namespace PDMv4.Instrucciones
         public abstract byte Codigo { get; }
         public virtual int NumMicroinstrucciones { get => 4; }
         public abstract int NumArgumentos { get ; }
+        public ushort DireccionMemoriaDondeEsEscrita { set; protected get; }
         public abstract Argumento ObtenerArgumento(int indice);
         public abstract string ConvertirEnLinea();
         public abstract int ObtenerNumRegistroLeido();
+        public virtual int ObtenerNumSegundoRegistroLeido() => -1;
         public abstract int ObtenerNumRegistroEscrito();
         public abstract int ObtenerDirMemoria(out bool escritura);
         public abstract int[] ObtenerFlags(out bool escritura);
@@ -22,7 +26,6 @@ namespace PDMv4.Instrucciones
                 throw new ArgumentOutOfRangeException();
             }
 
-            Instruccion _instruccion = null;
             string instruccion = instruccionArgumentos[0].ToUpperInvariant();
             string[] argumentos = new string[instruccionArgumentos.Length - 1];
             for (int i = 1; i < instruccionArgumentos.Length; i++)
@@ -30,6 +33,8 @@ namespace PDMv4.Instrucciones
                 argumentos[i - 1] = instruccionArgumentos[i];
             }
 
+
+            Instruccion _instruccion;
             switch (instruccion)
             {
                 case "STM":
@@ -107,7 +112,14 @@ namespace PDMv4.Instrucciones
                 case "OUT":
                     _instruccion = new OUT(Argumento.ConvertirEnArgumento(argumentos, true, -1, 1));
                     break;
-                 
+
+                //EXPERIMENTAL
+                case "LMR":
+                    _instruccion = new LMR(Argumento.ConvertirEnArgumento(argumentos, true));
+                    break;
+                case "SMR":
+                    _instruccion = new SMR(Argumento.ConvertirEnArgumento(argumentos, true));
+                    break;
                 default:
                     throw new ArgumentException();
             }

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PDMv4</RootNamespace>
     <AssemblyName>PDMv4</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -26,6 +26,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,9 @@
     <ApplicationIcon>IconoPDM.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastColoredTextBox, Version=2.16.24.0, Culture=neutral, PublicKeyToken=fb8aa12b994ef61b, processorArchitecture=MSIL">
+      <HintPath>..\packages\FCTB.2.16.24\lib\FastColoredTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -77,7 +81,7 @@
     <Compile Include="Argumentos\ArgMemoria.cs" />
     <Compile Include="Argumentos\ArgRegistro.cs" />
     <Compile Include="Argumentos\Argumento.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Temas\Constants.cs" />
     <Compile Include="Controles\CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,10 +112,10 @@
     <Compile Include="Controles\PanelMejorado.Designer.cs">
       <DependentUpon>PanelMejorado.cs</DependentUpon>
     </Compile>
-    <Compile Include="DireccionMemoria.cs" />
+    <Compile Include="Memoria\DireccionMemoria.cs" />
     <Compile Include="EntradaSalida\FicheroES.cs" />
-    <Compile Include="Estilos.cs" />
-    <Compile Include="Etiqueta.cs" />
+    <Compile Include="Temas\Estilos.cs" />
+    <Compile Include="Memoria\Etiqueta.cs" />
     <Compile Include="Instrucciones\ADD.cs" />
     <Compile Include="Instrucciones\ADI.cs" />
     <Compile Include="Instrucciones\ANA.cs" />
@@ -135,6 +139,8 @@
     <Compile Include="Instrucciones\ORA.cs" />
     <Compile Include="Instrucciones\ORI.cs" />
     <Compile Include="Instrucciones\OUT.cs" />
+    <Compile Include="Instrucciones\Personalizadas\LMR.cs" />
+    <Compile Include="Instrucciones\Personalizadas\SMR.cs" />
     <Compile Include="Instrucciones\ST.cs" />
     <Compile Include="Instrucciones\STM.cs" />
     <Compile Include="Instrucciones\SUB.cs" />
@@ -146,9 +152,9 @@
     <Compile Include="Interfaces\IModificaDireccionMemoria.cs" />
     <Compile Include="OpcionesPrograma.cs" />
     <Compile Include="Procesador\Buses.cs" />
-    <Compile Include="Procesador\InstruccionDireccionMemoria.cs" />
+    <Compile Include="Memoria\InstruccionDireccionMemoria.cs" />
     <Compile Include="Procesador\Main.cs" />
-    <Compile Include="Procesador\MemoriaPrincipal.cs" />
+    <Compile Include="Memoria\MemoriaPrincipal.cs" />
     <Compile Include="Procesador\Registro.cs" />
     <Compile Include="Procesador\UAL.cs" />
     <Compile Include="Procesador\UC.cs" />
@@ -159,9 +165,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Temas\AsmPdmHighlighter.cs" />
     <Compile Include="Utilidades\Fichero.cs" />
-    <Compile Include="Utilidades\ListViewVisualStyles.cs" />
-    <Compile Include="Utilidades\NativeToolStripRenderer.cs" />
+    <Compile Include="Temas\ListViewVisualStyles.cs" />
+    <Compile Include="Temas\NativeToolStripRenderer.cs" />
     <Compile Include="Utilidades\UtilidadesConversion.cs" />
     <Compile Include="Utilidades\UtilidadesInstruccion.cs" />
     <Compile Include="Vistas\AboutBox1.cs">
@@ -181,6 +188,12 @@
     </Compile>
     <Compile Include="Vistas\Busqueda.Designer.cs">
       <DependentUpon>Busqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Debug.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Debug.Designer.cs">
+      <DependentUpon>Debug.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\EditorCodigo.cs">
       <SubType>Form</SubType>
@@ -238,6 +251,9 @@
     <EmbeddedResource Include="Vistas\Busqueda.resx">
       <DependentUpon>Busqueda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Debug.resx">
+      <DependentUpon>Debug.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\EditorCodigo.resx">
       <DependentUpon>EditorCodigo.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,10 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\SimPDM.resx">
       <DependentUpon>SimPDM.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\VerRegistro.resx">
       <DependentUpon>VerRegistro.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -425,6 +443,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IconoPDM.ico" />
+    <None Include="Resources\S6-25.png" />
+    <None Include="Resources\S5-24.png" />
+    <None Include="Resources\S1.png" />
+    <None Include="Resources\comment3.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\outdent4.png" />
+    <None Include="Resources\indent4.png" />
+    <None Include="Resources\outdent2.png" />
+    <None Include="Resources\indent2.png" />
+    <None Include="Resources\comment2.png" />
+    <None Include="Resources\find.png" />
+    <None Include="Resources\outdent.png" />
+    <None Include="Resources\indent.png" />
+    <None Include="Resources\comment.png" />
+    <None Include="Resources\S34.png" />
+    <None Include="Resources\S32.png" />
+    <None Include="Resources\S31.png" />
+    <None Include="Resources\S30-33.png" />
+    <None Include="Resources\resize.png" />
+    <None Include="Resources\Save_as_16x16.png" />
+    <None Include="Resources\saveas.png" />
     <None Include="Resources\help-55.png" />
     <None Include="Resources\Actions-edit-find-icon.png" />
     <None Include="Resources\Actions-application-exit-icon.png" />
@@ -432,5 +471,6 @@
     <None Include="Resources\go-next-page.png" />
     <None Include="Resources\go-previous-page.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
