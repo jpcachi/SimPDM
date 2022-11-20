@@ -1,0 +1,12 @@
+        LDI 5, B        ;tamaño del array  
+        STM B, 9FFFh    
+        LDI 2, B        ;array[0]
+        STM B, A000h    
+        LDI 1, B        ;array[1]
+        STM B, A001h    
+        LDI 0, B        ;array[2]
+        STM B, A002h    
+        LDI 4, B        ;array[3]
+        STM B, A003h    
+        LDI 5, B        ;array[4]
+        STM B, A004h

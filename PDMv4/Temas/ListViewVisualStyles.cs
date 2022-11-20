@@ -87,34 +87,27 @@ namespace PDMv4.Temas
 
             }
         }
-        public static void LimpiarIndices(TListView vista, bool todos = false)
-        {
-            if(todos)
+        public static void LimpiarIndices(TListView vista)
+        { 
+            switch(vista)
             {
-                LimpiarIndices();
-            }
-            else
-            {
-                switch(vista)
-                {
-                    case TListView.Flags:
-                        lecturaFlags.Clear();
-                        break;
-                    case TListView.Memoria:
-                        lecturaMemoria.Clear();
-                        accesoMemoria.Clear();
-                        break;
-                    case TListView.Programa:
-                        lecturaPrograma.Clear();
-                        break;
-                    case TListView.Registros:
-                        lecturaRegistros.Clear();
-                        accesoRegistros.Clear();
-                        break;
-                    case TListView.Microinstrucciones:
-                        ejecucionMicroInstruccion = -1;
-                        break;
-                }
+                case TListView.Flags:
+                    lecturaFlags.Clear();
+                    break;
+                case TListView.Memoria:
+                    lecturaMemoria.Clear();
+                    accesoMemoria.Clear();
+                    break;
+                case TListView.Programa:
+                    lecturaPrograma.Clear();
+                    break;
+                case TListView.Registros:
+                    lecturaRegistros.Clear();
+                    accesoRegistros.Clear();
+                    break;
+                case TListView.Microinstrucciones:
+                    ejecucionMicroInstruccion = -1;
+                    break;
             }
         }
 
