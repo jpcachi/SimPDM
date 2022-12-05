@@ -95,6 +95,8 @@
             this.numericUpDownC = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownB = new System.Windows.Forms.NumericUpDown();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.listView_MemoriaPrincipal = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -106,14 +108,12 @@
             this.numericUpDownContenidoEscritura = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownEscritura = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownContenidoLectura = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownLectura = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCR)).BeginInit();
@@ -135,8 +135,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownContenidoEscritura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEscritura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownContenidoLectura)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLectura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLectura)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox5
@@ -182,6 +182,7 @@
             this.listView_Microinstrucciones.Location = new System.Drawing.Point(6, 19);
             this.listView_Microinstrucciones.MultiSelect = false;
             this.listView_Microinstrucciones.Name = "listView_Microinstrucciones";
+            this.listView_Microinstrucciones.OwnerDraw = true;
             this.listView_Microinstrucciones.Size = new System.Drawing.Size(773, 171);
             this.listView_Microinstrucciones.TabIndex = 10;
             this.listView_Microinstrucciones.UseCompatibleStateImageBehavior = false;
@@ -905,6 +906,25 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Memoria";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(384, 94);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(29, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Ir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(201, 99);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(71, 13);
+            this.label18.TabIndex = 15;
+            this.label18.Text = "Ir a dirección:";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -934,6 +954,7 @@
             this.listView_MemoriaPrincipal.HideSelection = false;
             this.listView_MemoriaPrincipal.Location = new System.Drawing.Point(19, 121);
             this.listView_MemoriaPrincipal.Name = "listView_MemoriaPrincipal";
+            this.listView_MemoriaPrincipal.OwnerDraw = true;
             this.listView_MemoriaPrincipal.Size = new System.Drawing.Size(394, 324);
             this.listView_MemoriaPrincipal.TabIndex = 13;
             this.listView_MemoriaPrincipal.UseCompatibleStateImageBehavior = false;
@@ -1028,6 +1049,19 @@
             this.numericUpDownContenidoLectura.Size = new System.Drawing.Size(75, 20);
             this.numericUpDownContenidoLectura.TabIndex = 1;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Hexadecimal = true;
+            this.numericUpDown1.Location = new System.Drawing.Point(278, 95);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(100, 20);
+            this.numericUpDown1.TabIndex = 1;
+            // 
             // numericUpDownLectura
             // 
             this.numericUpDownLectura.Hexadecimal = true;
@@ -1083,38 +1117,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Última dirección (Lectura):";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(201, 99);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(71, 13);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "Ir a dirección:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Hexadecimal = true;
-            this.numericUpDown1.Location = new System.Drawing.Point(278, 95);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(100, 20);
-            this.numericUpDown1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(384, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Ir";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Debug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1159,8 +1161,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownContenidoEscritura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEscritura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownContenidoLectura)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLectura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLectura)).EndInit();
             this.ResumeLayout(false);
 
         }
