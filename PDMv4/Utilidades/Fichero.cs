@@ -125,13 +125,13 @@ namespace PDMv4.Utilidades
 
             private static bool Instruccion2(string texto)
             {
-                bool resul = true;
                 string instruccion = texto.Trim().Substring(0, 3).ToUpperInvariant();
                 instruccion = instruccion.Trim();
                 string[] parametros = texto.Trim().Substring(3).Trim().Split(',');
 
                 if (!(parametros.Length == 2 && parametros[0].Length > 0 && parametros[1].Length > 0)) return false;
 
+                bool resul;
                 switch (instruccion)
                 {
                     case "STM":
@@ -336,9 +336,9 @@ namespace PDMv4.Utilidades
 
         public void LeerLinea(string linea, ref ushort posicion)
         {
-            Instruccion instruccion = null;
             string[] instruccionArgumentos = UtilidadesInstruccion.ExtraerInstruccionArgumentos(linea);
 
+            Instruccion instruccion;
             if (UtilidadesInstruccion.esInstruccion(instruccionArgumentos[0]))
             {
                 instruccion = Instruccion.ConvertirEnInstruccion(instruccionArgumentos);
@@ -416,7 +416,7 @@ namespace PDMv4.Utilidades
         }
         public bool GuardarPrograma()
         {
-            bool resul = false;
+            bool resul;
             try
             {
                 using (StreamWriter writer = new StreamWriter(ruta))
@@ -466,15 +466,14 @@ namespace PDMv4.Utilidades
             try
             {
                 
-
                 bool restablecer = false;
                 if (Main.EditadaMemoriaManualmente && avisarMemoriaPreviamenteEditada)
                 {
-                    if (MessageBox.Show("¿Desea restablecer el contenido modificado de la memoria principal y los registros antes de cargar el programa?", "Restablecer memoria principal y registros", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea restablecer el contenido modificado de la memoria principal antes de cargar el programa?", "Restablecer memoria principal y registros", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         restablecer = true;
                 }
                 lineas.Clear();
-                Main.Restablecer(restablecerRegistrosYMemoria: restablecer);
+                Main.Restablecer(restablecerMemoria: restablecer);
                 foreach (string linea in lineasTexto)
                 {
                     if (linea != string.Empty)

@@ -8,9 +8,9 @@ namespace PDMv4.Procesador
 {
     static class Main
     {
-        private static MemoriaPrincipal memoria;
-        private static UAL unidadAritmeticoLogica;
-        private static Registro[] registros;
+        private static readonly MemoriaPrincipal memoria;
+        private static readonly UAL unidadAritmeticoLogica;
+        private static readonly Registro[] registros;
         private static Registro acumulador;
         private static Registro registroInstruccion;
         private static Registro registroDireccionesH;
@@ -22,7 +22,7 @@ namespace PDMv4.Procesador
         private static bool flagZero;
 
         private static List<sbyte[]> listaMicroinstrucciones;
-        private static List<InstruccionDireccionMemoria> listaInstrucciones;
+        private static readonly List<InstruccionDireccionMemoria> listaInstrucciones;
         private static int indiceInstruccionActual;
         private static int indiceMicroinstruccionActual;
         private static int codMicroinstruccion;
@@ -39,7 +39,7 @@ namespace PDMv4.Procesador
         internal static Registro ContadorProgramaH { get => contadorProgramaH; set => contadorProgramaH = value; }
         internal static Registro ContadorProgramaL { get => contadorProgramaL; set => contadorProgramaL = value; }
 
-        private static Stack<int[]> pilaProcesador;
+        private static readonly Stack<int[]> pilaProcesador;
 
         public static bool EditadaMemoriaManualmente { get; set; }
 
@@ -155,9 +155,9 @@ namespace PDMv4.Procesador
         {
             ultimaPosicionPrograma = pos;
         }
-        public static void Restablecer(bool completo = true, bool restablecerRegistrosYMemoria = true)
+        public static void Restablecer(bool completo = true, bool restablecerRegistros = true, bool restablecerMemoria = true)
         {
-            if (restablecerRegistrosYMemoria)
+            if (restablecerRegistros)
             {
                 EditadaMemoriaManualmente = false;
 
@@ -180,7 +180,7 @@ namespace PDMv4.Procesador
 
             if (completo)
             {
-                if(restablecerRegistrosYMemoria)
+                if(restablecerMemoria)
                     memoria.RestablecerMemoria();
                 else
                     memoria.RestablecerMemoria(ContadorPrograma, ultimaPosicionPrograma);
